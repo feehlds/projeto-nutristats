@@ -1,0 +1,17 @@
+{
+    "scripts": {
+        "start": "node app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/feloureiro/feloureiro.github.io"
+    },
+    "engines": {
+        "node": "12.x"
+    },
+    "dependencies": {
+        "heroku": "^7.29.0",
+        "jest": "^24.x"
+    }
+}

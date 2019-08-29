@@ -1,6 +1,9 @@
 language: node_js
 node_js:
-  - "node"
-rvm:
+- node
+rvm: 
 deploy:
   provider: heroku
+  api_key:
+    secure: S/b9p0weZM2smgq5p9beESKkTyGcErmDG7C590DaYU6hmZYfqNGJEs/pwlZ+71GK46T9/vagLHW37yP8jsp/5Vwk+WM834XBzwnwNvTdNGXJdm4rzb3FRxMXTp1mPYgVDl0C9ltmF3jULKEay71tcyh+zhleeRaLuxn+VlKxvw66c5XV0a9yb0P9xQboSmHVaOvUbA5iFN9pZHNEFEuFp1DCyK2BCA4hRl8i8XQ6EYG85FUa6jTUNrOQazuHOe4cvOjmEfNhwIEiiCOoJBBUR7vdYqA0pEk84hyNk0QGbrH/bAEX7xSuC0spaktvFOtqm+f5pKsBF32Rtrs8XW0WbDiFL7wuXgxuIurHk0So4Purfe1fLSbFO9ljbGoZUrFhwXEO3/XAkBJahKYE8HV5r670+cuzWe/APyA+bs4Ts77G6bd3Ig7imF0e3SAlJAJRs1seU0F/x7oqrb3nscqzwboS3Y3RCftimegP2eIY/RfFBGHov7Z/twcSUIuf5e7pXo/ObnD+va2TLF3sfrXhAxAFxZ3UpPMtP8P4OlCH9osG+PRDlsrah9Ex27cn/6ZfvEsx7z27Hvkc5W1V3v3iYe6xU2790YSurtNI34LoqQCZ7BZHsRRwVj37mNrQRd04Cd1gkWnEYSX2E01SubG1WiPqNHmhejFTmeEiH/6iXMc=
+  app: nutri-stats

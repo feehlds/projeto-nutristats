@@ -1,16 +1,26 @@
 {
+    "name": "package",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
     "scripts": {
-        "start": "node app.js"
+        "start": "node app.js",
+        "test": "jest"
     },
-    "author": "",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/feloureiro/feloureiro.github.io"
+    },
+    "author": "André, Felipe, Luana, Patrícia",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/feloureiro/feloureiro.github.io"
+        "url": ""
     },
     "engines": {
-        "node": "12.x"
+        "node": "^12.x"
     },
     "dependencies": {
+        "express": "^4.17.1",
         "heroku": "^7.29.0",
         "jest": "^24.x"
     }

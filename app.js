@@ -1,11 +1,18 @@
-const http = require('http')
-const port = process.env.PORT || 3000
+//Requisição da biblioteca express
+const express = require('express');
 
-const server = http.createServer((req, res) =>{
-    res.statusCode = 200
-    res.setHeader("Content-Type", 'text/html')
-    res.end("<h1>Hello world</h1>")
+const PORT = process.env.PORT || 8080
+
+//Atribuindo a app as informações da aplicação
+const app = express();
+
+app.listen(PORT, () => {
+    console.log('Server running on port ' + PORT);
 });
-server.listen(port, () => {
-    console.log('Server running on port ' + port);
+
+var path = require('path');
+app.use(express.static(__dirname))
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname,'/html/index.html'))
 });

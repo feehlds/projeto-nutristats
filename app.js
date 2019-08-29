@@ -1,7 +1,7 @@
 //Requisição da biblioteca express
 const express = require('express');
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3030
 
 //Atribuindo a app as informações da aplicação
 const app = express();

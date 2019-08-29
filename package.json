@@ -2,7 +2,7 @@
     "name": "package",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "app.js",
     "scripts": {
         "start": "node app.js",
         "test": "jest"
@@ -14,7 +14,6 @@
     "author": "André, Felipe, Luana, Patrícia",
     "license": "ISC",
     "bugs": {
-        "url": ""
     },
     "engines": {
         "node": "^12.x"

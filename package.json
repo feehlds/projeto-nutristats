@@ -13,14 +13,14 @@
     },
     "author": "André, Felipe, Luana, Patrícia",
     "license": "ISC",
-    "bugs": {
-    },
+    "bugs": {},
     "engines": {
         "node": "^12.x"
     },
     "dependencies": {
         "express": "^4.17.1",
         "heroku": "^7.29.0",
-        "jest": "^24.x"
+        "jest": "^24.x",
+        "pg": "^7.12.1"
     }
 }

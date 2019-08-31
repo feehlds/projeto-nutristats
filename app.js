@@ -8,6 +8,7 @@ const app = express();
 
 app.listen(PORT, () => {
     console.log('Server running on port ' + PORT);
+    console.log('So good so far')
 });
 
 var path = require('path');

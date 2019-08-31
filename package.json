@@ -8,7 +8,9 @@
         "test": "jest"
     },
     "jest": {
-        "verbose": true                
+        "verbose": true,
+        "collectCoverage": true,
+        "coverageReporters": ["lcov"]
     },
     "repository": {
         "type": "git",
@@ -21,6 +23,7 @@
         "node": "^12.x"
     },
     "dependencies": {
+        "babel-istanbul": "^0.12.2",
         "express": "^4.17.1",
         "heroku": "^7.29.0",
         "istanbul": "^0.4.5",

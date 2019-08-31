@@ -1,7 +1,7 @@
 {
     "name": "package",
     "version": "1.0.0",
-    "description": "",
+    "description": "Está é uma aplicação tem como intuito oferecer uma plataforma de fácil acesso e pesquisa sobre informações nutricionais bem como uma ferramenta para acomanhamento diético feito por um nutricionista",
     "main": "app.js",
     "scripts": {
         "start": "node app.js",

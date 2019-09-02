@@ -34,3 +34,20 @@ client.query('SELECT * FROM nutrientes;', (err, res) => {
   }
   client.end();
 });
+function pesquisar(string1){
+ 
+
+const client = new this.Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client.connect();
+    client.query('SELECT * FROM nutrientes WHERE Descricao LIKE _' + string1 +'_ ;', (err, res) => {
+        if (err) throw err;
+        for (let row of res.rows) {
+          document.write('ola'+JSON.stringify(row))
+        }
+        client.end();
+      });
+}

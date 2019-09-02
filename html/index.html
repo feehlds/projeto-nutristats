@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NutriStats</title>
+    <script src="../js/pesquisaNutrientes.js"></script>
 </head>
 <body>
     <h1>Where will be deployed NutriStats</h1>
     <h2>This is the automatic deploy using Travis CI</h2>
     <h2>This is the database connection</h2>
+    <div id="divBusca">
+        <input type="text" id="txtBusca" placeholder="Buscar..."/>
+    </div>
+    <button type="submit" onsubmit="pesquisar(document.getElementById(txtBusca).value)">BUSCAR</button>
 </body>
 </html>

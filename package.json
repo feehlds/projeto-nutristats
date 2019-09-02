@@ -10,7 +10,9 @@
     "jest": {
         "verbose": true,
         "collectCoverage": true,
-        "coverageReporters": ["lcov"]
+        "coverageReporters": [
+            "lcov"
+        ]
     },
     "repository": {
         "type": "git",

@@ -1,37 +1,37 @@
 //Requisição da biblioteca express
+//Carregando módulos
 const express = require('express');
-
+const handlebars = require('express-handlebars')
+    
 const PORT = process.env.PORT || 3030
 
 //Atribuindo a app as informações da aplicação
 const app = express();
 
 
-///Conmentário andré
-/// =>
+//Configurações
+    //Handlebars
+        app.engine('handlebars', handlebars({extended: true}))
+        app.set('view engine', 'handlebars')
 
-/*
-app.get('/', (req, res)=> {
-    res.sendFile(path.join(__dirname,'/html/index.html'))
-});
 
-A sintax usada da bilbioteca do express é
+//Rotas
+    var path = require('path');
+    app.use(express.static(__dirname))
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname,'/html/index.html'))
-});
+    app.get('/', (req, res)=> {
+        //res.sendFile(path.join(__dirname,'/html/index.html'))
+        res.render("index")
+    });
+    app.get('/cadastro', (req, res)=> {
+        //res.sendFile(path.join(__dirname,'/html/index.html'))
+        res.render("cadastro")
+    });
 
-*/
-var path = require('path');
-app.use(express.static(__dirname))
+    app.get("/teste", function(req,res){
+        res.send("Teste nodemon rodando")
+    })
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname,'/html/index.html'))
-});
-
-app.get("/teste", function(req,res){
-    res.send("Teste nodemon rodando")
-})
 
 
 

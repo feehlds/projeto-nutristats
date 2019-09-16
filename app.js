@@ -6,34 +6,32 @@ const PORT = process.env.PORT || 3030
 //Atribuindo a app as informações da aplicação
 const app = express();
 
-
-///Conmentário andré
-/// =>
-
-/*
 app.get('/', (req, res)=> {
     res.sendFile(path.join(__dirname,'/html/index.html'))
 });
 
-A sintax usada da bilbioteca do express é
-
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname,'/html/index.html'))
 });
 
-*/
-var path = require('path');
-app.use(express.static(__dirname))
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname,'/html/index.html'))
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
 });
 
-app.get("/teste", function(req,res){
-    res.send("Teste nodemon rodando")
-})
+client.connect();
 
 
+client.query('SELECT * FROM nutrientes;', (err, res) => {
+    if (err) throw err;
+    for (let row of res.rows) {
+      console.log(JSON.stringify(row));
+    }
+    client.end();
+});
 
 // O app Listen sempre deve ser a ultima linha do código
 app.listen(PORT, function() {

@@ -3,6 +3,8 @@ const express = require('express');
 
 const PORT = process.env.PORT || 3030
 
+const client = require('./lib/js/database/conexao');
+
 //Atribuindo a app as informações da aplicação
 const app = express();
 
@@ -15,15 +17,7 @@ app.get('/', function(req, res) {
 });
 
 
-const { Client } = require('pg');
-
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
-
 client.connect();
-
 
 client.query('SELECT * FROM nutrientes;', (err, res) => {
     if (err) throw err;

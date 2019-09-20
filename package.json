@@ -4,7 +4,7 @@
     "description": "Está é uma aplicação tem como intuito oferecer uma plataforma de fácil acesso e pesquisa sobre informações nutricionais bem como uma ferramenta para acomanhamento diético feito por um nutricionista",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js",
+        "start": "node index.js",
         "test": "jest",
         "cucumber-test": "node ./node_modules/cucumber/lib/index.js -s ./step-definitions -x 50000"
     },

@@ -1,22 +1,19 @@
 //Requisição da biblioteca express
 const express = require('express');
 
+//Definindo porta padrão ou 3030
 const PORT = process.env.PORT || 3030
 
+//Chamando conexão com o banco de dados
 const client = require('./lib/js/database/conexao');
 
 //Atribuindo a app as informações da aplicação
 const app = express();
 
+
 app.get('/', (req, res)=> {
-    res.sendFile(path.join(__dirname,'/html/index.html'))
+    res.sendFile(path.join(__dirname,'./html/index.html'))
 });
-
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname,'/html/index.html'))
-});
-
-
 client.connect();
 
 client.query('SELECT * FROM nutrientes;', (err, res) => {

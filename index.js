@@ -7,8 +7,12 @@ const PORT = process.env.PORT || 3030
 //Chamando conexão com o banco de dados
 const client = require('./lib/js/database/conexao');
 
+var path = require('path');
+
 //Atribuindo a app as informações da aplicação
 const app = express();
+
+app.use(express.static(__dirname))
 
 
 app.get('/', (req, res)=> {

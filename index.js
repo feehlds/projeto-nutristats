@@ -5,7 +5,7 @@ const express = require('express');
 const PORT = process.env.PORT || 3030
 
 //Chamando conexão com o banco de dados
-const client = require('./lib/js/database/conexao');
+const client = require('./src/models/database/conexao');
 
 var path = require('path');
 

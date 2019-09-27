@@ -5,7 +5,7 @@ const express = require('express');
 const PORT = process.env.PORT || 3030
 
 //Chamando conexão com o banco de dados
-const client = require('./src/models/database/conexao');
+//const client = require('./src/models/database/conexao');
 
 var path = require('path');
 
@@ -16,8 +16,8 @@ const bd = require('./src/models/database/conexao');
 const app = express();
 
 //testando banco conexao sequelize
-db.sequelize.authenticate().then(()=>{
-    console.log("Conectado com sucesso");
+bd.sequelize.authenticate().then(()=>{
+    console.log("Conectado com sucesso ao postgres com sequelize");
 }).catch((erro)=>{
     console.log("Falha: " +erro);
 });
@@ -28,7 +28,8 @@ app.use(express.static(__dirname))
 app.get('/', (req, res)=> {
     res.sendFile(path.join(__dirname,'./public/html/index.html'))
 });
-client.connect();
+/*
+//client.connect();
 
 client.query('SELECT * FROM nutrientes;', (err, res) => {
     if (err) throw err;
@@ -37,7 +38,7 @@ client.query('SELECT * FROM nutrientes;', (err, res) => {
     }
     client.end();
 });
-
+*/
 // O app Listen sempre deve ser a ultima linha do código
 app.listen(PORT, function() {
     console.log('Server running on port ' + PORT);

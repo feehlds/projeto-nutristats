@@ -1,18 +1,18 @@
-const { Client } = require('pg');
+/*const { Client } = require('pg');
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
 });
-
-module.exports = client;
+*/
+//module.exports = client;
 
 ///sequelize
-const Sequelize = require(__dirname, 'sequelize');
-const sequelize = new Sequelize('database', 'username' , '1234', {
+const Sequelize = require('../../../node_modules/sequelize');
+const sequelize = new Sequelize('teste', 'postgres' , '415263', {
     host: 'localhost',
     dialect: 'postgres',
-    operatorsAliases: false,
+  
 
     pool:{
         max: 5,

@@ -16,6 +16,7 @@ const bd = require('./src/models/database/conexao');
 const app = express();
 
 //testando banco conexao sequelize
+
 bd.sequelize.authenticate().then(()=>{
     console.log("Conectado com sucesso ao postgres com sequelize");
 }).catch((erro)=>{

@@ -28,17 +28,7 @@ app.use(express.static(__dirname))
 app.get('/', (req, res)=> {
     res.sendFile(path.join(__dirname,'./public/html/index.html'))
 });
-/*
-//client.connect();
 
-client.query('SELECT * FROM nutrientes;', (err, res) => {
-    if (err) throw err;
-    for (let row of res.rows) {
-      console.log(JSON.stringify(row));
-    }
-    client.end();
-});
-*/
 // O app Listen sempre deve ser a ultima linha do código
 app.listen(PORT, function() {
     console.log('Server running on port ' + PORT);

@@ -5,8 +5,7 @@
     "main": "app.js",
     "scripts": {
         "start": "node index.js",
-        "test": "jest",
-        "cucumber-test": "node ./node_modules/cucumber/lib/index.js -s ./step-definitions -x 50000"
+        "test": "jest"
     },
     "keywords": [
         "cucumber"

@@ -5,22 +5,22 @@ const express = require('express');
 const PORT = process.env.PORT || 3030
 
 //Chamando conexão com o banco de dados
-const client = require('./src/models/database/conexao');
+// const client = require('./src/models/database/conexao');
 
 var path = require('path');
 
 //Importando banco de dados com sequelize
-const bd = require('./src/models/database/conexao');
+// const bd = require('./src/models/database/conexao');
 
 //Atribuindo a app as informações da aplicação
 const app = express();
 
 //testando banco conexao sequelize
-bd.sequelize.authenticate().then(()=>{
-    console.log("Conectado com sucesso ao postgres com sequelize");
-}).catch((erro)=>{
-    console.log("Falha: " +erro);
-});
+// bd.sequelize.authenticate().then(()=>{
+//     console.log("Conectado com sucesso ao postgres com sequelize");
+// }).catch((erro)=>{
+//     console.log("Falha: " +erro);
+// });
 
 
 app.use(express.static(__dirname))

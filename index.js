@@ -4,29 +4,17 @@ const express = require('express');
 //Definindo porta padrão ou 3030
 const PORT = process.env.PORT || 3030
 
-//Chamando conexão com o banco de dados
-// const client = require('./src/models/database/conexao');
-
 var path = require('path');
-
-//Importando banco de dados com sequelize
-// const bd = require('./src/models/database/conexao');
 
 //Atribuindo a app as informações da aplicação
 const app = express();
 
-//testando banco conexao sequelize
-// bd.sequelize.authenticate().then(()=>{
-//     console.log("Conectado com sucesso ao postgres com sequelize");
-// }).catch((erro)=>{
-//     console.log("Falha: " +erro);
-// });
+//Definindo o caminho de uso
+app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use(express.static(__dirname))
-
+//requests e responses
 app.get('/', (req, res)=> {
-    res.sendFile(path.join(__dirname,'./public/html/index.html'))
+    res.sendFile(path.join(__dirname, './public/html/index.html'))
 });
 
 // O app Listen sempre deve ser a ultima linha do código

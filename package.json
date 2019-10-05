@@ -30,6 +30,7 @@
         "node": "^12.x"
     },
     "dependencies": {
+        "compile-sass": "^1.0.1",
         "express": "^4.17.1",
         "heroku": "^7.29.0",
         "pg": "^7.12.1",

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.css" />
+    <link rel="stylesheet" href="../css/style.css">
+    <title>NutriStats - Cadastro</title>
+</head>
+<body>
+    <header>
+        <!-- Menu de navegação -->
+        <ul class="menu align-center">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Quem Somos</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </header>
+    <main>
+        <!-- Parte principal da página-->
+        <form action="" method="POST">
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                    <div class="medium-2 cell"></div>
+                    <div class="medium-8 cell" id="cadastro">
+                        <h1><strong>Cadastro do Site</strong></h1>
+                        <h4><strong>Dados Principais</strong></h4>
+                        <label for="nome">Nome Completo
+                            <input type="text" name="nomeUser" id="nomeUser">
+                        </label>
+                        <label for="email">Endereço de E-mail
+                            <input type="email" name="email" id="email">
+                        </label>
+                        <label for="dataNasc">Data de Nascimento
+                            <input type="date" name="dataNasc" id="dataNasc">
+                        </label>
+                        <label for="sexo">Sexo
+                            <select name="sexo" id="sexo">
+                                <option value="m">Masculino</option>
+                                <option value="f">Feminino</option>
+                                <option value="o">Outro</option>
+                            </select>
+                        </label>
+                        <label for="peso">Peso (em kg)
+                            <input type="text" name="peso" id="peso">
+                        </label>
+                        <label for="altura">Altura (em cm)
+                            <input type="text" name="altura" id="altura">
+                        </label>
+                        <hr>
+                        <h4><strong>Dados Complementares</strong></h4>
+                        <label for="estilo">Estilo de Vida
+                            <select name="estilo" id="estilo">
+                                <option value="ovoLactoVeg">Ovolactovegetarianos</option>
+                                <option value="lactoVeg">Lactovegetarianos</option>
+                                <option value="vegEstrito">Vegetarianos Estritos</option>
+                                <option value="vegano">Vegano</option>
+                                <option value="na">N.A.</option>
+                            </select>
+                        </label>
+                        <label for="objetivo">Objetivo Pessoal (em kg)
+                            <input type="text" name="objetivo" id="objetivo">
+                        </label>
+                        <hr>
+                        <h4><strong>Dados de Login</strong></h4>
+                        <label for="username">Nome de Usuário
+                            <input type="text" name="username" id="username">
+                        </label>
+                        <label for="senha">Senha
+                            <input type="password" name="senhaUser" id="senhaUser">
+                        </label>
+                        <div class="btn">
+                            <input type="submit" class="secondary button large" value="Cadastrar">
+                        </div>
+                    </div>
+                    <div class="medium-2 cell"></div>
+                </div>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <!-- Rodapé da Página -->
+        <!-- <h6>NutriStats</h6> -->
+    </footer>
+</body>
+</html>

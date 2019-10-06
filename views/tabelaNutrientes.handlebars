@@ -1,0 +1,21 @@
+<h1> Tabela de nutrientes</h1>
+
+
+<table>
+    <tr>
+        <th>tipo alimento</th>
+        <th>descrição</th>
+        <th>Umidade</th>
+        <th>Kcal</th>
+     </tr>
+
+    {{#each nutrientes}}
+    <tr>
+        <th>{{tipoalimento}}</th>
+        <th>{{descricao}}</th>
+        <th>{{umidade}}</th>
+        <th>{{kcal}}</th>
+    </tr>   
+    {{/each}}
+
+</table>

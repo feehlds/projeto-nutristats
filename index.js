@@ -1,4 +1,3 @@
-
 //Importação
     //Requisição da biblioteca express
     const express = require('express');
@@ -35,13 +34,21 @@
 //Rotas
     //Definindo o caminho de uso
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use(express.static(path.join(__dirname, 'src/control')))
 
     //requests e responses
-    app.get('/', (req, res)=> {
+    app.get('/', (req, res) => {
         res.sendFile(path.join(__dirname,'public/html/index.html'))
        // res.render("index");
     });
+
+    app.get('/login.html', (req, res) => {
+        res.sendFile(path.join(__dirname, 'public/html/login.html'))
+    })
+
+    app.get('/cadastro.html', (req, res) => {
+        res.sendFile(path.join(__dirname, 'public/html/cadastro.html'))
+    });
+
     app.get('/tabelaNutrientes', (req, res)=> {
         //res.sendFile(path.join(__dirname,'/html/index.html'))
         tbNutriente.findAll().then((nutrientes)=>{

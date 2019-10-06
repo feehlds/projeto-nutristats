@@ -20,7 +20,36 @@
     
 }
 
+<<<<<<< HEAD
 #logo{
   width: auto;
 }
 
+=======
+#login, #cadastro {
+  /* background-color: #009432; */
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+#login h4 {
+  text-align: center;
+  /* background-color: #009432; */
+}
+
+.btn {
+  /* background-color: #009432; */
+  text-align: center
+}
+
+#login>a {
+  text-decoration: underline
+}
+
+h1 {
+  text-align: center
+}
+>>>>>>> 461fb1cc6baef9ac748d1fd60f1e6c683128705b

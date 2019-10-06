@@ -9,8 +9,20 @@
   transition: width 0.4s ease-in-out;
 }
 
-.animated-search-form[type=search]:focus {
+.animated-search-form[type=search]:focus{
   width: 100%;
+}
+
+.animated-button{
+  width: 10rem;
+  transition: width 0.4s ease-in-out;
+}
+
+#bt-buscar{
+  margin: o auto;
+}
+
+body{
 }
 
 #barrapesquisa{
@@ -20,12 +32,6 @@
     
 }
 
-<<<<<<< HEAD
-#logo{
-  width: auto;
-}
-
-=======
 #login, #cadastro {
   /* background-color: #009432; */
   padding: 20px;
@@ -52,4 +58,3 @@
 h1 {
   text-align: center
 }
->>>>>>> 461fb1cc6baef9ac748d1fd60f1e6c683128705b

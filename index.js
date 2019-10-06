@@ -35,11 +35,12 @@
 //Rotas
     //Definindo o caminho de uso
     app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static(path.join(__dirname, 'src/control')))
 
     //requests e responses
     app.get('/', (req, res)=> {
-        //res.sendFile(path.join(__dirname,'/html/index.html'))
-        res.render("index");
+        res.sendFile(path.join(__dirname,'public/html/index.html'))
+       // res.render("index");
     });
     app.get('/tabelaNutrientes', (req, res)=> {
         //res.sendFile(path.join(__dirname,'/html/index.html'))

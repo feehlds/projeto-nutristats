@@ -1,0 +1,1 @@
+const pesquisaNutri = require('../models/database/pesqAlimentoss');

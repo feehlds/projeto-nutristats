@@ -6,20 +6,98 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.css"/>
-    <link rel="stylesheet" href="public/css/style.css"/>
-    <script src="public/js/script.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/js/foundation.js"></script>
+    <script src="../js/script.js" defer></script>
 
     <title>NutriStats</title>
 </head>
 <body>
-    <header>
-        <!-- Menu de navegação -->
+    <!-- Menu de navegação -->
+    <!-- <header>
         <ul class="menu align-center">
             <li><a href="#">Home</a></li>
             <li><a href="#">Quem Somos</a></li>
             <li><a href="./login.html">Login</a></li>
         </ul>
-    </header>
+    </header> -->
+    <div class="header">
+        <div class="row">
+            <div class="columns">
+                <a data-open="login">Login</a>
+
+                <div class="reveal" id="login" data-reveal>
+                    <!-- <h1>Awesome. I Have It.</h1>
+                    <p class="lead">Your couch. It is mine.</p>
+                    <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                    <span aria-hidden="true">&times;</span> -->
+                    <form action="" method="POST">
+                        <h4><strong>Realize o Login</strong></h4>
+                        <label for="nome">Usuário
+                            <input type="text" name="username" id="username">
+                        </label>
+                        <label for="senhaUser">Senha
+                            <input type="password" name="senhaUser" id="senhaUser">
+                        </label>
+                        <a href="#">Esqueceu a senha?</a> <br>
+                        <div class="btn">
+                            <input type="submit" class="secondary button" value="Login"> <br>
+                            <!-- <input type="button" class="secondary button" value="Cadastrar"> -->
+                            <small>Novo por aqui?</small> <br>
+                            <a data-open="cadastro" class="secondary button">Cadastrar</a>
+                        </div>
+                    </form>
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </div>
+
+                <div class="reveal" id="cadastro" data-reveal>
+                    <form action="" method="POST">
+                        <h1><strong>Cadastro do Site</strong></h1>
+                        <h4><strong>Dados Principais</strong></h4>
+                        <label for="nome">Nome Completo
+                            <input type="text" name="nomeUser" id="nomeUser">
+                        </label>
+                        <label for="email">Endereço de E-mail
+                            <input type="email" name="email" id="email">
+                        </label>
+                        <label for="dataNasc">Data de Nascimento
+                            <input type="date" name="dataNasc" id="dataNasc">
+                        </label>
+                        <label for="sexo">Sexo
+                            <select name="sexo" id="sexo">
+                                <option value="m">Masculino</option>
+                                <option value="f">Feminino</option>
+                                <option value="o">Outro</option>
+                            </select>
+                        </label>
+                        <hr>
+                        <h4><strong>Dados de Login</strong></h4>
+                        <label for="username">Nome de Usuário
+                            <input type="text" name="username" id="username">
+                        </label>
+                        <label for="senha">Senha
+                            <input type="password" name="senhaUser" id="senhaUser">
+                        </label>
+                        <label for="confirmSenha">Confirme a Senha
+                            <input type="password" name="confirmSenhaUser" id="confirmSenhaUser">
+                        </label>
+                        <div class="btn">
+                            <input type="submit" class="secondary button large" value="Cadastrar">
+                        </div>
+                        <button class="close-button" data-close aria-label="Close reveal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <main>
         <div id="pesquisa" align="center">
             <img src="https://i.imgur.com/MTA5XT4.png" alt="imagem-logo" id="logo">

@@ -10,19 +10,12 @@
 
 //Rotas
     //Definindo o caminho de uso
-    app.use(express.static(__dirname));
+    app.use(express.static(path.join(__dirname, 'public')));
+    
     //requests e responses
     app.get('/', (req, res) => {
         res.sendFile(path.join(__dirname,'public/html/index.html'))
        // res.render("index");
-    });
-
-    app.get('/login.html', (req, res) => {
-        res.sendFile(path.join(__dirname, 'public/html/login.html'))
-    })
-
-    app.get('/cadastro.html', (req, res) => {
-        res.sendFile(path.join(__dirname, 'public/html/cadastro.html'))
     });
 
     // O app Listen sempre deve ser a ultima linha do código

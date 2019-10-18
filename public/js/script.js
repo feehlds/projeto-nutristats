@@ -5,3 +5,6 @@ document.getElementById('barraPesquisa').addEventListener('focus', function(){
 document.getElementById('barraPesquisa').addEventListener('focusout', function(){
     document.getElementById('bt-buscar').style.width = '10rem';
 });
+
+//Chamada Foundation
+$(document).foundation();

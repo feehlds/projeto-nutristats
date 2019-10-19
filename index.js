@@ -1,6 +1,7 @@
 //Importação
     //Requisição da biblioteca express
     const express = require('express');
+    const client = require('./src/models/database/conexao');
     const search = require('./src/models/database/pesqAlimentos')
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
@@ -11,6 +12,14 @@
 
 //Rotas
     //Definindo o caminho de uso
+    client.connect();
+    client.query('SELECT * FROM nutrientes;', (err, res) => {
+        if (err) throw err;
+        for (let row of res.rows) {
+          console.log(JSON.stringify(row));
+        }
+        client.end();
+    });
     app.use(express.static(path.join(__dirname, 'public')));
     
     //requests e responses

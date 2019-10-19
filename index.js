@@ -18,7 +18,6 @@
         for (let row of res.rows) {
           console.log(JSON.stringify(row));
         }
-        client.end();
     });
     app.use(express.static(path.join(__dirname, 'public')));
     
@@ -38,7 +37,6 @@
             for(let row of res.rows){
                 console.log(JSON.stringify(row));
             }
-            client.end();
             }); 
         search(pesq.barraPesq);
     });

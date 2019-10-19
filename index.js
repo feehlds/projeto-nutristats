@@ -37,7 +37,6 @@
                 console.log(JSON.stringify(row));
             }
             }); 
-        search(pesq.barraPesq);
     });
 
     // O app Listen sempre deve ser a ultima linha do código

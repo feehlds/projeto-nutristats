@@ -31,7 +31,7 @@
         console.log(req.query);
         let pesq = req.query;
         console.log(pesq.barraPesq);
-        client.query("SELECT * from nutrientes WHERE descricao LIKE '%" + pesq + "%'", (err, res) => {
+        client.query("SELECT * from nutrientes WHERE descricao LIKE '%"+pesq.barraPesq+"%'", (err, res) => {
             if (err) console.log(err);
             for(let row of res.rows){
                 console.log(JSON.stringify(row));

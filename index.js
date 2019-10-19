@@ -1,7 +1,7 @@
 //Importação
     //Requisição da biblioteca express
     const express = require('express');
-    const pesqAlimentos = require('./src/models/database/pesqAlimentos')
+    const search = require('./src/models/database/pesqAlimentos')
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
     //normalizando path
@@ -23,7 +23,7 @@
         console.log(req.query);
         let pesq = req.query;
         console.log(pesq.barraPesq);
-        pesqAlimentos.pesqAlimentos(pesq.barraPesq);
+        search(pesq.barraPesq);
     });
 
     // O app Listen sempre deve ser a ultima linha do código

@@ -1,9 +1,8 @@
 client = require ('./conexao');
 
 function pesqAlimento(string){
-    client.connect();
     client.query('SELECT * from nutrientes WHERE descricao LIKE %?%', [string], (err, res) => {
-        if (err) throw err;
+        if (err) console.log(err);
 
         for(let row in res.rows)
             console.log(row)
@@ -11,4 +10,4 @@ function pesqAlimento(string){
     }); 
 }
 
-module.exports = pesqAlimento();
+module.exports = pesqAlimento;

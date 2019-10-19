@@ -28,7 +28,6 @@
     });
 
     app.get('/pesqAlimentos', (req, res) => {
-        client.connect();
         console.log(req.query);
         let pesq = req.query;
         console.log(pesq.barraPesq);

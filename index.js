@@ -12,13 +12,6 @@
 
 //Rotas
     //Definindo o caminho de uso
-    client.connect();
-    client.query('SELECT * FROM nutrientes;', (err, res) => {
-        if (err) throw err;
-        for (let row of res.rows) {
-          console.log(JSON.stringify(row));
-        }
-    });
     app.use(express.static(path.join(__dirname, 'public')));
     
     //requests e responses
@@ -31,12 +24,13 @@
         console.log(req.query);
         let pesq = req.query;
         console.log(pesq.barraPesq);
+        client.connect();
         client.query("SELECT * from nutrientes WHERE descricao LIKE '%"+pesq.barraPesq+"%'", (err, res) => {
             if (err) console.log(err);
             for(let row of res.rows){
                 console.log(JSON.stringify(row));
             }
-            }); 
+        }); 
     });
 
     // O app Listen sempre deve ser a ultima linha do código

@@ -6,4 +6,4 @@ const client = new MongoClient(uri, {
     useNewUrlParser: true 
 });
 
-module.exports = clinet;
+module.exports = client;

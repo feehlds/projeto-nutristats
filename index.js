@@ -17,7 +17,6 @@
     //requests e responses
     app.get('/', (req, res, next) => {
         res.sendFile(path.join(__dirname,'public/html/index.html'))
-       // res.render("index");
     });
 
     app.get('/pesqAlimentos', (req, res) => {

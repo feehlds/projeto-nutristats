@@ -1,13 +1,13 @@
 class Usuario {
     constructor(nome, email, sexo, dataNascimento, nomeUsuario, senha, peso, altura){
-        this.Nome = nome;
-        this.Email = email;
-        this.Sexo = sexo;
-        this.DataNascimento = dataNascimento;
-        this.NomeUsuario = nomeUsuario;
-        this.Senha = senha;
-        this.Peso = peso;
-        this.Altura = altura;
+        this.setNome(nome);
+        this.setEmail(email);
+        this.setSexo(sexo);
+        this.setDataNascimento(dataNascimento);
+        this.setNomeUsuario(nomeUsuario);
+        this.setSenha(senha);
+        this.setPeso(peso);
+        this.setAltura(altura);
     }
 
     getNome(){
@@ -34,7 +34,6 @@ class Usuario {
     setDataNascimento(dtaNascimento){
         this.DataNascimento = dtaNascimento;
     }
-
     getNomeUsuario(){
         return this.NomeUsuario;
     }

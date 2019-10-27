@@ -1,7 +1,9 @@
 client = require ('./conexao');
 
 function pesqAlimento(string){
-    let regexp =  new RegExp("'(.*\s)?"+ string.toLowerCase() + "\s?.*'");
+    let str = "'(.*\\s)?"+ string.toLowerCase() + "\\s?.*'";
+    console.log(str);
+    let regexp =  new RegExp(str);
     client.query('SELECT *, (regexp_matches(lower(descricao), ?)) from nutrientes;', [regexp], (err, res) => {
     if (err) console.log(err);
     for(let row of res.rows){

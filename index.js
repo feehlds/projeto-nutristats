@@ -18,12 +18,11 @@
     });
 
     app.get('/pesqAlimentos', (req, res) => {
-        console.log(req.query);
         let reqBody = req.query;
-        console.log(reqBody.barraPesq);
         let pesquisa = require ('./src/models/database/pesqAlimentos');
         let result = pesquisa(reqBody.barraPesq);
-        console.log('this is the result: ' + result);
+        res.send(result);
+        
     });
 
     // O app Listen sempre deve ser a ultima linha do código

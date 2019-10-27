@@ -30,12 +30,10 @@
         "node": "^12.x"
     },
     "dependencies": {
-        "body-parser": "^1.19.0",
         "compile-sass": "^1.0.1",
         "express": "^4.17.1",
         "heroku": "^7.29.0",
-        "pg": "^7.12.1",
-        "pg-hstore": "^2.3.3"
+        "pg": "^7.12.1"
     },
     "devDependencies": {
         "cucumber": "^5.1.0",

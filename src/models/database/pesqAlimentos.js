@@ -1,7 +1,8 @@
 client = require ('./conexao');
 
 function pesqAlimento(string){
-    client.query('SELECT * from nutrientes WHERE descricao LIKE %?%', [string], (err, res) => {
+    let regexp = "(.*\s)?"+ string.toLowerCase(); +"\s?.*')";
+    client.query("SELECT *, (regexp_matches(lower(descricao), ?)) from nutrientes;", [regexp], (err, res) => {
     if (err) console.log(err);
     for(let row of res.rows){
         console.log(JSON.stringify(row));

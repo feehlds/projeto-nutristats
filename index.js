@@ -1,12 +1,10 @@
 //Importação
     //Requisição da biblioteca express
     const express = require('express');
-    const client = require('./src/models/database/conexao');
-    const search = require('./src/models/database/pesqAlimentos')
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
     //normalizando path
-    var path = require('path');
+    const path = require('path');
     //Atribuindo a app as informações da aplicação
     const app = express();  
 
@@ -21,16 +19,11 @@
 
     app.get('/pesqAlimentos', (req, res) => {
         console.log(req.query);
-        let pesq = req.query;
-        console.log(pesq.barraPesq);
-        client.connect();
-        client.query("SELECT * from nutrientes WHERE descricao LIKE '%"+pesq.barraPesq+"%'", (err, res) => {
-            if (err) console.log(err);
-            for(let row of res.rows){
-                console.log(JSON.stringify(row));
-            }
-        });
-        client.end(); 
+        let reqBody = req.query;
+        console.log(reqBody.barraPesq);
+        let pesquisa = require ('./src/models/database/pesqAlimentos');
+        let result = pesquisa(reqBody.barraPesq);
+        console.log('this is the result: ' + result);
     });
 
     // O app Listen sempre deve ser a ultima linha do código

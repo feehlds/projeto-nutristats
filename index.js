@@ -22,16 +22,16 @@
     });
 
     app.get('/pesqAlimentos', (req, res) => {
+        console.log(req.body);
         let pesq  = req.query;
         console.log(pesq)
         console.log(pesq.barraPesq);
         if(pesq.barraPesq != null){
             client.connect();
-            pesqAlimentos(pesq.barraPesq);
-            let result = pesquisa(pesq.barraPesq);
+            let result = pesqAlimentos(pesq.barraPesq);
             client.end();
             res.send(result);
-        } else { res.send('erro'); }
+        } res.send('erro'); 
         
     });
 

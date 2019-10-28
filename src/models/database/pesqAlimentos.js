@@ -1,4 +1,4 @@
-client = require ('./conexao');
+var client = require ('./conexao');
 
 function pesqAlimento(string){
     let str = "'(.*\\s)?"+ string.toLowerCase() + "\\s?.*'";
@@ -9,7 +9,6 @@ function pesqAlimento(string){
     for(let row of res.rows){
         console.log(JSON.stringify(row));
     }
-    client.end();
     console.log('consulta feita!'); 
         return res.rows;
     }); 

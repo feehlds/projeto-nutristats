@@ -19,9 +19,12 @@
 
     app.get('/pesqAlimentos', (req, res) => {
         let reqBody = req.query;
-        let pesquisa = require ('./src/models/database/pesqAlimentos');
-        let result = pesquisa(reqBody.barraPesq);
-        res.send(result);
+        console.log(reqBody.barraPesq);
+        if(reqBody.barraPesq){
+            let pesquisa = require ('./src/models/database/pesqAlimentos');
+            let result = pesquisa(reqBody.barraPesq);
+            res.send(result);
+        } else { res.end(); }
         
     });
 

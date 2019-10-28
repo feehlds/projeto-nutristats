@@ -3,6 +3,8 @@
     const express = require('express');
     //Cliente pg
     const client = require('./src/models/database/conexao');
+    const pesqAlimentos = require ('./src/models/database/pesqAlimentos');
+
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
     //normalizando path
@@ -25,10 +27,11 @@
         console.log(pesq.barraPesq);
         if(pesq.barraPesq != null){
             client.connect();
-            let pesquisa = require ('./src/models/database/pesqAlimentos');
+            pesqAlimentos(pesq.barraPesq);
             let result = pesquisa(pesq.barraPesq);
+            client.end();
             res.send(result);
-        } else { res.end(); }
+        } else { res.send('erro'); }
         
     });
 

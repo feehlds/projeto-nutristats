@@ -6,7 +6,7 @@
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
     //normalizando path
-    const path = require('path');
+    var path = require('path');
     //Atribuindo a app as informações da aplicação
     const app = express();  
 

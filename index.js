@@ -24,14 +24,13 @@
     app.get('/pesqAlimentos', (req, res) => {
         console.log(req.query);
         let pesq  = req.query;
-        console.log(pesq)
         console.log(pesq.barraPesq);
-        if(pesq.barraPesq != null){
-            client.connect();
-            let result = pesqAlimentos(pesq.barraPesq);
-            client.end();
-            res.send(result);
-        } res.send('erro'); 
+        client.connect();
+        let result = pesqAlimentos(pesq.barraPesq);
+        console.log(result);
+        client.end();
+        res.json(result);
+        
         
     });
 

@@ -21,8 +21,9 @@
 
     app.get('/pesqAlimentos', (req, res) => {
         let pesq  = req.query;
+        console.log(pesq)
         console.log(pesq.barraPesq);
-        if(pesq.barraPesq){
+        if(pesq.barraPesq != null){
             client.connect();
             let pesquisa = require ('./src/models/database/pesqAlimentos');
             let result = pesquisa(pesq.barraPesq);

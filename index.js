@@ -1,6 +1,8 @@
 //Importação
     //Requisição da biblioteca express
     const express = require('express');
+    //Cliente pg
+    const client = require('./src/models/database/conexao');
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
     //normalizando path
@@ -18,11 +20,12 @@
     });
 
     app.get('/pesqAlimentos', (req, res) => {
-        let reqBody = req.query;
-        console.log(reqBody.barraPesq);
-        if(reqBody.barraPesq){
+        let pesq  = req.query;
+        console.log(pesq.barraPesq);
+        if(pesq.barraPesq){
+            client.connect();
             let pesquisa = require ('./src/models/database/pesqAlimentos');
-            let result = pesquisa(reqBody.barraPesq);
+            let result = pesquisa(pesq.barraPesq);
             res.send(result);
         } else { res.end(); }
         

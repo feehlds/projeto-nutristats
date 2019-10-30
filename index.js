@@ -23,21 +23,20 @@
         res.sendFile(path.join(__dirname,'public/html/index.html'));
     });
     
-    app.get('/testeMongo'),(req,res)=>{
-        var user = new usuario.Usuario();
-        user.setNome("sdfasf");
-        user.setDataNascimento("16/01/2000");
-       
-        user.setNomeUsuario("sfasfdsfa");
-        user.setPeso(1.2);
-        user.setSexo("M");
-        user.setAltura(12552);
-        console.log(user.getAltura());
-        user.setSenha('andre');
-        var inserir = new usuarioInserir.Usuario();
-        
-        inserir.inserir(user);
-    }
+  
+    var user = new usuario.Usuario();
+    user.setNome("sdfasf");
+    user.setDataNascimento("16/01/2000");
+   
+    user.setNomeUsuario("sfasfdsfa");
+    user.setPeso(1.2);
+    user.setSexo("M");
+    user.setAltura(12552);
+    console.log(user.getAltura());
+    user.setSenha('andre');
+    var inserir = new usuarioInserir.Usuario();
+    
+    inserir.inserir(user);
 
 
     app.get('/pesqAlimentos', (req, res) => {

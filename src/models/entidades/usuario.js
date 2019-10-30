@@ -47,7 +47,7 @@ class Usuario {
         this.Senha = senha;
     }
     getAltura(){
-        return this.altura;
+        return this.Altura;
     }
     setAltura(altura){
         this.Altura = altura;

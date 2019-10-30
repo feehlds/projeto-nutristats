@@ -1,8 +1,10 @@
 //Importação
     //Requisição da biblioteca express
     const express = require('express');
-    //Cliente pg
+    const mongo = require('./src/models/database/conexaoMongo');
     const client = require('./src/models/database/conexao');
+    const usuarioInserir = require('./src/models/persistencia/usuario');
+    const usuario = require('./src/models/entidades/usuario');
     const pesqAlimentos = require ('./src/models/database/pesqAlimentos');
 
     //Definindo porta padrão ou 3030
@@ -20,6 +22,23 @@
     app.get('/', (req, res, next) => {
         res.sendFile(path.join(__dirname,'public/html/index.html'));
     });
+    
+    app.get('/testeMongo'),(req,res)=>{
+        var user = new usuario.Usuario();
+        user.setNome("sdfasf");
+        user.setDataNascimento("16/01/2000");
+       
+        user.setNomeUsuario("sfasfdsfa");
+        user.setPeso(1.2);
+        user.setSexo("M");
+        user.setAltura(12552);
+        console.log(user.getAltura());
+        user.setSenha('andre');
+        var inserir = new usuarioInserir.Usuario();
+        
+        inserir.inserir(user);
+    }
+
 
     app.get('/pesqAlimentos', (req, res) => {
         console.log(req.query);

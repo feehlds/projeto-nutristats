@@ -48,9 +48,7 @@
         console.log(pesq.barraPesq);
         let result = pesqAlimentos(pesq.barraPesq);
         console.log(result);
-        res.json(result);
-        
-        
+        res.json(result);        
     });
 
     // O app Listen sempre deve ser a ultima linha do código

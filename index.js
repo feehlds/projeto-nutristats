@@ -43,12 +43,10 @@
 
 
     app.get('/pesqAlimentos', (req, res) => {
-        console.log(req.query);
         let pesq  = req.query;
-        console.log(pesq.barraPesq);
         let result = pesqAlimentos(pesq.barraPesq);
         console.log(result);
-        res.json(result);        
+        res.send(result);        
     });
 
     // O app Listen sempre deve ser a ultima linha do código

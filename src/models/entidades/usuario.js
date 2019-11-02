@@ -1,5 +1,6 @@
 class Usuario {
-    constructor(nome, email, sexo, dataNascimento, nomeUsuario, senha, peso, altura){
+    constructor(id,nome, email, sexo, dataNascimento, nomeUsuario, senha, peso, altura){
+        this.setId(id);
         this.setNome(nome);
         this.setEmail(email);
         this.setSexo(sexo);
@@ -9,7 +10,12 @@ class Usuario {
         this.setPeso(peso);
         this.setAltura(altura);
     }
-
+    getId(){
+        return this.Id;
+    }
+    setId(id){
+        this.Id = id;
+    }
     getNome(){
         return this.Nome;
     }
@@ -47,7 +53,7 @@ class Usuario {
         this.Senha = senha;
     }
     getAltura(){
-        return this.altura;
+        return this.Altura;
     }
     setAltura(altura){
         this.Altura = altura;

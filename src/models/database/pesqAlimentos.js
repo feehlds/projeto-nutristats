@@ -4,7 +4,7 @@ function pesqAlimento(string){
     let str = string.toLowerCase();
     console.log(str);
     client.connect()
-    client.query("SELECT * FROM pesquisaAlimentos('?')", str, (err, res) => {
+    client.query("SELECT * FROM pesquisaAlimentos('$1')", [str], (err, res) => {
     if (err) console.log(err);
     for(let row of res.rows){
         console.log(JSON.stringify(row));

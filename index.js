@@ -44,7 +44,8 @@
 
     app.get('/pesqAlimentos', (req, res) => {
         let pesq  = req.query;
-        let result = pesqAlimentos(pesq.barraPesq);
+        let result = await pesqAlimentos(pesq.barraPesq);
+        res.json(result);
         res.send(result);        
     });
 

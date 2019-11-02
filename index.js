@@ -46,10 +46,8 @@
         console.log(req.query);
         let pesq  = req.query;
         console.log(pesq.barraPesq);
-        client.connect();
         let result = pesqAlimentos(pesq.barraPesq);
         console.log(result);
-        client.end();
         res.json(result);
         
         

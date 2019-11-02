@@ -5,7 +5,8 @@ function pesqAlimento(string){
     client.connect();
     client.query("SELECT * FROM pesquisaAlimentos('"+str+"')", (err, res) => {
     if (err) console.log(err);
-    client.end(); 
+    client.end();
+    console.log(JSON.stringify(res.rows));
     return res.rows;
     }); 
 }

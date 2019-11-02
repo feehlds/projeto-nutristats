@@ -45,8 +45,6 @@
     app.get('/pesqAlimentos', (req, res) => {
         let pesq  = req.query;
         let result = pesqAlimentos(pesq.barraPesq);
-        console.log(result);
-        console.log(JSON.stringify(result))
         res.send(result);        
     });
 

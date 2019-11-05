@@ -5,6 +5,8 @@ var ObjectId = require("mongodb").ObjectId;
 
 class usuarioMongo{
 
+
+
     inserir(usuario){
 
         var usuarioInserir = {
@@ -19,9 +21,10 @@ class usuarioMongo{
         }
         mongo.connect((err)=>{
             assert.equal(null, err);
-            const tbUsuario = mongo.db("nutristats");
+            const banco = mongo.db("nutristats");
+            const userCol = banco.collection('usuario');
 
-            tbUsuario.collection('usuario').insertOne(usuarioInserir,(erro,r)=>{
+            userCol.insertOne(usuarioInserir,(erro,r)=>{
                 mongo.close();
             });
         }); 
@@ -45,17 +48,35 @@ class usuarioMongo{
             const userCol = banco.collection('usuario');
             userCol.findOne(new ObjectId(usuarioInserir.Id)).then((usuario)=>{
                 console.log(usuario);
-                userCol.updateOne(usuario,{$set: usuarioInserir},(erro,r)=>{
+                userCol.updateOne(usuario,{$set: usuarioInserir}).then(()=>{
                     assert.equal(null, err);
                     assert.equal(1, r.matchedCount);
                     assert.equal(1, r.modifiedCount);
             
-                })    
+                }).catch((erro)=>{
+
+                });
             }).catch((erro)=>{
                 
                 console.log("Erro ao buscar" + erro);
             });
   
+        });
+    }
+
+    excluir(id){
+        mongo.connect((err)=>{
+            const banco = mongo.db('nutristats');
+            const userCol = banco.collection('usuario');
+            userCol.deleteOne({ 
+                _id: new ObjectId(id)
+            })
+            .then(function(result) {
+                console.log("excluido", result);
+            }).catch((erro)=>{
+                console.log(erro);
+            })
+          
         });
     }
 

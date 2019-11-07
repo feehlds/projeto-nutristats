@@ -1,11 +1,12 @@
 //Importação
     //Requisição da biblioteca express
     const express = require('express');
-    const mongo = require('./src/models/database/conexaoMongo');
     const client = require('./src/models/database/conexao');
     const usuarioInserir = require('./src/models/persistencia/usuario');
     const usuario = require('./src/models/entidades/usuario');
     const pesqAlimentos = require ('./src/models/database/pesqAlimentos');
+
+    const usuarios = require("./src/routes/usuario")
 
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
@@ -24,7 +25,6 @@
     });
     
 
-
   //INSERIR USUARIO/ Atualizar
             var user = new usuario.Usuario();
                 //se for atualizar usar usar id id
@@ -42,7 +42,7 @@
             // usuarioPersistencia.excluir('5dc1b9927573d91da8cba166');
             //usuarioPersistencia.atualizar(user);
             
-
+    
 
     app.get('/pesqAlimentos', (req, res) => {
         let pesq  = req.query;
@@ -57,6 +57,7 @@
             res.status(500).send(err);
         }
     });
+    app.use("/usuario", usuarios)
 
     // O app Listen sempre deve ser a ultima linha do código
     app.listen(PORT, function() {

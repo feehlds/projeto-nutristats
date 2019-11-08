@@ -4,7 +4,7 @@ async function pesqAlimento(string){
         let client = require ('./conexao'); 
         client.connect();
         let res = await client.query("SELECT * FROM pesquisaAlimentos('"+str+"')");
-        client.end();   
+        await client.end();   
         return res.rows;
     }   catch(err){
         throw(err);

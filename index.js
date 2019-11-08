@@ -5,8 +5,8 @@
     const usuarioInserir = require('./src/models/persistencia/usuario');
     const usuario = require('./src/models/entidades/usuario');
     const pesqAlimentos = require ('./src/models/database/pesqAlimentos');
-
-    const usuarios = require("./src/routes/usuario")
+    const bodyParser = require('body-parser')
+    const usuarios = require("./src/routes/usuario/usuario");
 
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
@@ -14,7 +14,9 @@
     var path = require('path');
     //Atribuindo a app as informações da aplicação
     const app = express();  
-
+    //Body Parser
+    app.use(bodyParser.urlencoded({extended: true}));
+    //app.use(bodyParser.json());
 //Rotas
     //Definindo o caminho de uso
     app.use(express.static(path.join(__dirname, 'public')));

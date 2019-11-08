@@ -34,7 +34,7 @@
                 <a data-open="login">Login</a>
 
                 <div class="reveal" id="login" data-reveal>
-                    <form action="/usuarios/registro" method="POST">
+                    <form action="" method="POST">
                         <h4><strong>Realize o Login</strong></h4>
                         <label for="nome">Usuário
                             <input type="text" name="nomeUsuario" id="username">
@@ -79,13 +79,13 @@
                     <span aria-hidden="true">&times;</span>
                 </div>
                 <div class="reveal cadastro" id="proximo" data-reveal>
-                    <form action="" method="post">
+                    <form action="/usuario/registro" method="post">
                         <h4><strong>Dados de Login</strong></h4>
                         <label for="username">Nome de Usuário
-                            <input type="text" name="username" id="username" required>
+                            <input type="text" name="nomeUsuario" id="username" required>
                         </label>
                         <label for="senha">Senha
-                            <input type="password" name="senha" id="senha" required>
+                            <input type="password" name="senhaUsuario" id="senha" required>
                         </label>
                         <label for="confirmSenha">Confirme a Senha
                             <input type="password" name="confirmSenhaUser" id="confirmSenhaUser" required>
@@ -93,7 +93,7 @@
                         <div class="btn">
                             <input type="submit" class="secondary button large" value="Cadastrar">
                         </div>
-                        <button class="close-button" data-close aria-label="Close reveal" type="button">
+                        <button class="close-button" data-close aria-label="Close reveal" type="submit">
                         <span aria-hidden="true">&times;</span>
                     </form>
                 </div>

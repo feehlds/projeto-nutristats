@@ -5,8 +5,13 @@
     const usuarioInserir = require('./src/models/persistencia/usuario');
     const usuario = require('./src/models/entidades/usuario');
     const pesqAlimentos = require ('./src/models/database/pesqAlimentos');
-    const bodyParser = require('body-parser')
+    const bodyParser = require('body-parser');
     const usuarios = require("./src/routes/usuario/usuario");
+    const passport = require("passport");
+    const flash = require("connect-flash");
+    const session = require("express-session");
+    require("./config/autenticacao")(passport)
+
 
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
@@ -16,7 +21,25 @@
     const app = express();  
     //Body Parser
     app.use(bodyParser.urlencoded({extended: true}));
-    //app.use(bodyParser.json());
+    
+    //Sessão
+    app.use(session({
+        secret: "qualquer coiisa",
+        resave: true,
+        saveUninitialized: true
+    }));  
+
+    app.use(passport.initialize());
+    app.use(passport.session());
+    app.use(flash());  
+    //middlewares
+    app.use((req, res, next) =>{
+      //  res.locals.success_msg = req.flash("success_msg")
+       // res.locals.error_msg = req.flash("error_msg")
+       // res.locals.error = req.flash("error")
+        //res.locals.user = req.user || null;
+        next()
+    }) 
 //Rotas
     //Definindo o caminho de uso
     app.use(express.static(path.join(__dirname, 'public')));
@@ -39,11 +62,15 @@
             // user.setSexo("M");
             // user.setAltura(12552);
             // user.setSenha('pedroasfadf');
-            // var usuarioPersistencia = new usuarioInserir.Usuario();
+              var usuarioPersistencia = new usuarioInserir.Usuario();
             // usuarioPersistencia.inserir(user);
-            // usuarioPersistencia.excluir('5dc1b9927573d91da8cba166');
-            //usuarioPersistencia.atualizar(user);
             
+        //    let teset = usuarioPersistencia.buscarPorId('5dc6fb94219b3a4088e0f1d8');
+         //   console.log(teset);
+             usuarioPersistencia.buscarPorNomeUsuario('and');
+        //     usuarioPersistencia.atualizar(user);
+            
+        
     
 
     app.get('/pesqAlimentos', (req, res) => {

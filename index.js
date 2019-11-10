@@ -23,7 +23,7 @@
     
     //Sessão
     app.use(session({
-        secret: "qualquer coiisa",
+        secret: "NutriStats Session",
         resave: true,
         saveUninitialized: true
     }));  

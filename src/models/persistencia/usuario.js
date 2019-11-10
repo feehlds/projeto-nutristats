@@ -84,12 +84,20 @@ class usuarioMongo{
         mongo.connect((err)=>{
             assert.equal(null, err);
             const bdUsuario = mongo.db("nutristats");
-            console.log(bdUsuario);
-            bdUsuario.collection('usuario').findOne(new ObjectId(id)).then((usuario)=>{
-                return result;
+            bdUsuario.collection('usuario').findOne(new ObjectId(id)).then( (usuario)=>{
+               return usuario;
             }).catch((erro)=>{
                 
                 console.log("Erro ao buscar" + erro);
+            });
+        });
+    }
+    buscarPorNomeUsuario(userName){
+        mongo.connect((err)=>{
+            assert.equal(null, err);
+            const bdUsuario = mongo.db("nutristats");
+            bdUsuario.collection('usuario').findOne({nomeUsuario: userName}).then((usuario)=>{
+                //implements
             });
         });
     }

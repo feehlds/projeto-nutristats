@@ -37,7 +37,7 @@
       //  res.locals.success_msg = req.flash("success_msg")
        // res.locals.error_msg = req.flash("error_msg")
        // res.locals.error = req.flash("error")
-        //res.locals.user = req.user || null;
+        res.locals.user = req.user || null;
         next()
     }) 
 //Rotas
@@ -46,6 +46,7 @@
     
     //requests e responses
     app.get('/', (req, res, next) => {
+        console.log(req.user);
         res.sendFile(path.join(__dirname,'public/html/index.html'));
     });
     
@@ -67,7 +68,7 @@
             
         //    let teset = usuarioPersistencia.buscarPorId('5dc6fb94219b3a4088e0f1d8');
          //   console.log(teset);
-             usuarioPersistencia.buscarPorNomeUsuario('and');
+            // usuarioPersistencia.buscarPorNomeUsuario('and');
         //     usuarioPersistencia.atualizar(user);
             
         

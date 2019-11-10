@@ -25,20 +25,20 @@ module.exports = function(passport){
                
                  console.log("Erro:" + erro);
              });
+             
         });  
     }));
     passport.serializeUser((usuario,done)=>{
-        console.log(usuario);
-        console.log('entrou aqui')
-        done(null, usuario._id)
+        done(null, usuario._id);
     })
     passport.deserializeUser((id,done) =>{
         mongo.connect((err)=>{
             const bdUsuario = mongo.db("nutristats");
             bdUsuario.collection('usuario').findOne(new ObjectId(id)).then( (usuario)=>{
-                console.log(usuario);
-                done(err, usuario)
+                done(err, usuario);
+                
              });
+            
         });
 
     })

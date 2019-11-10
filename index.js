@@ -1,7 +1,6 @@
 //Importação
     //Requisição da biblioteca express
     const express = require('express');
-    const client = require('./src/models/database/conexao');
     const usuarioInserir = require('./src/models/persistencia/usuario');
     const usuario = require('./src/models/entidades/usuario');
     const pesqAlimentos = require ('./src/models/database/pesqAlimentos');
@@ -11,11 +10,7 @@
     const passport = require("passport");
     const flash = require("connect-flash");
     const session = require("express-session");
-    require("./config/autenticacao")(passport)
-
-
-
-    
+    require("./config/autenticacao")(passport);
 
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
@@ -42,7 +37,7 @@
        // res.locals.error_msg = req.flash("error_msg")
        // res.locals.error = req.flash("error")
         res.locals.user = req.user || null;
-        next()
+        next();
     }) 
 //Rotas
     //Definindo o caminho de uso
@@ -50,15 +45,12 @@
     
     //requests e responses
     app.get('/', (req, res, next) => {
-
         console.log(req.user);
         res.sendFile(path.join(__dirname,'public/html/index.html'));
-      
         res.status(200).sendFile(path.join(__dirname,'public/html/index.html'));
 
     });
     
-
   //INSERIR USUARIO/ Atualizar
             var user = new usuario.Usuario();
                 //se for atualizar usar usar id id
@@ -79,9 +71,6 @@
             // usuarioPersistencia.buscarPorNomeUsuario('and');
         //     usuarioPersistencia.atualizar(user);
             
-        
-    
-
     app.get('/pesqAlimentos', (req, res) => {
         let pesq  = req.query;
         let jsonRes;
@@ -95,7 +84,8 @@
             res.status(500).send(err);
         }
     });
-    app.use("/usuario", usuarios)
+
+    app.use("/usuario", usuarios);
 
     // O app Listen sempre deve ser a ultima linha do código
     app.listen(PORT, function() {

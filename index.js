@@ -6,7 +6,7 @@
     const usuarioInserir = require('./src/models/persistencia/usuario');
     const usuario = require('./src/models/entidades/usuario');
     const pesqAlimentos = require ('./src/models/database/pesqAlimentos');
-
+    
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
     //normalizando path
@@ -20,7 +20,7 @@
     
     //requests e responses
     app.get('/', (req, res, next) => {
-        res.sendFile(path.join(__dirname,'public/html/index.html'));
+        res.status(200).sendFile(path.join(__dirname,'public/html/index.html'));
     });
     
 
@@ -51,7 +51,7 @@
         try {
             pesqAlimentos(pesq.barraPesq).then(result => {
                 jsonRes = { "Alimentos" : result };
-                res.json(jsonRes);
+                res.status(200).json(jsonRes);
             });
         }   catch(err){
             res.status(500).send(err);

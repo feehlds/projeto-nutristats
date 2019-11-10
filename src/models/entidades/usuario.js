@@ -26,7 +26,7 @@ class Usuario {
         return this.getEmail;
     }
     setEmail(email){
-        this.setEmail = email;
+        this.Email = email;
     }
     getSexo(){
         return this.Sexo;

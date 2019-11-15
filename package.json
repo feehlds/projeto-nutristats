@@ -5,9 +5,7 @@
     "main": "app.js",
     "scripts": {
         "ng": "ng",
-        "start": "pushd nutri-front && ng build && popd && node index.js",
-        "build": "pushd nutri-front && ng build && popd",
-        "e2e": "pushd nutri-front && ng e2e && popd",
+        "start": "node index.js",
         "test": "jest"
     },
     "keywords": [

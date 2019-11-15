@@ -13,6 +13,8 @@ cache:
   - node_modules
 install:
 - npm install -q --no-color --no-progress
+- pushd nutri-front && npm install && popd
+- pushd nutri-front && ng build && popd
 before_script:
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
 - chmod +x ./cc-test-reporter

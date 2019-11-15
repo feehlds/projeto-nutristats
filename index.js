@@ -22,6 +22,14 @@
     const app = express();  
     //Body Parser
     app.use(bodyParser.urlencoded({extended: true}));
+
+    //Forçando redirecionamento HTTPS
+    app.use(function(req, res, next) {
+        if(!req.secure) {
+            return res.redirect(['https://', req.get('Host'), req.url].join(''));
+        }
+        next();
+    });
     
     //Sessão
     app.use(session({

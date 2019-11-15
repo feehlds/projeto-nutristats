@@ -12,6 +12,8 @@
     const session = require("express-session");
     require("./config/autenticacao")(passport);
 
+    var cors = require('cors');
+
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
     //normalizando path
@@ -27,7 +29,7 @@
         resave: true,
         saveUninitialized: true
     }));  
-
+    app.use(cors()); 
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(flash());  
@@ -41,14 +43,12 @@
     }) 
 //Rotas
     //Definindo o caminho de uso
-    app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static(path.join(__dirname, 'nutri-front', 'dist', 'nutri-front')));
     
     //requests e responses
     app.get('/', (req, res, next) => {
         console.log(req.user);
-        res.sendFile(path.join(__dirname,'public/html/index.html'));
-        res.status(200).sendFile(path.join(__dirname,'public/html/index.html'));
-
+        res.status(200).sendFile(path.join(__dirname, 'nutri-front/dist/nutri-front/index.html'));
     });
     
   //INSERIR USUARIO/ Atualizar

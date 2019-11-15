@@ -4,7 +4,11 @@
     "description": "Está é uma aplicação tem como intuito oferecer uma plataforma de fácil acesso e pesquisa sobre informações nutricionais bem como uma ferramenta para acomanhamento diético feito por um nutricionista",
     "main": "app.js",
     "scripts": {
-        "start": "node index.js",
+        "ng": "ng",
+        "start": "pushd nutri-front && ng build && popd && node index.js",
+        "build": "ng build",
+        "e2e": "ng e2e",
+        "heroku-postbuild": "ng build --aot --prod",
         "test": "jest"
     },
     "keywords": [
@@ -30,10 +34,13 @@
         "node": "^12.x"
     },
     "dependencies": {
+        "@angular/cli": "^8.3.19",
+        "@angular/compiler-cli": "^8.2.14",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
         "compile-sass": "^1.0.1",
         "connect-flash": "^0.1.1",
+        "cors": "^2.8.5",
         "express": "^4.17.1",
         "express-session": "^1.17.0",
         "heroku": "^7.29.0",
@@ -42,7 +49,8 @@
         "passport": "^0.4.0",
         "passport-local": "^1.0.0",
         "pg": "^7.12.1",
-        "pg-hstore": "^2.3.3"
+        "pg-hstore": "^2.3.3",
+        "typescript": "~2.7.2"
     },
     "devDependencies": {
         "cucumber": "^5.1.0",

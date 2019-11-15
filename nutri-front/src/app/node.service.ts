@@ -18,7 +18,7 @@ export class NodeService {
   }
 
   pesquisaAlimentos(str){
-    return this.http.get( this.getUrl() + '/pesqAlimentos?barraPesq=' + str);
+    return this.http.get('/pesqAlimentos?barraPesq=' + str);
   }
 
 }

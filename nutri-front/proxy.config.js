@@ -1,7 +1,7 @@
 const proxy = [
     {
       context: '/api',
-      target: 'http://localhost:3030',
+      target: 'https://www.nutri-stats.herokuapp.com',
       pathRewrite: {'^/api' : ''}
     }
   ];

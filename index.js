@@ -26,7 +26,7 @@
     //Forçando redirecionamento HTTPS
     app.use(function(req, res, next) {
         if(!req.secure) {
-            res.redirect('https://' + req.hostname + req.url);
+            return res.redirect('https://' + req.hostname + req.url);
         }
         next();
     });

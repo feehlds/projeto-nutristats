@@ -4,7 +4,7 @@
     const usuarioInserir = require('./src/models/persistencia/usuario');
     const usuario = require('./src/models/entidades/usuario');
     const pesqAlimentos = require ('./src/models/database/pesqAlimentos');
-
+    var sslRedirect = require('heroku-ssl-redirect');
     const bodyParser = require('body-parser');
     const usuarios = require("./src/routes/usuario/usuario");
     const passport = require("passport");
@@ -24,12 +24,14 @@
     app.use(bodyParser.urlencoded({extended: true}));
 
     //Forçando redirecionamento HTTPS
-    app.use(function(req, res, next) {
-        if(!req.secure) {
-            return res.redirect('https://' + req.hostname + req.url);
-        }
-        next();
-    });
+    // app.use(function(req, res, next) {
+    //     console.log(req.secure);
+    //     if(!req.secure) {
+    //         return res.redirect('https://' + req.hostname + req.url);
+    //     }
+    //     return next();
+    // });
+    app.use(sslRedirect(['development', 'production']));
     
     //Sessão
     app.use(session({

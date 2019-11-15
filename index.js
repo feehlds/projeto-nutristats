@@ -12,8 +12,8 @@
     const session = require("express-session");
     require("./config/autenticacao")(passport);
 
+    //Cross Origin to use on local angular req
     var cors = require('cors');
-
     //Definindo porta padrão ou 3030
     const PORT = process.env.PORT || 3030
     //normalizando path

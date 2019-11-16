@@ -5,4 +5,5 @@
         <button class="hollow button success animated-button" id="bt-buscar" (click)="getAlimentos()">Buscar</button>
     </form>
     <app-search-table [alimentos]="result" *ngIf="result.length > 0"></app-search-table>
+    <app-footer></app-footer>
 </div>

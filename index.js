@@ -23,14 +23,7 @@
     //Body Parser
     app.use(bodyParser.urlencoded({extended: true}));
 
-    //Forçando redirecionamento HTTPS
-    // app.use(function(req, res, next) {
-    //     console.log(req.secure);
-    //     if(!req.secure) {
-    //         return res.redirect('https://' + req.hostname + req.url);
-    //     }
-    //     return next();
-    // });
+    //HTTPS
     app.use(sslRedirect(['development', 'production']));
     
     //Sessão

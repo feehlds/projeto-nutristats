@@ -14,8 +14,6 @@ var senha = document.getElementById("senha");
 var confirmSenha = document.getElementById("confirmSenhaUser");
 
 function validarSenhas() {
-    // console.log("Senha: " + senha.value);
-    // console.log("Senha Confirm: " + confirmSenha.value);
     if (senha.value != confirmSenha.value) {
         confirmSenha.setCustomValidity("Senhas Diferentes!");
         confirmSenha.style.borderColor="#f00";

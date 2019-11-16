@@ -11,7 +11,7 @@ if (process.env.DB_URL_MONGO == undefined){
     
     module.exports = client;
       
- }else{
+}else{
     const uri =  process.env.DB_URL_MONGO;
 
     const client = new MongoClient(uri, (err,client)=> { 
@@ -20,6 +20,3 @@ if (process.env.DB_URL_MONGO == undefined){
     });
     module.exports = client;
 }
-
-
-

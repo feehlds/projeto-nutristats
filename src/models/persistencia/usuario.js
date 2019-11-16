@@ -5,15 +5,13 @@ var ObjectId = require("mongodb").ObjectId;
 
 class usuarioMongo{
 
-
-
     inserir(usuario){
 
         var usuarioInserir = {
             "nome": usuario.getNome(),
             "email": usuario.getEmail(),
             "sexo": usuario.getDataNascimento(),
-            "nomeUsuario": usuario.getNomeUsuario(),
+            "username": usuario.getNomeUsuario(),
             "senha": usuario.getSenha(),
             "peso": usuario.getPeso(),
             "altura": usuario.getAltura(),
@@ -36,7 +34,7 @@ class usuarioMongo{
             "nome": usuario.getNome(),
             "email": usuario.getEmail(),
             "sexo": usuario.getDataNascimento(),
-            "nomeUsuario": usuario.getNomeUsuario(),
+            "username": usuario.getNomeUsuario(),
             "senha": usuario.getSenha(),
             "peso": usuario.getPeso(),
             "altura": usuario.getAltura(),
@@ -96,7 +94,7 @@ class usuarioMongo{
         mongo.connect((err)=>{
             assert.equal(null, err);
             const bdUsuario = mongo.db("nutristats");
-            bdUsuario.collection('usuario').findOne({nomeUsuario: userName}).then((usuario)=>{
+            bdUsuario.collection('usuario').findOne({username: userName}).then((usuario)=>{
                 //implements
             });
         });

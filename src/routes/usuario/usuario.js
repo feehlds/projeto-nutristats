@@ -4,6 +4,10 @@ const usuario = require("../../models/entidades/usuario");
 const UsuarioPers = require('../../models/persistencia/usuario');
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
+
+// Proteger rotas exclusivas para usuários logados
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+
 router.get("/", (req, res) =>{
     res.render("usuarios/registro");
 });
@@ -43,12 +47,24 @@ router.post("/registro", (req,res) => {
     });
     
 });
+// router.post("/login",(req,res,next)=>{
+//     passport.authenticate("local",{
+//         successRedirect: "/",
+//         failureRedirect: "/erro",
+//         failureFlash: true
+//     })(req,res,next);
+// });
+
 router.post("/login",(req,res,next)=>{
     passport.authenticate("local",{
-        successRedirect: "/",
+        successRedirect: "/perfil",
         failureRedirect: "/erro",
         failureFlash: true
     })(req,res,next);
+});
+
+router.get('/perfil', ensureLoggedIn('/login'), function (req, res) {
+    res.send();
 });
 
 module.exports = router

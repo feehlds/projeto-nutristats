@@ -1,1 +1,1 @@
-const pesquisaNutri = require('../models/database/pesqAlimentoss');
+// const pesquisaNutri = require('../models/database/pesqAlimentoss');

@@ -14,9 +14,5 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    console.log('bateu');
-      this.nodeService.pesquisaAlimentos('feijão').subscribe(result => {
-      console.log(result);
-    });
   }
 }

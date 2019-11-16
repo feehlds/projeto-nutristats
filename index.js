@@ -83,12 +83,9 @@
             
     app.get('/pesqAlimentos', (req, res) => {
         let pesq  = req.query;
-        let jsonRes;
-        jsonRes
         try {
             pesqAlimentos(pesq.barraPesq).then(result => {
-                jsonRes = { "Alimentos" : result };
-                res.status(200).json(jsonRes);
+                res.status(200).json(result);
             });
         }   catch(err){
             res.status(500).send(err);

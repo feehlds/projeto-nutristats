@@ -1,8 +1,9 @@
 const proxy = [
     {
       context: '/api',
-      target: 'https://www.nutri-stats.herokuapp.com',
-      pathRewrite: {'^/api' : ''}
+      target: 'https://localhost:3030',
+      //pathRewrite: {'^/api' : ''}
+      "sercure": false
     }
   ];
   module.exports = proxy;

@@ -1,24 +1,7 @@
-const MongoClient = require('mongodb').MongoClient;
-
-
 if (process.env.DB_URL_MONGO == undefined){
-    const uri ='mongodb://localhost:27017/nutristats';
-    const client = new MongoClient(uri, (err,client)=> { 
-        
-        useUnifiedTopology: true
-    });
-
-    
-    module.exports = client;
-      
+    module.exports = {mongoURI: "mongodb://localhost:27017/nutristats"}  
  }else{
-    const uri =  process.env.DB_URL_MONGO;
-
-    const client = new MongoClient(uri, (err,client)=> { 
-    
-        useUnifiedTopology: true
-    });
-    module.exports = client;
+    module.exports = {mongoURI: process.env.DB_URL_MONGO}
 }
 
 

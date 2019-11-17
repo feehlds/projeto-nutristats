@@ -21,4 +21,8 @@ export class NodeService {
     return this.http.get('/pesqAlimentos?barraPesq=' + str);
   }
 
+  login(user){
+    return this.http.post('/usuario/login', user)
+  }
+
 }

@@ -6,7 +6,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -18,12 +20,15 @@ import {TableModule} from 'primeng/table';
     HttpClientModule,
     SearchModule,
     TableModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule  
   ],
   providers: [NodeService, {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+]
 })
 export class AppModule { }

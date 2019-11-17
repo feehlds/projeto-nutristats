@@ -1,0 +1,7 @@
+#bt-login{
+    width: 100%;
+}
+#bt-login:hover, #bt-cadastrar:hover{
+    color: white;
+    background-color: #3adb76;
+}

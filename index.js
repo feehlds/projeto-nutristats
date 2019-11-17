@@ -22,6 +22,7 @@
     const app = express();  
     //Body Parser
     app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.json());
 
     //HTTPS
     app.use(sslRedirect(['development', 'production']));

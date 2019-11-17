@@ -1,5 +1,5 @@
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,8 +8,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent  {
-
-  closeResult: string;
 
   constructor(private modalService: NgbModal) { }
 

@@ -8,11 +8,12 @@ import { ButtonModule } from 'primeng/button';
 import { FooterComponent } from './footer/footer.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CadastroDialogComponent } from './cadastro-dialog/cadastro-dialog.component';
 
 
 
 @NgModule({
-  declarations: [SearchComponent, SearchTableComponent, FooterComponent, LoginDialogComponent],
+  declarations: [SearchComponent, SearchTableComponent, FooterComponent, LoginDialogComponent, CadastroDialogComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,7 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   bootstrap: [SearchComponent],
   entryComponents: [
-    LoginDialogComponent
+    LoginDialogComponent, CadastroDialogComponent
   ]
 })
 export class SearchModule { }

@@ -25,4 +25,7 @@ export class NodeService {
     return this.http.post('/usuario/login', user)
   }
 
+  cadastro(user){
+    return this.http.post('/usuario/registro', user);
+  }
 }

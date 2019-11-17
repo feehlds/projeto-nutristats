@@ -15,7 +15,7 @@
 
             <button type="button" class="hollow button success" id="bt-login"
                 (click)="login()">Login</button>
-            <ngb-alert type="danger" (close)="close()" *ngIf="failToLogin">Usuário ou senha errada</ngb-alert>
+            <ngb-alert type="danger" (close)="closeAlert()" *ngIf="failToLogin">Usuário ou senha errada</ngb-alert>
 
         </div>
     </div>

@@ -1,7 +1,8 @@
+import { CadastroDialogComponent } from './../cadastro-dialog/cadastro-dialog.component';
 import { NodeService } from './../../node.service';
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login-dialog',
@@ -15,7 +16,7 @@ export class LoginDialogComponent {
 
   failToLogin: boolean = false;
 
-  constructor(private ns: NodeService, public activeModal: NgbActiveModal) { }
+  constructor(private ns: NodeService, public activeModal: NgbActiveModal, private modalService: NgbModal) { }
 
   ngOnInit() {
   }
@@ -37,7 +38,8 @@ export class LoginDialogComponent {
     }
   }
   openSignUpDialog(){
-    
+    this.activeModal.close();
+    this.modalService.open(CadastroDialogComponent);
   }
   close() {
     this.failToLogin = false;

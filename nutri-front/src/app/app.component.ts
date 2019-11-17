@@ -1,5 +1,6 @@
-import { NodeService } from './node.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'nutri-front';
 
-  constructor(private nodeService: NodeService){
-
+  constructor(private router: Router){
+    
   }
 
   ngOnInit(){
+    if(sessionStorage.getItem('user')){
+      this.router.navigate(['AppUser']);
+    } else{
+      this.router.navigate(['']);
+    }
   }
 }

@@ -1,3 +1,4 @@
+import { AppUserModule } from './app-user/app-user.module';
 import { SearchModule } from './search/search.module';
 import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NodeService } from './node.service';
@@ -19,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     SearchModule,
+    AppUserModule,
     TableModule,
     CommonModule,
     BrowserAnimationsModule  

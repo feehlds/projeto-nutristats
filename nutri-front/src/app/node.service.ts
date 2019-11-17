@@ -14,7 +14,7 @@ export class NodeService {
   }
   
   getUrl(){
-    return 'https://nutri-stats.herokuapp.com'
+    return 'https://nutri-stats.herokuapp.com';
   }
 
   pesquisaAlimentos(str){
@@ -22,10 +22,15 @@ export class NodeService {
   }
 
   login(user){
-    return this.http.post('/usuario/login', user)
+    return this.http.post('/usuario/login', user);
   }
 
   cadastro(user){
     return this.http.post('/usuario/registro', user);
   }
+
+  logout(){
+    return this.http.get('/usuario/logout');
+  }
+
 }

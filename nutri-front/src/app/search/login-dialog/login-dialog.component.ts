@@ -3,6 +3,7 @@ import { NodeService } from './../../node.service';
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-dialog',
@@ -16,7 +17,8 @@ export class LoginDialogComponent {
 
   failToLogin: boolean = false;
 
-  constructor(private ns: NodeService, public activeModal: NgbActiveModal, private modalService: NgbModal) { }
+  constructor(private ns: NodeService, public activeModal: NgbActiveModal, private modalService: NgbModal,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -29,8 +31,8 @@ export class LoginDialogComponent {
       };
       this.ns.login(loginUser).subscribe(user => {
         sessionStorage.setItem('user', JSON.stringify(user));
-        console.log(sessionStorage);
-        alert('logou!');
+        this.router.navigate(['AppUser']);
+        this.activeModal.close();
       }, 
       err => {
         this.failToLogin = true;

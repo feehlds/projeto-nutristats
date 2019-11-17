@@ -60,26 +60,6 @@
         console.log(req.user);
         res.status(200).sendFile(path.join(__dirname, 'nutri-front/dist/nutri-front/index.html'));
     });
-    
-  //INSERIR USUARIO/ Atualizar
-            var user = new usuario.Usuario();
-                //se for atualizar usar usar id id
-               //  user.setId("5dbcd4a2e7b987351c771b01")
-            // user.setNome("André");
-            // user.setDataNascimento("16/01/2000");
-            // user.setEmail('test@tete.com.br')
-            // user.setNomeUsuario("André");
-            // user.setPeso(1.2);
-            // user.setSexo("M");
-            // user.setAltura(12552);
-            // user.setSenha('pedroasfadf');
-              var usuarioPersistencia = new usuarioInserir.Usuario();
-            // usuarioPersistencia.inserir(user);
-            
-        //    let teset = usuarioPersistencia.buscarPorId('5dc6fb94219b3a4088e0f1d8');
-         //   console.log(teset);
-            // usuarioPersistencia.buscarPorNomeUsuario('and');
-        //     usuarioPersistencia.atualizar(user);
             
     app.get('/pesqAlimentos', (req, res) => {
         let pesq  = req.query;

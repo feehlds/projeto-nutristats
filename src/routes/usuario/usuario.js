@@ -11,20 +11,13 @@ router.get("/", (req, res) =>{
 router.post("/registro", (req,res) => {
     var up = new UsuarioPers.Usuario();
     var usuarioNovo = new usuario.Usuario();
- 
-   // usuarioNovo.setNome(req.body.nomeUser);
-    //usuarioNovo.setDataNascimento(req.body.dataNasc);
-  //  usuarioNovo.setEmail(req.body.email);
-    //usuarioNovo.setPeso(1.2);
-   // usuarioNovo.setAltura(12552);
-    //usuarioNovo.setSexo(req.body.sexo);
-    usuarioNovo.setNomeUsuario(req.body.username);
+    usuarioNovo.setNome(req.body.nomeCompleto);
+    usuarioNovo.setDataNascimento(req.body.dataNasc);
+    usuarioNovo.setEmail(req.body.email);
+    usuarioNovo.setSexo(req.body.sexo);
+    usuarioNovo.setNomeUsuario(req.body.login);
+    usuarioNovo.setSenha(req.body.pass);
 
-    usuarioNovo.setSenha(req.body.senha);
-
-
-
-    console.log(usuarioNovo);
     bcrypt.genSalt(10, (erro, salt) => {
         bcrypt.hash(usuarioNovo.getSenha(), salt, (erro, hash) =>{
             if(erro){
@@ -32,7 +25,6 @@ router.post("/registro", (req,res) => {
                 console.log("DEU ERRO", erro);
             }
             usuarioNovo.setSenha(hash);
-            console.log("Senha: ",usuarioNovo.getSenha());
             try {
                 up.inserir(usuarioNovo);
                 res.redirect("/");

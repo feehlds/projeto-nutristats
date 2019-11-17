@@ -27,7 +27,7 @@ router.post("/registro", (req,res) => {
             usuarioNovo.setSenha(hash);
             try {
                 up.inserir(usuarioNovo);
-                res.redirect("/");
+                res.status(200).redirect("/");
             } catch (error) {
                 console.log("Deu error ao salvar",error);   
             }

@@ -1,8 +1,8 @@
 //Importação
     //Requisição da biblioteca express
     const express = require('express');
-    const usuarioInserir = require('./src/models/persistencia/usuario');
-    const usuario = require('./src/models/entidades/usuario');
+    const mongoose = require('mongoose');
+    const db = require('./src/models/database/conexaoMongo');
     const pesqAlimentos = require ('./src/models/database/pesqAlimentos');
     var sslRedirect = require('heroku-ssl-redirect');
     const bodyParser = require('body-parser');
@@ -12,6 +12,8 @@
     const session = require("express-session");
     require("./config/autenticacao")(passport);
 
+    require("./src/models/entidades/usuario");
+    const Usuario = mongoose.model("usuarios")
     //Cross Origin to use on local angular req
     var cors = require('cors');
     //Definindo porta padrão ou 3030
@@ -20,6 +22,17 @@
     var path = require('path');
     //Atribuindo a app as informações da aplicação
     const app = express();  
+    //Mongoose
+    mongoose.Promise = global.Promise;
+    mongoose.connect(db.mongoURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).then(()=>{
+        console.log("Conectado com o mongo");
+    }).catch((err)=>{
+        console.log("Erro ao se conectar: " + err);
+    });
+
     //Body Parser
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
@@ -59,28 +72,7 @@
         console.log('bateu')
         console.log(req.user);
         res.status(200).sendFile(path.join(__dirname, 'nutri-front/dist/nutri-front/index.html'));
-    });
-    
-  //INSERIR USUARIO/ Atualizar
-            var user = new usuario.Usuario();
-                //se for atualizar usar usar id id
-               //  user.setId("5dbcd4a2e7b987351c771b01")
-            // user.setNome("André");
-            // user.setDataNascimento("16/01/2000");
-            // user.setEmail('test@tete.com.br')
-            // user.setNomeUsuario("André");
-            // user.setPeso(1.2);
-            // user.setSexo("M");
-            // user.setAltura(12552);
-            // user.setSenha('pedroasfadf');
-              var usuarioPersistencia = new usuarioInserir.Usuario();
-            // usuarioPersistencia.inserir(user);
-            
-        //    let teset = usuarioPersistencia.buscarPorId('5dc6fb94219b3a4088e0f1d8');
-         //   console.log(teset);
-            // usuarioPersistencia.buscarPorNomeUsuario('and');
-        //     usuarioPersistencia.atualizar(user);
-            
+    });     
     app.get('/pesqAlimentos', (req, res) => {
         let pesq  = req.query;
         try {

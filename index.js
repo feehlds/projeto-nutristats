@@ -43,7 +43,12 @@
        // res.locals.error_msg = req.flash("error_msg")
        // res.locals.error = req.flash("error")
         res.locals.user = req.user || null;
-        next();
+        if(res.locals.user){
+            delete res.locals.user['senha'];
+            console.log(res.locals.user)
+            res.send(res.locals.user)
+        }   else
+            next();
     }) 
 //Rotas
     //Definindo o caminho de uso
@@ -51,6 +56,7 @@
     
     //requests e responses
     app.get('/', (req, res, next) => {
+        console.log('bateu')
         console.log(req.user);
         res.status(200).sendFile(path.join(__dirname, 'nutri-front/dist/nutri-front/index.html'));
     });

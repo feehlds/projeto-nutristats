@@ -27,7 +27,9 @@ export class LoginDialogComponent {
         "login": this.user,
         "pass" : this.pass
       };
-      this.ns.login(loginUser).subscribe(data => {
+      this.ns.login(loginUser).subscribe(user => {
+        sessionStorage.setItem('user', JSON.stringify(user));
+        console.log(sessionStorage);
         alert('logou!');
       }, 
       err => {
@@ -41,7 +43,7 @@ export class LoginDialogComponent {
     this.activeModal.close();
     this.modalService.open(CadastroDialogComponent);
   }
-  close() {
+  closeAlert() {
     this.failToLogin = false;
   }
 }

@@ -58,7 +58,6 @@
         res.locals.user = req.user || null;
         if(res.locals.user){
             delete res.locals.user['senha'];
-            console.log(res.locals.user)
             res.send(res.locals.user)
         }   else
             next();
@@ -72,7 +71,7 @@
         console.log(req.user);
         res.status(200).sendFile(path.join(__dirname, 'nutri-front/dist/nutri-front/index.html'));
     });
-            
+
     app.get('/pesqAlimentos', (req, res) => {
         let pesq  = req.query;
         try {

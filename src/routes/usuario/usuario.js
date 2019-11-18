@@ -30,16 +30,16 @@ router.post("/registro", (req,res) => {
                 bcrypt.hash(usuarioNovo.senha, salt, (erro, hash) =>{
                     if(erro){
                         req.flash("error_msg", "Houve um erro durante o salvamento do usuario")
-                        res.redirect("/")
+                        res.sendStatus(401);
                     }
 
                     usuarioNovo.senha = hash;
                     usuarioNovo.save().then(()=>{
                         req.flash("success_msg", "Usuario criado com sucesso!")
-                        res.redirect("/")
+                        res.status(201).json(usuarioNovo);
                     }).catch((err) => {
                         req.flash("error_msg", "Houve um erro ao criar o usuário, tente novamente! " )
-                        res.redirect("/")
+                        res.sendStatus(404);
                     });
                 });
 
@@ -47,23 +47,24 @@ router.post("/registro", (req,res) => {
 
 
         }).catch((err) => {
-            req.flash("error_msg", "Houve um erro interno")
-            res.redirect("/")
+            req.flash("error_msg", "Houve um erro interno");
+            res.redirect("/");
         });
     });
     
 });
 router.post("/login",(req,res,next)=>{
     passport.authenticate("local",{
-        successRedirect: "/",
         failureRedirect: "/erro",
         failureFlash: true
     })(req,res,next);
 });
 
 router.get("/logout", (req,res) => {
-    req.logOut()
-    req.flash("success_msg", "Deslogado com sucesso!")
-    res.sendStatus(200);
+    console.log(req);
+    console.log(res);
+    req.logOut();
+    req.flash("success_msg", "Deslogado com sucesso!");
+    res.status(200).then(res.status(200).send('OK'));
 })
 module.exports = router

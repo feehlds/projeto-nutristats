@@ -15,6 +15,7 @@ module.exports = function(passport){
 
             bcrypt.compare(senha, usuario.senha, (erro, batem) =>{
                 if(batem){
+                    delete usuario.senha['senha'];  
                     return done(null, usuario)
                 }else{
                     return done(null,false,{message: "Senha incorreta"});

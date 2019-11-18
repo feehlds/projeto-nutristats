@@ -15,6 +15,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
+    console.log(sessionStorage);
     if(sessionStorage.getItem('user')){
       this.router.navigate(['AppUser']);
     } else{

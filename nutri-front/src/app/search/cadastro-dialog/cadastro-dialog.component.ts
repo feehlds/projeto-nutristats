@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NodeService } from 'src/app/node.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-dialog',
@@ -21,7 +22,7 @@ export class CadastroDialogComponent implements OnInit {
   pass: string = "";
   passConfirm: string = "";
 
-  constructor(private ns: NodeService, public activeModal: NgbActiveModal) { }
+  constructor(private ns: NodeService, public activeModal: NgbActiveModal, private router: Router) { }
 
   ngOnInit() {
     this.passoDialog = 1;
@@ -48,6 +49,19 @@ export class CadastroDialogComponent implements OnInit {
         };
         this.ns.cadastro(loginUser).subscribe(data => {
           alert('Cadastrado!');
+          let logar = {
+            "login": loginUser.login,
+            "pass": loginUser.pass
+          };
+
+          this.ns.login(logar).subscribe(user =>{
+            sessionStorage.setItem('user', JSON.stringify(user));
+            this.router.navigate(['']);
+          },
+          err => {
+            alert('deu bosta');
+          });
+        
           this.failToSignUp.fail = false;
         },
           err => {

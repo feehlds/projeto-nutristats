@@ -1,35 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
+
 @Injectable()
 export class NodeService {
-  httpHeaders = new HttpHeaders
 
   constructor(private http: HttpClient) { }
 
-  getOptions() {
-		return {
-			'Content-Type': 'application/json'
-		};
-  }
-  
-  getUrl(){
+  getUrl() {
     return 'https://nutri-stats.herokuapp.com';
   }
 
-  pesquisaAlimentos(str){
+  pesquisaAlimentos(str) {
     return this.http.get('/pesqAlimentos?barraPesq=' + str);
   }
 
-  login(user){
-    return this.http.post('/usuario/login', user);
+  login(user) {
+    return this.http.post('/usuario/login', user, httpOptions);
   }
 
-  cadastro(user){
+  cadastro(user) {
     return this.http.post('/usuario/registro', user);
   }
 
-  logout(){
+  logout() {
     return this.http.get('/usuario/logout');
   }
 

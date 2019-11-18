@@ -20,13 +20,11 @@ export class ProfileBoxComponent implements OnInit {
 
   logOut(){
     sessionStorage.clear();
-    console.log(sessionStorage);
-    this.ns.logout().subscribe(status => {
-      console.log('STAAAAAAAAATUS ', status)
-      if(status == 200){
-        
+    this.ns.logout().subscribe(res => {
         this.router.navigate(['']);
-      }
+    },
+    err => {
+      alert('Fudeu');
     });
     
   }

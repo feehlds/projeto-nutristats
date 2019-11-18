@@ -1,8 +1,8 @@
 //Importação
     //Requisição da biblioteca express
     const express = require('express');
-    const usuarioInserir = require('./src/models/persistencia/usuario');
-    const usuario = require('./src/models/entidades/usuario');
+    const mongoose = require('mongoose');
+    const db = require('./src/models/database/conexaoMongo');
     const pesqAlimentos = require ('./src/models/database/pesqAlimentos');
     var sslRedirect = require('heroku-ssl-redirect');
     const bodyParser = require('body-parser');
@@ -12,6 +12,8 @@
     const session = require("express-session");
     require("./config/autenticacao")(passport);
 
+    require("./src/models/entidades/usuario");
+    const Usuario = mongoose.model("usuarios")
     //Cross Origin to use on local angular req
     var cors = require('cors');
     //Definindo porta padrão ou 3030
@@ -20,6 +22,17 @@
     var path = require('path');
     //Atribuindo a app as informações da aplicação
     const app = express();  
+    //Mongoose
+    mongoose.Promise = global.Promise;
+    mongoose.connect(db.mongoURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).then(()=>{
+        console.log("Conectado com o mongo");
+    }).catch((err)=>{
+        console.log("Erro ao se conectar: " + err);
+    });
+
     //Body Parser
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
@@ -56,7 +69,6 @@
     
     //requests e responses
     app.get('/', (req, res, next) => {
-        console.log('bateu')
         console.log(req.user);
         res.status(200).sendFile(path.join(__dirname, 'nutri-front/dist/nutri-front/index.html'));
     });

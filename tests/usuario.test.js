@@ -1,58 +1,109 @@
 //import Usuario from '../src/models/entidades/usuario';
-var usert = require('../src/models/entidades/usuario');
-test('setar um nome', () => {
-    
+const mongoose = require('mongoose');
+require("../src/models/entidades/usuario");
+test('Criar um usuario', () => {
+    var usuarioInserir = {
+        "nome": "andre",
+        "email": "andre@andre.com",
+        "sexo": "andre",
+        "dtaNascimento": '16/01/2000',
+        "nomeUsuario": "andre",
+        "senha": "andre",
+        "peso": 10,
+        "altura": 20,
 
-    var user = new usert.Usuario();
-    var andre = "andre";
-    user.setNome(andre);
-    
-     expect(user.getNome()).toBe(andre);
+    }
+    var Usuario = mongoose.model("usuarios");
+    var usuario = new Usuario(usuarioInserir);
+     expect(usuario.nome).toBe(usuarioInserir.nome);
+     expect(usuario.email).toBe(usuarioInserir.email);
+     expect(usuario.sexo).toBe(usuarioInserir.sexo);
+     expect(usuario.dtaNascimento).toBe(usuarioInserir.dtaNascimento);
+     expect(usuario.nomeUsuario).toBe(usuarioInserir.nomeUsuario);
+     expect(usuario.senha).toBe(usuarioInserir.senha);
+     expect(usuario.peso).toBe(usuarioInserir.peso);
+     expect(usuario.altura).toBe(usuarioInserir.altura);
   });
 
 test('calcular IMC', ()=>{
-    var user = new usert.Usuario();
-    var altura = 1.80;
-    var peso = 80;
+    var usuarioInserir = {
+        "nome": "andre",
+        "email": "andre@andre.com",
+        "sexo": "andre",
+        "dtaNascimento": "16/01/2000",
+        "nomeUsuario": "andre",
+        "senha": "andre",
+        "peso": 10,
+        "altura": 20,
 
-    user.setAltura(altura);
-    user.setPeso(peso);
-
-    var result = user.calcularIMC();
+    }
+    var Usuario = mongoose.model("usuarios");
+    var usuario = new Usuario(usuarioInserir);
     
-    expect(result).toBe(24.69);
+    usuario.calcularIMC (function(err, result) {
+        expect(result).toBe(24.69);
+      });;
+      
 
 });
 
 test('calcular idade', ()=>{
-    var user = new usert.Usuario();
-    user.setDataNascimento("16/01/2000");
-    expect(user.getIdade()).toBe(19);
+    var usuarioInserir = {
+        "nome": "andre",
+        "email": "andre@andre.com",
+        "sexo": "andre",
+        "dtaNascimento": "16/01/2000",
+        "nomeUsuario": "andre",
+        "senha": "andre",
+        "peso": 10,
+        "altura": 20,
+
+    }
+    var Usuario = mongoose.model("usuarios");
+    var usuario = new Usuario(usuarioInserir);
+    usuario.getIdade (function(err, result) {
+        expect(result).toBe(19);
+      });;
 });
 
 test('calcular Taxa metabólica basal', ()=>{
-    var user = new usert.Usuario();
-    //idade = 32 anos
-    user.setDataNascimento("16/01/1987");
-    user.setSexo("M");
-    var altura = 1.70;
-    var peso = 65;
-    user.setAltura(altura);
-    user.setPeso(peso);
+      //idade = 32 anos 
+    var usuarioInserirM = {
+        "nome": "andre",
+        "email": "andre@andre.com",
+        "sexo": "M",
+        "dtaNascimento": "16/01/1987",
+        "nomeUsuario": "andre",
+        "senha": "andre",
+        "peso": 65,
+        "altura": 1.70,
 
-
-    var userF = new usert.Usuario();
+    }
+    var Usuario = mongoose.model("usuarios");
+    var usuarioM = new Usuario(usuarioInserirM);
     //idade = 30 anos
-    userF.setDataNascimento("16/01/1989");
-    userF.setSexo("F");
-    var alturaF = 1.65;
-    var pesoF = 70;
-    userF.setAltura(alturaF);
-    userF.setPeso(pesoF);
+    var usuarioInserirF = {
+        "nome": "andre",
+        "email": "andre@andre.com",
+        "sexo": "M",
+        "dtaNascimento": "16/01/1989",
+        "nomeUsuario": "andre",
+        "senha": "andre",
+        "peso": 70,
+        "altura": 1.65,
 
+    }
+    var Usuario = mongoose.model("usuarios");
+    var usuarioF = new Usuario(usuarioInserirF);
     //Homem
-    expect(user.calcularTMB()).toBe(1594.60);
+    usuarioM.calcularTMB (function(err, result) {
+        expect(result).toBe(19);
+      });;
+
 
     //Mulher
-    expect(userF.calcularTMB()).toBe(1489.48);
+    usuarioF.calcularTMB (function(err, result) {
+        expect(result).toBe(19);
+      });;
+
 });

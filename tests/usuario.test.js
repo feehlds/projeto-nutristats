@@ -1,6 +1,8 @@
 //import Usuario from '../src/models/entidades/usuario';
 const mongoose = require('mongoose');
 require("../src/models/entidades/usuario");
+
+const controler = require('../src/models/entidades/usuarioControler');
 test('Criar um usuario', () => {
     var usuarioInserir = {
         "nome": "andre",
@@ -26,45 +28,17 @@ test('Criar um usuario', () => {
   });
 
 test('calcular IMC', ()=>{
-    var usuarioInserir = {
-        "nome": "andre",
-        "email": "andre@andre.com",
-        "sexo": "andre",
-        "dtaNascimento": "16/01/2000",
-        "nomeUsuario": "andre",
-        "senha": "andre",
-        "peso": 10,
-        "altura": 20,
-
-    }
-    var Usuario = mongoose.model("usuarios");
-    var usuario = new Usuario(usuarioInserir);
-    
-    usuario.calcularIMC (function(err, result) {
-        expect(result).toBe(24.69);
-      });;
-      
-
+    var  peso = "80";
+    var altura = "1.80";
+    expect(controler.calcularIMC(peso, altura)).toBe(24.69);
 });
 
 test('calcular idade', ()=>{
-    var usuarioInserir = {
-        "nome": "andre",
-        "email": "andre@andre.com",
-        "sexo": "andre",
-        "dtaNascimento": "16/01/2000",
-        "nomeUsuario": "andre",
-        "senha": "andre",
-        "peso": 10,
-        "altura": 20,
+    var dtaNascimento = "16/01/2000";
 
-    }
-    var Usuario = mongoose.model("usuarios");
-    var usuario = new Usuario(usuarioInserir);
-    usuario.getIdade (function(err, result) {
-        expect(result).toBe(19);
-      });;
+    expect(controler.getIdade(dtaNascimento)).toBe(19);
 });
+
 
 test('calcular Taxa metabólica basal', ()=>{
       //idade = 32 anos 
@@ -79,13 +53,12 @@ test('calcular Taxa metabólica basal', ()=>{
         "altura": 1.70,
 
     }
-    var Usuario = mongoose.model("usuarios");
-    var usuarioM = new Usuario(usuarioInserirM);
+
     //idade = 30 anos
     var usuarioInserirF = {
         "nome": "andre",
         "email": "andre@andre.com",
-        "sexo": "M",
+        "sexo": "F",
         "dtaNascimento": "16/01/1989",
         "nomeUsuario": "andre",
         "senha": "andre",
@@ -93,17 +66,9 @@ test('calcular Taxa metabólica basal', ()=>{
         "altura": 1.65,
 
     }
-    var Usuario = mongoose.model("usuarios");
-    var usuarioF = new Usuario(usuarioInserirF);
+
     //Homem
-    usuarioM.calcularTMB (function(err, result) {
-        expect(result).toBe(19);
-      });;
-
-
+    expect(controler.calcularTMB(usuarioInserirM)).toBe(1594.60);
     //Mulher
-    usuarioF.calcularTMB (function(err, result) {
-        expect(result).toBe(19);
-      });;
-
+    expect(controler.calcularTMB(usuarioInserirF)).toBe(1489.48);
 });

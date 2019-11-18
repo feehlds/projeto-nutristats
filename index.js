@@ -1,4 +1,4 @@
-//Importação
+ //Importação
     //Requisição da biblioteca express
     const express = require('express');
     const mongoose = require('mongoose');
@@ -7,13 +7,12 @@
     var sslRedirect = require('heroku-ssl-redirect');
     const bodyParser = require('body-parser');
     const usuarios = require("./src/routes/usuario/usuario");
+    const dietas = require("./src/routes/dieta/dieta");
     const passport = require("passport");
     const flash = require("connect-flash");
     const session = require("express-session");
     require("./config/autenticacao")(passport);
 
-    require("./src/models/entidades/usuario");
-    const Usuario = mongoose.model("usuarios")
     //Cross Origin to use on local angular req
     var cors = require('cors');
     //Definindo porta padrão ou 3030
@@ -26,7 +25,8 @@
     mongoose.Promise = global.Promise;
     mongoose.connect(db.mongoURI, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        poolSize: 100
     }).then(()=>{
         console.log("Conectado com o mongo");
     }).catch((err)=>{
@@ -84,7 +84,7 @@
     });
 
     app.use("/usuario", usuarios);
-
+    app.use("/dieta", dietas);
     // O app Listen sempre deve ser a ultima linha do código
     app.listen(PORT, function() {
         console.log('Server running on port ' + PORT);

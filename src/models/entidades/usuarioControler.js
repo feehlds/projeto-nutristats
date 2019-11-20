@@ -31,7 +31,6 @@ exports.calcularIMC = function (usuario) {
 exports.calcularTMB = function (usuario) {
 
     var somar, multPeso, multAltura, multIdade;
-
     if (usuario.perfil.sexo == "M") {
         somar = 66.5;
         multPeso = 13.75;
@@ -44,7 +43,7 @@ exports.calcularTMB = function (usuario) {
         multIdade = 4.676;
     }
 
-    return parseFloat((somar + (multPeso * usuario.perfil.peso) + (multAltura * usuario.perfil.altura * 100) - (multIdade * this.getIdade(usuario.perfil.dtaNascimento))).toFixed(2));
+    return parseFloat((somar + (multPeso * usuario.perfil.peso) + (multAltura * usuario.perfil.altura * 100) - (multIdade * this.getIdade(usuario))).toFixed(2));
 
 }
 

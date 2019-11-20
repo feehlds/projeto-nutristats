@@ -7,63 +7,87 @@ test('Criar um usuario', () => {
     var usuarioInserir = {
         "nome": "andre",
         "email": "andre@andre.com",
-        "sexo": "andre",
-        "dtaNascimento": '16/01/2000',
         "nomeUsuario": "andre",
         "senha": "andre",
-        "peso": 10,
-        "altura": 20,
-
+        "perfil": {
+            "peso": 65,
+            "altura": 1.70,
+            "sexo": "M",
+            "dataNasc": "16/01/1987"
+        }
     }
     var Usuario = mongoose.model("usuarios");
     var usuario = new Usuario(usuarioInserir);
-     expect(usuario.nome).toBe(usuarioInserir.nome);
-     expect(usuario.email).toBe(usuarioInserir.email);
-     expect(usuario.sexo).toBe(usuarioInserir.sexo);
-     expect(usuario.dtaNascimento).toBe(usuarioInserir.dtaNascimento);
-     expect(usuario.nomeUsuario).toBe(usuarioInserir.nomeUsuario);
-     expect(usuario.senha).toBe(usuarioInserir.senha);
-     expect(usuario.peso).toBe(usuarioInserir.peso);
-     expect(usuario.altura).toBe(usuarioInserir.altura);
-  });
-
-test('calcular IMC', ()=>{
-    var  peso = "80";
-    var altura = "1.80";
-    expect(controler.calcularIMC(peso, altura)).toBe(24.69);
+    expect(usuario.nome).toBe(usuarioInserir.nome);
+    expect(usuario.email).toBe(usuarioInserir.email);
+    expect(usuario.perfil.sexo).toBe(usuarioInserir.perfil.sexo);
+    expect(usuario.perfil.dataNasc).toBe(usuarioInserir.perfil.dataNasc);
+    expect(usuario.nomeUsuario).toBe(usuarioInserir.nomeUsuario);
+    expect(usuario.senha).toBe(usuarioInserir.senha);
+    expect(usuario.perfil.peso).toBe(usuarioInserir.perfil.peso);
+    expect(usuario.perfil.altura).toBe(usuarioInserir.perfil.altura);
 });
 
-test('calcular idade', ()=>{
-    var dtaNascimento = "16/01/2000";
+test('calcular IMC', () => {
+    var user = {
+        "nome": "andre",
+        "email": "andre@andre.com",
+        "nomeUsuario": "andre",
+        "senha": "andre",
+        "perfil": {
+            "peso": 80,
+            "altura": 1.80,
+            "sexo": "M",
+            "dataNasc": "16/01/1987"
+        }
+    }
+    expect(controler.calcularIMC(user)).toBe(24.69);
+});
 
-    expect(controler.getIdade(dtaNascimento)).toBe(19);
+test('calcular idade', () => {
+    var user = {
+        "nome": "andre",
+        "email": "andre@andre.com",
+        "nomeUsuario": "andre",
+        "senha": "andre",
+        "perfil": {
+            "peso": 80,
+            "altura": 1.80,
+            "sexo": "M",
+            "dataNasc": "16/01/2000"
+        }
+    }
+    expect(controler.getIdade(user)).toBe(19);
 });
 
 
-test('calcular Taxa metabólica basal', ()=>{
-      //idade = 32 anos 
+test('calcular Taxa metabólica basal', () => {
+    //idade = 32 anos 
     var usuarioInserirM = {
         "nome": "andre",
         "email": "andre@andre.com",
-        "sexo": "M",
-        "dtaNascimento": "16/01/1987",
         "nomeUsuario": "andre",
         "senha": "andre",
-        "peso": 65,
-        "altura": 1.70,
-
+        "perfil": {
+            "peso": 65,
+            "altura": 1.70,
+            "sexo": "M",
+            "dataNasc": "16/01/1987"
+        }
     }
 
     //idade = 30 anos
     var usuarioInserirF = {
         "nome": "andre",
         "email": "andre@andre.com",
-        "sexo": "F",
-        "dtaNascimento": "16/01/1989",
         "nomeUsuario": "andre",
         "senha": "andre",
-        "peso": 70,
-        "altura": 1.65,
+        "perfil": {
+            "sexo": "F",
+            "peso": 70,
+            "altura": 1.65,
+            "dataNasc": "16/01/1989"
+        }
 
     }
 

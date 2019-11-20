@@ -118,3 +118,49 @@ textarea:focus, input:focus, select:focus, button:focus {
 .card-body{
   padding: 0;
 }
+body .ui-orderlist .ui-orderlist-list .ui-orderlist-item.ui-state-highlight {
+  background-color: #3adb76;
+  color: white; 
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+body .ui-button {
+  margin: 0;
+  color: #ffffff;
+  background-color: #3adb76;
+  border: 1px solid #3adb76;
+  font-size: 14px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+body .ui-button:hover {
+  margin: 0;
+  color: #ffffff;
+  background-color: #3adb76;
+  border: 1px solid #3adb76;
+  font-size: 14px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.btn-outline-success {
+  color: #fff;
+  background-color: #3adb76;
+  border-color: #3adb76;
+}
+.btn-outline-success:hover {
+  color: #fff;
+  background-color: #3adb76;
+  border-color: #3adb76;
+}
+
+.btn-outline-success.btn-logout:hover{
+  color: #fff;
+  background-color: tomato;
+  border-color: tomato;
+}
+body .ui-button:enabled:hover {    
+  background-color: #3adb76;
+  color: #fff;
+  border-color: #3adb76;
+}

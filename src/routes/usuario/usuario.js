@@ -12,17 +12,14 @@ router.post("/registro", (req,res) => {
         Usuario.findOne({nomeUsuario: req.body.login}).then((usuario)=>{
             if(usuario){
                 req.flash("error_msg", "Já existe uma conta com este e-mail em nosso sistema")
-                res.redirect("/usuarios/registro")
+                res.status(400).send('Usuário já existe');
             }else{
                 const usuarioNovo = new Usuario({
                     "nome": req.body.nomeCompleto,
                     "email": req.body.email,
-                    "sexo": req.body.sexo,
-                    "dtaNascimento": req.body.dataNasc,
                     "nomeUsuario": req.body.login,
                     "senha": req.body.pass,
-                    "peso": null,
-                    "altura": null,
+                    "perfil": req.body.perfil
                 });
                 bcrypt.hash(usuarioNovo.senha, salt, (erro, hash) =>{
                     if(erro){
@@ -33,11 +30,10 @@ router.post("/registro", (req,res) => {
                     usuarioNovo.senha = hash;
                     usuarioNovo.save().then(()=>{
                         req.flash("success_msg", "Usuario criado com sucesso!")
-                        usuarioNovo["idade"] = usuarioNovo.getIdade();
-                        res.status(201).json(usuarioNovo);
+                        res.status(200).then(res.status(201).json(usuarioNovo));
                     }).catch((err) => {
                         req.flash("error_msg", "Houve um erro ao criar o usuário, tente novamente! " )
-                        res.sendStatus(404);
+                        res.status(404);
                     });
                 });
 
@@ -59,10 +55,10 @@ router.post("/login",(req,res,next)=>{
 });
 
 router.get("/logout", (req,res) => {
-    console.log(req);
-    console.log(res);
     req.logOut();
     req.flash("success_msg", "Deslogado com sucesso!");
-    res.status(200).then(res.status(200).send('OK'));
+    res.status(200).then(response => {
+        res.status(200).send('OK')
+    });
 })
 module.exports = router

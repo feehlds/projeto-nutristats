@@ -52,12 +52,8 @@
     app.use(flash());  
     //middlewares
     app.use((req, res, next) =>{
-      //  res.locals.success_msg = req.flash("success_msg")
-       // res.locals.error_msg = req.flash("error_msg")
-       // res.locals.error = req.flash("error")
         res.locals.user = req.user || null;
         if(res.locals.user){
-            delete res.locals.user['senha'];
             res.send(res.locals.user)
         }   else
             next();
@@ -68,7 +64,6 @@
     
     //requests e responses
     app.get('/', (req, res, next) => {
-        console.log(req.user);
         res.status(200).sendFile(path.join(__dirname, 'nutri-front/dist/nutri-front/index.html'));
     });
 
@@ -82,7 +77,6 @@
             res.status(500).send(err);
         }
     });
-
     app.use("/usuario", usuarios);
     app.use("/dieta", dietas);
     // O app Listen sempre deve ser a ultima linha do código

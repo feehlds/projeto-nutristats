@@ -1,7 +1,6 @@
 const localStraty = require("passport-local").Strategy
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
-const controler = require('../src/models/entidades/usuarioControler');
 //model de usuário
 require("../src/models/entidades/usuario");
 const Usuario = mongoose.model("usuarios");
@@ -15,8 +14,6 @@ module.exports = function(passport){
 
             bcrypt.compare(senha, usuario.senha, (erro, batem) =>{
                 if(batem){
-                    delete usuario.senha['senha'];  
-                   // usuario["idade"] = controler.getIdade(usuario.dtaNascimento)
                     return done(null, usuario)
                 }else{
                     return done(null,false,{message: "Senha incorreta"});

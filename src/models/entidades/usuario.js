@@ -14,28 +14,12 @@ const Usuario = Schema({
         type: String,
         require: true
     },
-    sexo:{
-        type: String,
-        require: true
-    },
-    dtaNascimento:{
-        type: String,
-        require: true
-    },
     nomeUsuario:{
         type: String,
         require: true
     },
-    senha:{
-        type: String,
-        require: true
-    },
-    peso:{
-        type: Number,
-        require: false
-    },
-    altura:{
-        type: Number,
+    perfil:{
+        type: Object,
         require: false
     }
 

@@ -30,6 +30,9 @@ export class LoginDialogComponent {
         "pass" : this.pass
       };
       this.ns.login(loginUser).subscribe(user => {
+        sessionStorage.clear();
+        this.modalService.dismissAll();
+        console.log(user)
         sessionStorage.setItem('user', JSON.stringify(user));
         this.router.navigate(['AppUser']);
         this.activeModal.close();

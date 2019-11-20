@@ -11,10 +11,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CadastroDialogComponent } from './cadastro-dialog/cadastro-dialog.component';
 import { DataViewModule } from 'primeng/dataview';
 
-
-
 @NgModule({
-  declarations: [SearchComponent, SearchTableComponent, FooterComponent, LoginDialogComponent, CadastroDialogComponent],
+  declarations: [SearchComponent, SearchTableComponent, FooterComponent, LoginDialogComponent,
+     CadastroDialogComponent],
   imports: [
     CommonModule,
     FormsModule,

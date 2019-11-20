@@ -1,6 +1,9 @@
+import { PerfilDialogComponent } from './../perfil-dialog/perfil-dialog.component';
 import { NodeService } from 'src/app/node.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-profile-box',
@@ -8,25 +11,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile-box.component.css']
 })
 export class ProfileBoxComponent implements OnInit {
-  
+
   user: any;
 
-  constructor(private router: Router, private ns: NodeService) { }
+  constructor(private router: Router, private ns: NodeService, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.user = JSON.parse(sessionStorage.getItem('user'));
-    console.log(this.user);
   }
 
-  logOut(){
-    sessionStorage.clear();
+  logOut() {
     this.ns.logout().subscribe(res => {
-        this.router.navigate(['']);
+      sessionStorage.removeItem('user');
+      sessionStorage.clear();
+      this.router.navigate(['']);
     },
-    err => {
-      alert('Fudeu');
-    });
-    
+      err => {
+      });
+
+  }
+
+  openPerfilDialog(){
+    this.modalService.open(PerfilDialogComponent, {size: 'lg'})
   }
 
 }

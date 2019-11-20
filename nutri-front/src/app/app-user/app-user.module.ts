@@ -9,6 +9,7 @@ import { OrderListModule } from 'primeng/orderlist';
 import { PerfilDialogComponent } from './perfil-dialog/perfil-dialog.component';
 import { FormsModule }   from '@angular/forms';
 
+
 @NgModule({
   declarations: [AppUserComponent, ProfileBoxComponent, DietaScrollComponent, PerfilDialogComponent],
   imports: [

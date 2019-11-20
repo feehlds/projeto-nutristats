@@ -53,7 +53,7 @@
     //middlewares
     app.use((req, res, next) =>{
         res.locals.user = req.user || null;
-        if(res.locals.user){
+        if(res.locals.user && req.originalUrl !== '/usuario/logout'){
             res.send(res.locals.user)
         }   else
             next();

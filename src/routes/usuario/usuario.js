@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 require("../../models/entidades/usuario");
 const Usuario = mongoose.model("usuarios");
 
-router.post("/registro", (req,res) => {
+router.post("/registro", (req,res, next) => {
 
     bcrypt.genSalt(10, (erro, salt) => {
         Usuario.findOne({nomeUsuario: req.body.login}).then((usuario)=>{
@@ -30,16 +30,14 @@ router.post("/registro", (req,res) => {
                     usuarioNovo.senha = hash;
                     usuarioNovo.save().then(()=>{
                         req.flash("success_msg", "Usuario criado com sucesso!")
-                        res.status(200).then(res.status(201).json(usuarioNovo));
+                        console.log('bateu cadastro')
+                        res.redirect(307, '/usuario/login');
                     }).catch((err) => {
                         req.flash("error_msg", "Houve um erro ao criar o usuário, tente novamente! " )
                         res.status(404);
                     });
                 });
-
             }
-
-
         }).catch((err) => {
             req.flash("error_msg", "Houve um erro interno");
             res.redirect("/");
@@ -57,8 +55,6 @@ router.post("/login",(req,res,next)=>{
 router.get("/logout", (req,res) => {
     req.logOut();
     req.flash("success_msg", "Deslogado com sucesso!");
-    res.status(200).then(response => {
-        res.status(200).send('OK')
-    });
+    res.status(200).json('ok');
 })
 module.exports = router

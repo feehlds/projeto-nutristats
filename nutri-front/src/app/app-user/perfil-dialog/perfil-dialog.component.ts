@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-perfil-dialog',
@@ -9,7 +11,7 @@ export class PerfilDialogComponent implements OnInit {
 
   user;
   alimentacao;
-  constructor() { }
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
     this.user = JSON.parse(sessionStorage.getItem('user'));

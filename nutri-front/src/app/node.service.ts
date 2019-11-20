@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Config } from 'protractor';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -28,8 +30,8 @@ export class NodeService {
     return this.http.post('/usuario/registro', user);
   }
 
-  logout() {
-    return this.http.get('/usuario/logout');
+  logout() : Observable<HttpResponse<Config>> {
+    return this.http.get<Config>('/usuario/logout', {observe: 'response'})
   }
 
 }

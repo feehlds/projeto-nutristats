@@ -56,18 +56,11 @@ export class CadastroDialogComponent implements OnInit {
           }
 
         };
-        this.ns.cadastro(loginUser).subscribe(data => {
-          this.ns.login(loginUser).subscribe(user => {
-            this.modalService.dismissAll();
-            sessionStorage.clear();
-            sessionStorage.setItem('user', JSON.stringify(user));
-            this.router.navigate(['AppUser']);
-          },
-            err => {
-              alert('Não foi possível logar');
-            });
-
-          this.failToSignUp.fail = false;
+        this.ns.cadastro(loginUser).subscribe(user => {
+          sessionStorage.clear();
+          sessionStorage.setItem('user', JSON.stringify(user));
+          this.activeModal.close();
+          this.router.navigate(['AppUser']);
         },
           err => {
             alert('Não foi possível cadastrar');

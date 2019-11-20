@@ -21,14 +21,14 @@ export class ProfileBoxComponent implements OnInit {
   }
 
   logOut() {
-    this.ns.logout().subscribe(res => {
+    this.ns.logout().subscribe(resp   => {  
       sessionStorage.removeItem('user');
       sessionStorage.clear();
       this.router.navigate(['']);
     },
       err => {
+        alert('Ops, aconteceu algo estranho :o');
       });
-
   }
 
   openPerfilDialog(){

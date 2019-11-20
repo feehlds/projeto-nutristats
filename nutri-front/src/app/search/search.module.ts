@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CadastroDialogComponent } from './cadastro-dialog/cadastro-dialog.component';
+import { DataViewModule } from 'primeng/dataview';
 
 
 
@@ -19,6 +20,7 @@ import { CadastroDialogComponent } from './cadastro-dialog/cadastro-dialog.compo
     FormsModule,
     TableModule,
     ButtonModule,
+    DataViewModule,
     NgbModule
   ],
   exports: [

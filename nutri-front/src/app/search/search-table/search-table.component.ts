@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-search-table',
@@ -6,9 +6,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./search-table.component.css']
 })
 
-export class SearchTableComponent {
+export class SearchTableComponent implements OnInit {
   @Input()
-  alimentos: any;
+  alimentos: any[];
+  index: number;
   
   cols = [
     {field: 'descricao', header: 'Alimento'}, {field: 'umidade', header: 'Umidade'},
@@ -28,5 +29,11 @@ export class SearchTableComponent {
   ];
 
   constructor() { }
+  
+  ngOnInit(){ 
+  }
+  
+  open(){
 
+  }
 }

@@ -13,15 +13,11 @@
     padding: 0.75rem 1.25rem 0.75rem 2rem;
     transition: width 0.4s ease-in-out;
     border-radius: 25px;
+    height: 2.2rem;
   }
   
   .animated-search-form[type=search]:focus{
     width: 75%;
-  }
-  
-  .animated-button{
-    width: 10rem;
-    transition: width 0.4s ease-in-out;
   }
   
   #bt-buscar{

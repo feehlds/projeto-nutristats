@@ -1,17 +1,22 @@
-<p-table #dt [columns]="cols" [value]="alimentos" [responsive]="true">
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th *ngFor="let col of columns">
-                {{ col.header }}
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr>
-            <th *ngFor="let col of columns">
-                {{rowData[col.field]}}
-            </th>
-        </tr>
-    </ng-template>
-
-</p-table> 
+<div id="resultCards">
+    <div class="card text-center" [ngModel]="alimentos" ngDefaultControl *ngFor="let alimento of alimentos">
+        <div class="card-header">
+            <b>{{alimento.descricao}}</b>
+        </div>
+        <div class="card-body">
+            <div class="ui-g-12">
+                <div class="ui-g-4"><b>KCAL: </b>{{ alimento.kcal }}</div>
+                <div class="ui-g-4"><b>KJ: </b>{{ alimento.kj }}</div>
+                <div class="ui-g-4"><b>Umidade: </b>{{ alimento.umidade }}%</div>
+                <div class="ui-g-4"><b>Proteína: </b>{{ alimento.proteina }}(g)</div>
+                <div class="ui-g-4"><b>Colesterol:
+                    </b>{{ alimento.colesterol > 0 ? alimento.colesterol + '(mg)' : alimento.colesterol }}</div>
+                <div class="ui-g-4"><b>Fibra: </b>{{ alimento.fibraalimentar }}(g)</div>
+                <div class="ui-g-4"><b>Lipídeos: </b>{{ alimento.lipideos }}(g)</div>
+                <div class="ui-g-4"><b>Carboidrato: </b>{{ alimento.carboidrato }}(g)</div>
+                <div class="ui-g-4"><b>Sódio: </b>{{ alimento.sodio }}(mg)</div>
+            </div>
+            <a class="hollow button success" style="width: 75%;" (click)="open()">Info</a>
+        </div>
+    </div>
+</div>

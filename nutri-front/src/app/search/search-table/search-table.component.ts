@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlimentoDialogComponent } from 'src/app/alimento-dialog/alimento-dialog.component';
 
 @Component({
   selector: 'app-search-table',
@@ -28,12 +30,18 @@ export class SearchTableComponent implements OnInit {
     {field: 'vitaminac', header: 'Vitamina C'}
   ];
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
   
   ngOnInit(){ 
   }
   
-  open(){
+  openAlimentoDialog(data){
+    this.modalService.dismissAll();
+    let modal = this.modalService.open(AlimentoDialogComponent, { size: 'xl' });
+    if(data){
+      modal.componentInstance.alimento = data;
 
+    }
+    
   }
 }

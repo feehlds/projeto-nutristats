@@ -1,0 +1,156 @@
+<div>
+  <div class="modal-header">
+    <h4>{{ alimento.descricao }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  <div *ngIf="currentPage == 1">
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr class="table-success">
+            <th scope="col">KCAL</th>
+            <th scope="col">KJ</th>
+            <th scope="col">Proteína</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{alimento.kcal}}</td>
+            <td>{{alimento.kj}}</td>
+            <td>{{alimento.proteina}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr class="table-success">
+            <th scope="col">Lipídeos</th>
+            <th scope="col">Colesterol</th>
+            <th scope="col">Carboidrato</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{alimento.lipideos}}</td>
+            <td>{{alimento.colesterol}}</td>
+            <td>{{alimento.carboidrato}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="currentPage == 2">
+    <table class="table table-striped">
+      <thead>
+        <tr class="table-success">
+          <th scope="col">Fibras</th>
+          <th scope="col">Cinzas</th>
+          <th scope="col">Cálcio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{alimento.fibraalimentar}}</td>
+          <td>{{alimento.cinzas}}</td>
+          <td>{{alimento.calcio}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-striped">
+      <thead>
+        <tr class="table-success">
+          <th scope="col">Magnesio</th>
+          <th scope="col">Manganês</th>
+          <th scope="col">Fósforo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{alimento.magnesio}}</td>
+          <td>{{alimento.manganes}}</td>
+          <td>{{alimento.fosforo}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="currentPage == 3">
+    <table class="table table-striped">
+      <thead>
+        <tr class="table-success">
+          <th scope="col">Ferro</th>
+          <th scope="col">Sódio</th>
+          <th scope="col">Potássio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{alimento.ferro}}</td>
+          <td>{{alimento.sodio}}</td>
+          <td>{{alimento.potassio}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-striped">
+      <thead>
+        <tr class="table-success">
+          <th scope="col">Cobre</th>
+          <th scope="col">Zinco</th>
+          <th scope="col">Vitamina A</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{alimento.cobre}}</td>
+          <td>{{alimento.zinco}}</td>
+          <td>{{alimento.retinol}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="currentPage == 4">
+    <table class="table table-striped">
+      <thead>
+        <tr class="table-success">
+          <th scope="col">RE</th>
+          <th scope="col">RAE</th>
+          <th scope="col">Vitamina B1</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{alimento.re}}</td>
+          <td>{{alimento.rae}}</td>
+          <td>{{alimento.tiamina}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-striped">
+      <thead>
+        <tr class="table-success">
+          <th scope="col">Vitamina B2</th>
+          <th scope="col">Vitamina B6</th>
+          <th scope="col">Vitamina B3</th>
+          <th scope="col">Vitamina C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{alimento.riboflavina}}</td>
+          <td>{{alimento.piridoxina}}</td>
+          <td>{{alimento.niacina}}</td>
+          <td>{{alimento.vitaminac}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal-footer" id="paginador">
+  <ngb-pagination [collectionSize]="40" [(page)]="currentPage" size="lg"></ngb-pagination>
+</div>
+</div>

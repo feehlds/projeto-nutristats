@@ -5,7 +5,7 @@ const passport = require("passport");
 const mongoose = require('mongoose');
 require("../../models/entidades/usuario");
 const Usuario = mongoose.model("usuarios");
-
+//REGISTRAR
 router.post("/registro", (req,res, next) => {
 
     bcrypt.genSalt(10, (erro, salt) => {
@@ -44,6 +44,11 @@ router.post("/registro", (req,res, next) => {
         });
     });
     
+});
+
+
+router.post("/atualizar", (req,res, next) => {
+
 });
 router.post("/login",(req,res,next)=>{
     passport.authenticate("local",{

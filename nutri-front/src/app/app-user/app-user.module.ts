@@ -8,6 +8,8 @@ import { DietaScrollComponent } from './dieta-scroll/dieta-scroll.component';
 import { OrderListModule } from 'primeng/orderlist';
 import { PerfilDialogComponent } from './perfil-dialog/perfil-dialog.component';
 import { FormsModule }   from '@angular/forms';
+import { InputMaskModule } from 'primeng/inputmask';
+
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { FormsModule }   from '@angular/forms';
     FieldsetModule,
     OrderListModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    InputMaskModule
   ],
   bootstrap: [AppUserComponent],
   entryComponents: [PerfilDialogComponent]

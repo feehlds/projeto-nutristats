@@ -6,6 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./dieta-scroll.component.css']
 })
 export class DietaScrollComponent implements OnInit {
+  
+  dietas;
+
 
   refeicoes;
   constructor() { }

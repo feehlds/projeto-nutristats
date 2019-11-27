@@ -22,6 +22,10 @@ export class NodeService {
     return this.http.get('/pesqAlimentos?barraPesq=' + str);
   }
 
+  updateUsuario(user){
+    return this.http.post('/usuario/atualizar', user, httpOptions)
+  }
+
   login(user) {
     return this.http.post('/usuario/login', user, httpOptions);
   }

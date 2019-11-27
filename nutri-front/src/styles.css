@@ -148,7 +148,7 @@ body .ui-button:hover {
   background-color: #3adb76;
   border-color: #3adb76;
 }
-.btn-outline-success:hover {
+.btn-outline-success:hover, .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
   color: #fff;
   background-color: #3adb76;
   border-color: #3adb76;
@@ -163,4 +163,11 @@ body .ui-button:enabled:hover {
   background-color: #3adb76;
   color: #fff;
   border-color: #3adb76;
+}
+body a {
+  color: #3adb76;
+  text-decoration: none;
+}
+.tab-content {
+  padding-top: 1rem;
 }

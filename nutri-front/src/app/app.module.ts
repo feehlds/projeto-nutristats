@@ -13,7 +13,6 @@ import { AlimentoDialogComponent } from './alimento-dialog/alimento-dialog.compo
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

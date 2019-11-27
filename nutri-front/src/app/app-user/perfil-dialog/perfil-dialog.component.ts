@@ -20,10 +20,14 @@ export class PerfilDialogComponent implements OnInit {
     private modalService: NgbModal, private router: Router) { }
 
   ngOnInit() {
+    console.log(this.user)
     
     if(this.user.perfil.peso){
       this.peso = this.user.perfil.peso
     }
+    if(this.user.perfil.altura){
+      this.altura = this.user.perfil.altura;
+    } else { this.altura= 0 }
     
     if(this.user.alimentacao){
       this.alimentacao = this.user.alimentacao;
@@ -35,10 +39,11 @@ export class PerfilDialogComponent implements OnInit {
     if(this.alimentacao != "Escolha uma opção"){
       this.user.perfil.alimentacao = this.alimentacao;
     }
+    if(this.altura > 0){
+      this.user.perfil.altura = this.altura;
+    }
     console.log(this.user)
     this.ns.updateUsuario(this.user).subscribe(data => {
-      sessionStorage.clear();
-      sessionStorage.setItem('user', JSON.stringify(this.user));
       this.modalService.dismissAll();
     });
   }

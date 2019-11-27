@@ -77,6 +77,7 @@
             res.status(500).send(err);
         }
     });
+
     app.use("/usuario", usuarios);
     app.use("/dieta", dietas);
     // O app Listen sempre deve ser a ultima linha do código

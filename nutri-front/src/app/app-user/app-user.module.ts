@@ -9,6 +9,8 @@ import { OrderListModule } from 'primeng/orderlist';
 import { PerfilDialogComponent } from './perfil-dialog/perfil-dialog.component';
 import { FormsModule }   from '@angular/forms';
 import { InputMaskModule } from 'primeng/inputmask';
+import { CalendarModule } from 'primeng/calendar';
+
 
 
 
@@ -20,7 +22,8 @@ import { InputMaskModule } from 'primeng/inputmask';
     OrderListModule,
     FormsModule,
     NgbModule,
-    InputMaskModule
+    InputMaskModule,
+    CalendarModule
   ],
   bootstrap: [AppUserComponent],
   entryComponents: [PerfilDialogComponent]

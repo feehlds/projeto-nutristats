@@ -98,6 +98,7 @@ router.post("/login",(req,res,next)=>{
         failureRedirect: "/erro",
         failureFlash: true
     })(req,res,next);
+    
 });
 
 router.get("/logout", (req,res) => {

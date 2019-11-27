@@ -18,6 +18,10 @@ const Dieta = Schema({
         type: String,
         require: true
     },
+    ativo:{
+        type:Boolean,
+        require:true,
+    },
     Usuario: {
         type: String,
         require: true

@@ -2,20 +2,24 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const Dieta = Schema({
+    descricao:{
+        type: Object,
+        require: true
+    },
     cafeManha: {
-        type: String,
+        type: Object,
         require: true
     },  
     almoco: {
-        type: String,
+        type: Object,
         require: true
     },
     cafeTarde:  {
-        type: String,
+        type: Object,
         require: true
     },
     janta: {
-        type: String,
+        type: Object,
         require: true
     },
     ativo:{

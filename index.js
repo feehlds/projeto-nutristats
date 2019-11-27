@@ -52,7 +52,19 @@ app.use(passport.session());
 app.use(flash());
 //middlewares
 app.use((req, res, next) => {
+
     res.locals.user = req.user || null;
+    if (res.locals.user) {
+
+
+        if (req.originalUrl == '/usuario/login') {
+            res.send(res.locals.user)
+            console.log(res.locals.user)
+        }
+        else
+            next()
+    }
+    else
         next();
 })
 //Rotas

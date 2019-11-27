@@ -11,7 +11,7 @@ router.post("/registro", (req,res, next) => {
     bcrypt.genSalt(10, (erro, salt) => {
         Usuario.findOne({nomeUsuario: req.body.login}).then((usuario)=>{
             if(usuario){
-                req.flash("error_msg", "Já existe uma conta com este e-mail em nosso sistema")
+                req.flash("error_msg", "Já existe uma conta com nome de usuário em nosso sistema");
                 res.status(400).send('Usuário já existe');
             }else{
                 const usuarioNovo = new Usuario({
@@ -23,17 +23,17 @@ router.post("/registro", (req,res, next) => {
                 });
                 bcrypt.hash(usuarioNovo.senha, salt, (erro, hash) =>{
                     if(erro){
-                        req.flash("error_msg", "Houve um erro durante o salvamento do usuario")
+                        req.flash("error_msg", "Houve um erro durante o salvamento do usuario");
                         res.sendStatus(401);
                     }
 
                     usuarioNovo.senha = hash;
                     usuarioNovo.save().then(()=>{
-                        req.flash("success_msg", "Usuario criado com sucesso!")
+                        req.flash("success_msg", "Usuario criado com sucesso!");
                         console.log('bateu cadastro')
                         res.redirect(307, '/usuario/login');
                     }).catch((err) => {
-                        req.flash("error_msg", "Houve um erro ao criar o usuário, tente novamente! " )
+                        req.flash("error_msg", "Houve um erro ao criar o usuário, tente novamente! " );
                         res.status(404);
                     });
                 });
@@ -48,8 +48,50 @@ router.post("/registro", (req,res, next) => {
 
 
 router.post("/atualizar", (req,res, next) => {
+            
+    //verifica se o usuário ja esta cadastrado no sitema
+    var nomeUsuario =  req.body.nome;
+    var id = req.body.id;
+    Usuario.find().then((usuarioList)=>{           
 
+        usuarioList.forEach (function (usuarioFind) { 
+
+            if(usuarioFind.nomeUsuario === nomeUsuario &&  usuarioFind.id != id){
+                req.flash("error_msg", "Já existe uma conta com este nomeUsuário em nosso sistema");
+                res.status(400).send('Usuário já existe');
+            }else{
+
+                //Se não, realiza o update
+                Usuario.findOne({_id: req.body.id}).then((usuario)=>{
+                        usuario.nome = req.body.nome;
+                        usuario.email = req.body.email;
+                        usuario.nomeUsuario =  req.body.login;
+                        usuario.senha =  usuario.senha;
+                        usuario.perfil =  req.body.perfil;
+                                
+                        usuario.save().then(()=>{
+                            req.flash("success_msg", "Usuario criado com sucesso!")
+                            res.redirect(307,"/");
+
+                        }).catch((err) => {
+                            req.flash("error_msg", "Houve um erro interno");
+                            res.status(404);
+                        });
+                }).catch((err)=>{
+                    req.flash("error_msg", "Houve um erro ao atualizaro o usuário")
+                    res.status(404);
+                });
+            }
+        }); 
+    }).catch((err)=>{
+        req.flash("error_msg", "Houve um erro interno ao editar o usuário");
+        res.status(404);
+    })
 });
+
+
+
+
 router.post("/login",(req,res,next)=>{
     passport.authenticate("local",{
         failureRedirect: "/erro",

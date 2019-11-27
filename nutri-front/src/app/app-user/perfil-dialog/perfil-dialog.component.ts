@@ -1,6 +1,7 @@
 import { NodeService } from 'src/app/node.service';
-import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Input } from '@angular/core';
+import { NgbActiveModal, ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,14 +11,15 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class PerfilDialogComponent implements OnInit {
 
+  @Input()
   user;
   alimentacao;
   peso;
   altura;
-  constructor(private ns: NodeService, public activeModal: NgbActiveModal) { }
+  constructor(private ns: NodeService, public activeModal: NgbActiveModal,
+    private modalService: NgbModal, private router: Router) { }
 
   ngOnInit() {
-    this.user = JSON.parse(sessionStorage.getItem('user'));
     
     if(this.user.perfil.peso){
       this.peso = this.user.perfil.peso
@@ -34,7 +36,11 @@ export class PerfilDialogComponent implements OnInit {
       this.user.perfil.alimentacao = this.alimentacao;
     }
     console.log(this.user)
-    this.ns.updateUsuario(this.user);
+    this.ns.updateUsuario(this.user).subscribe(data => {
+      sessionStorage.clear();
+      sessionStorage.setItem('user', JSON.stringify(this.user));
+      this.modalService.dismissAll();
+    });
   }
 
 }

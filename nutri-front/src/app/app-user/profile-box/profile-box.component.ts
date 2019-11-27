@@ -17,6 +17,7 @@ export class ProfileBoxComponent implements OnInit {
   constructor(private router: Router, private ns: NodeService, private modalService: NgbModal) { }
 
   ngOnInit() {
+    console.log(sessionStorage.getItem('user'))
     this.user = JSON.parse(sessionStorage.getItem('user'));
   }
 
@@ -32,7 +33,8 @@ export class ProfileBoxComponent implements OnInit {
   }
 
   openPerfilDialog(){
-    this.modalService.open(PerfilDialogComponent, {size: 'lg'})
+    let modal = this.modalService.open(PerfilDialogComponent, {size: 'lg'})
+    modal.componentInstance.user = this.user;
   }
 
 }

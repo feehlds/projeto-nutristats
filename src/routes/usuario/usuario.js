@@ -48,10 +48,11 @@ router.post("/registro", (req,res, next) => {
 
 
 router.post("/atualizar", (req,res, next) => {
+    console.log(req)
             
     //verifica se o usuário ja esta cadastrado no sitema
-    var nomeUsuario =  req.body.nome;
-    var id = req.body.id;
+    var nomeUsuario =  req.body.nomeUsuario;
+    var id = req.body._id;
     Usuario.find().then((usuarioList)=>{           
 
         usuarioList.forEach (function (usuarioFind) { 
@@ -62,16 +63,16 @@ router.post("/atualizar", (req,res, next) => {
             }else{
 
                 //Se não, realiza o update
-                Usuario.findOne({_id: req.body.id}).then((usuario)=>{
+                Usuario.findOne({_id: req.body._id}).then((usuario)=>{
                         usuario.nome = req.body.nome;
                         usuario.email = req.body.email;
-                        usuario.nomeUsuario =  req.body.login;
+                        usuario.nomeUsuario =  req.body.nomeUsuario;
                         usuario.senha =  usuario.senha;
                         usuario.perfil =  req.body.perfil;
                                 
                         usuario.save().then(()=>{
                             req.flash("success_msg", "Usuario criado com sucesso!")
-                            res.redirect(307,"/");
+                            res.status(200).json('ok');
 
                         }).catch((err) => {
                             req.flash("error_msg", "Houve um erro interno");

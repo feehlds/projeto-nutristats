@@ -12,10 +12,16 @@
 </head>
 <body>
     {{{body}}}
+     {{#if error}}
+        <div data-alert class="alert-box warning round">
+            {{error}}
+        <a href="#" class="close">&times;</a>
+        </div>
+        {{else}}
+
+        {{/if}}
      {{>_navbar}}
 </body>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/js/foundation.js"></script>
     <script src="/js/script.js" defer></script>

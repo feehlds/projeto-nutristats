@@ -15,6 +15,7 @@ router.post("/registro", (req,res) => {
 
     bcrypt.genSalt(10, (erro, salt) => {
         Usuario.findOne({nomeUsuario: req.body.login}).then((usuario)=>{
+            console.log("entrou aqui");
             if(usuario){
                 req.flash("error_msg", "Já existe uma conta com nome de usuário em nosso sistema");
                 res.redirect("/");
@@ -45,10 +46,13 @@ router.post("/registro", (req,res) => {
                 });
             }
         }).catch((err) => {
+            console.log("entrou aqui");
             req.flash("error_msg", "Houve um erro interno");
             res.redirect("/");
         });
-    });
+        
+        
+    })
     
 });
 

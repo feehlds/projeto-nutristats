@@ -1,0 +1,16 @@
+
+{{#if success_msg}}
+
+<div data-alert class="alert-box warning round">
+    {{success_msg}}
+  <a href="#" class="close">&times;</a>
+</div>
+
+{{/if}}
+
+{{#if error_msg}}
+    <div data-alert class="alert-box warning round">
+    {{error_msg}}
+  <a href="#" class="close">&times;</a>
+  </div>
+{{/if}}

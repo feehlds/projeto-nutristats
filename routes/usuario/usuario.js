@@ -115,7 +115,7 @@ router.get("/login", (req,res) => {
 router.post("/login",(req,res,next)=>{
     passport.authenticate("local",{
         successRedirect: "/",
-        failureRedirect: "/erro",
+        failureRedirect: "/",
         failureFlash: true
     })(req,res,next);
     

@@ -40,6 +40,7 @@
         "cors": "^2.8.5",
         "expect-puppeteer": "^4.3.0",
         "express": "^4.17.1",
+        "express-handlebars": "^3.1.0",
         "express-session": "^1.17.0",
         "heroku": "^7.29.0",
         "heroku-ssl-redirect": "0.0.4",
@@ -50,8 +51,8 @@
         "passport-local": "^1.0.0",
         "pg": "^7.12.1",
         "pg-hstore": "^2.3.3",
-        "typescript": "~2.7.2",
-        "puppeteer": "^2.0.0"
+        "puppeteer": "^2.0.0",
+        "typescript": "~2.7.2"
     },
     "devDependencies": {
         "cucumber": "^5.1.0",

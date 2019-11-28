@@ -25,6 +25,10 @@ mongoose.connect(db.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     poolSize: 100
+}).then(()=>{
+    console.log("Conectado com o mongo")
+}).catch((err)=>{
+    console.log("Erro ao se conectar: " + err)
 })
 
 //Body Parser

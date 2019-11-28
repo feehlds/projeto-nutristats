@@ -51,8 +51,7 @@
         "passport-local": "^1.0.0",
         "pg": "^7.12.1",
         "pg-hstore": "^2.3.3",
-        "puppeteer": "^2.0.0",
-        "typescript": "~2.7.2"
+        "puppeteer": "^2.0.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0",

@@ -11,6 +11,11 @@
     <title>NutriStats</title>
 </head>
 <body>
+      {{#if user}}
+
+       {{>_menu}}
+
+        {{/if}}
     {{{body}}}
      {{#if error}}
 
@@ -20,6 +25,8 @@
         {{else}}
 
         {{/if}}
+       
+    
      {{>_msg}}
      {{>_navbar}}
 </body>

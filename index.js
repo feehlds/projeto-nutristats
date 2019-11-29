@@ -6,12 +6,15 @@ const mongoose = require('mongoose');
 const db = require('./src/models/database/conexaoMongo');
 var sslRedirect = require('heroku-ssl-redirect');
 const bodyParser = require('body-parser');
-const usuarios = require("./routes/usuario/usuario");
-const dietas = require("./routes/dieta/dieta");
 const passport = require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
 require("./config/autenticacao")(passport);
+
+//Routes
+const dietas = require("./routes/dieta/dieta");
+const usuarios = require("./routes/usuario/usuario");
+const nutrientes = require("./routes/nutriente/nutriente");
 
 //Definindo porta padrão ou 3030
 const PORT = process.env.PORT || 3030
@@ -70,6 +73,7 @@ app.get('/pesqAlimentos', (req, res) => {
 
 app.use("/usuarios", usuarios);
 app.use("/dietas", dietas);
+app.use("/nutrientes", nutrientes);
 // O app Listen sempre deve ser a ultima linha do código
 app.listen(PORT, function () {
     console.log('Server running on port ' + PORT);

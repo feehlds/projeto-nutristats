@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-
-.animated-search-form[type=search] {
-    width: 10rem;
-    border: 0.125rem solid #e6e6e6;
-    box-shadow: 0 0 3.125rem rgba(0, 0, 0, 0.18);
-    border-radius: 0;
-    background-image: url();
-    background-position: 0.625rem 0.625rem;
-    background-repeat: no-repeat;
-    padding: 0.75rem 1.25rem 0.75rem 2rem;
-    transition: width 0.4s ease-in-out;
-  }
-  .animated-search-form[type=search]:focus {
-    width: 100%;
-  }
-  
-  
-=======
 * {
   margin: 0;
   padding: 0;
@@ -25,27 +6,25 @@
   font-size: 1.5rem;
 }
 .animated-search-form[type=search] {
-  width: 10rem;
+  width: 15rem;
   border: 0.125rem solid #e6e6e6;
   box-shadow: 0 0 3.125rem rgba(0, 0, 0, 0.18);
   border-radius: 0;
+  margin: 0;
   background-position: 0.625rem 0.625rem;
   background-repeat: no-repeat;
   padding: 0.75rem 1.25rem 0.75rem 2rem;
   transition: width 0.4s ease-in-out;
+  border-radius: 25px;
+  height: 2.9rem;
 }
 
 .animated-search-form[type=search]:focus{
-  width: 100%;
+  width: 75%;
 }
 
-.animated-button{
-  width: 10rem;
-  transition: width 0.4s ease-in-out;
-}
-
-#bt-buscar{
-  margin: o auto;
+.animated-search-form[type=search]:focus{
+  width: 75%;
 }
 
 /* body{
@@ -161,10 +140,7 @@ h1 {
 
 footer {
   text-align: right;
-  padding-right: 50px;
-  padding-top: 7px;
   background-color: #00b159;
-
   border-top: 1px solid #00b159;
   bottom: 0;
   left: 0;
@@ -176,4 +152,89 @@ footer {
 footer a {
   color: white;
 }
->>>>>>> 62da341f9bef8556f0b6365239f9ab6cdbc18e98
+
+#bt-buscar{
+  margin: o auto;
+  width: 15rem;
+  border-radius: 25px;
+  margin-top: 0.5rem;
+}
+
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 1rem 0;
+  padding: 0.85em 1em;
+  border: 1px solid transparent;
+  border-radius: 0;
+  -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-family: inherit;
+  font-size: 0.9rem;
+  -webkit-appearance: none;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: #1779ba;
+  color: #fefefe; }
+  [data-whatinput='mouse'] .button {
+    outline: 0; }
+  .button:hover, .button:focus {
+    background-color: #14679e;
+    color: #fefefe; }
+  .button.tiny {
+    font-size: 0.6rem; }
+  .button.small {
+    font-size: 0.75rem; }
+  .button.large {
+    font-size: 1.25rem; }
+  .button.expanded {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0; }
+.button.hollow {
+  border: 1px solid #1779ba;
+  color: #1779ba; }
+  .button.hollow, .button.hollow:hover, .button.hollow:focus {
+    background-color: transparent; }
+  .button.hollow.disabled, .button.hollow.disabled:hover, .button.hollow.disabled:focus, .button.hollow[disabled], .button.hollow[disabled]:hover, .button.hollow[disabled]:focus {
+    background-color: transparent; }
+  .button.hollow:hover, .button.hollow:focus {
+    border-color: #3adb76;
+    color: #3adb76; }
+    .button.hollow:hover.disabled, .button.hollow:hover[disabled], .button.hollow:focus.disabled, .button.hollow:focus[disabled] {
+      border: 1px solid #1779ba;
+      color: #1779ba; }
+.button.hollow.success {
+  border: 1px solid #3adb76;
+  color: #3adb76; }
+  .button.hollow.success:hover, .button.hollow.success:focus {
+    border-color: #157539;
+    color: #157539; }
+    .button.hollow.success:hover.disabled, .button.hollow.success:hover[disabled], .button.hollow.success:focus.disabled, .button.hollow.success:focus[disabled] {
+      border: 1px solid #3adb76;
+      color: #3adb76; }
+        .button.clear.disabled, .button.clear.disabled:hover, .button.clear.disabled:focus, .button.clear[disabled], .button.clear[disabled]:hover, .button.clear[disabled]:focus {
+          background-color: transparent; }
+        .button.clear:hover, .button.clear:focus {
+          border-color: #3adb76;
+          color: #3adb76; }
+          .button.clear:hover.disabled, .button.clear:hover[disabled], .button.clear:focus.disabled, .button.clear:focus[disabled] {
+            border: 1px solid #1779ba;
+            color: #1779ba; }
+.hollow.button.success:hover{
+  color: white;
+  background-color: #3adb76;
+}
+.clear.button{
+  color: white;
+}
+.clear.button:hover {
+    background: white;
+    color: #7BC844;
+}
+#resultCards{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

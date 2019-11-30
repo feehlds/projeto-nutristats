@@ -1,7 +1,7 @@
 
 <div id="pesquisa" align="center">
 <img src="https://i.imgur.com/MTA5XT4.png" alt="imagem-logo" id="logo">
-        <form action="/nutrientes/nutrientes" method="get">
+        <form action="/nutrientes" method="get">
                 <input type="search" name="barraPesq" placeholder="Ex. feijão..." class="animated-search-form" id="barraPesquisa">
                 <button class="hollow button success animated-button" type="submit" id="bt-buscar">Buscar</button>
         </form>
@@ -35,9 +35,5 @@
             <a class="hollow button success" style="width: 75%;" (click)="openAlimentoDialog(alimento)">Info</a>
         </div>
     </div>
-</div>
-  {{else}}
-
-  {{/each}}
-
+    {{/each}}
 </div>

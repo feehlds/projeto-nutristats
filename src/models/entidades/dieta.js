@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const Dieta = Schema({
     descricao:{
-        type: Object,
+        type: String,
         require: true
     },
     cafeManha: {

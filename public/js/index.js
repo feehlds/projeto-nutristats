@@ -22,7 +22,7 @@ $(function () {
       console.log(message)
       if (message.message) {
         alert(message.message);
-      } else if (message == 'OK') {
+      } else if (message) {
         location.reload();
       }
     });

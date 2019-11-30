@@ -18,7 +18,6 @@ router.post("/registro", (req, res) => {
                 req.flash("error_msg", "Já existe uma conta com nome de usuário em nosso sistema");
                 res.redirect("/");
             } else {
-                console.log("sdfasfdsfafda" + req.body.dataNasc)
                 const usuarioNovo = new Usuario({
                     "nome": req.body.nomeCompleto,
                     "email": req.body.email,
@@ -37,7 +36,8 @@ router.post("/registro", (req, res) => {
                     usuarioNovo.senha = hash;
                     usuarioNovo.save().then(() => {
                         req.flash("success_msg", "Usuario criado com sucesso!");
-                        res.redirect("/");
+                        res.redirect(307, "/usuarios/login");
+                        
                     }).catch((err) => {
                         req.flash("error_msg", "Houve um erro ao criar o usuário, tente novamente! ");
                         res.redirect("/");
@@ -97,7 +97,7 @@ router.post("/login", (req, res, next) => {
         if (!user) { return res.send(info); }
 
         req.logIn(user, function (err) {
-            res.status(200).send('OK')        
+            res.status(200).redirect('/');        
         });
     })(req, res, next);
 

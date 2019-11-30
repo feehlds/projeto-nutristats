@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0;
 }
-
+.label{
+  font-size: 1.5rem;
+}
 .animated-search-form[type=search] {
   width: 10rem;
   border: 0.125rem solid #e6e6e6;

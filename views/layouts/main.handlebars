@@ -11,27 +11,21 @@
     <title>NutriStats</title>
 </head>
 <body>
+    <div class="container-fluid">
       {{#if user}}
 
        {{>_menu}}
 
         {{/if}}
     {{{body}}}
-     {{#if error}}
-
-        <span class="label alert" >{{error}}</span>
- 
-        
-        {{else}}
-
-        {{/if}}
-       
+     
     
      {{>_msg}}
      {{>_navbar}}
+     </div>
 </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/js/foundation.js"></script>
-    <script src="/js/script.js" defer></script>
+    <script src="/js/index.js" defer></script>
 
 </html>

@@ -29,7 +29,7 @@ const Nutriente = Schema({
     carboidrato:{
        type: String
     },
-    fibraAlimentar:{
+    FibraAlimentar:{
        type: String
     },
     Cinzas:{
@@ -53,7 +53,7 @@ const Nutriente = Schema({
     Sodio:{
        type: String
     },
-    ppotassio:{
+    potassio:{
        type: String
     },
     Cobre:{

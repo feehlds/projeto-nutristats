@@ -175,7 +175,7 @@ footer a {
   line-height: 1;
   text-align: center;
   cursor: pointer;
-  background-color: #1779ba;
+  background-color: transparent;
   color: #fefefe; }
   [data-whatinput='mouse'] .button {
     outline: 0; }

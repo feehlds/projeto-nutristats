@@ -1,0 +1,180 @@
+<footer>
+    <div class="row">
+        <div class="columns">
+            {{#if user}}
+            <a data-open="logout">Logout</a>
+
+            <a data-open="perfil">Perfil</a>
+
+
+            <div class="reveal" id="logout" data-reveal>
+
+                <h4><strong>Deseja sair?</strong></h4>
+                <div class="btn">
+                    <a href="/usuarios/logout" type="submit" class="secondary button"> Sair</a> <br>
+                    <small>Você será direcionado para a tela inicial</small> <br>
+                </div>
+                <button class="close-button" data-close aria-label="Close reveal" type="button">
+                    <span aria-hidden="true">&times;</span>
+            </div>
+
+            <div class="reveal" id="perfil" data-reveal>
+                <div class="card-profile-stats">
+                    <div class="card-profile-stats-intro">
+                        <img class="card-profile-stats-intro-pic" src="lib/imagens/semFoto.png" alt="profile-image" />
+                        <div class="card-profile-stats-intro-content">
+                            <h3>{{user.nome}}</h3>
+                            <p>{{user.nomeUsuario}}</small></p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="card-profile-stats-container">
+                        <div class="card-profile-stats-statistic">
+                            <span class="stat">25</span>
+                            <p>IMC</p>
+                        </div>
+                        <div class="card-profile-stats-statistic">
+                            <span class="stat">125</span>
+                            <p>TMB</p>
+                        </div>
+                        <div class="card-profile-stats-statistic">
+                            <span class="stat">10</span>
+                            <p>Dietas</p>
+                        </div>
+                        <div class="card-profile-stats-more">
+                            <p class="card-profile-stats-more-link"><a href="#"><i class="fa fa-angle-down"
+                                        aria-hidden="true"></i></a></p>
+                            <div class="card-profile-stats-more-content">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem libero fugit,
+                                    pariatur maxime! Optio enim, deserunt quia molestiae fugiat delectus, dolore et esse
+                                    nostrum, quod autem necessitatibus fugit soluta repellendus.
+                                </p>
+                            </div> <!-- /.card-profile-stats-more-content -->
+                        </div> <!-- /.card-profile-stats-more -->
+                    </div> <!-- /.card-profile-stats -->
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                        <span aria-hidden="true">&times;</span>
+
+                </div>
+                <a data-open="editar">Editar</a>
+            </div>
+
+
+            <div class="reveal" id="editar" data-reveal>
+                <form action="./usuarios/atualizar" method="post">
+                    <h1><strong>Cadastro do Site</strong></h1>
+                    <h4><strong>Dados Principais</strong></h4>
+                    <label for="nome">Nome Completo
+                        <input type="text" name="nome" id="nome" value="{{user.nome}}">
+                    </label>
+                    <label for="email">Endereço de E-mail
+                        <input type="email" name="email" id="email" value="{{user.email}}">
+                    </label>
+                    <label for="dataNasc">Data de Nascimento
+                        <input type="date" name="dataNasc" id="dataNasc" value="{{user.perfil.DataNascimento}}">
+                    </label>
+                    <label for="sexo">Sexo
+                        <select name="sexo" id="sexo" value="">
+                            <option value="m">Masculino</option>
+                            <option value="f">Feminino</option>
+                            <option value="o">Outro</option>
+                        </select>
+                    </label>
+                    <hr>
+                    <h4><strong>Dados de Login</strong></h4>
+                    <label for="username">Nome de Usuário
+                        <input type="text" name="nomeUsuario" id="nomeUsuario" required value="{{user.nomeUsuario}}">
+                    </label>
+                    <label for="senha">Senha
+                        <input type="password" name="senha" id="senha" required>
+                    </label>
+                    <label for="confirmSenha">Confirme a Senha
+                        <input type="password" name="confirmSenhaUser" id="confirmSenhaUser" required>
+                    </label>
+                    <div class="btn">
+                        <input type="submit" class="secondary button large" value="Editar">
+                    </div>
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                </form>
+            </div>
+
+
+            {{else}}
+
+
+
+
+
+
+
+            <a data-open="login">Login</a>
+
+            <div class="reveal" id="login" data-reveal>
+                <form action="/usuarios/login" method="post">
+                    <h4><strong>Realize o Login</strong></h4>
+                    <label for="nome">Usuário
+                        <input type="text" name="login" id="username">
+                    </label>
+                    <label for="senhaUser">Senha
+                        <input type="password" name="pass" id="senhaUser">
+                    </label>
+                    <a href="#">Esqueceu a senha?</a> <br>
+                    <div class="btn">
+                        <input type="submit" class="secondary button" value="Login"> <br>
+                        <small>Novo por aqui?</small> <br>
+                        <a data-open="cadastro" class="secondary button">Cadastrar</a>
+                    </div>
+                </form>
+                <button class="close-button" data-close aria-label="Close reveal" type="button">
+                    <span aria-hidden="true">&times;</span>
+            </div>
+
+            <div class="cadastro">
+
+                <div class="reveal cadastro" id="cadastro" data-reveal>
+                    <form action="/usuarios/registro" method="post">
+                        <h1><strong>Cadastro do Site</strong></h1>
+                        <h4><strong>Dados Principais</strong></h4>
+                        <label for="nome">Nome Completo
+                            <input type="text" name="nomeCompleto" id="nomeUser">
+                        </label>
+                        <label for="email">Endereço de E-mail
+                            <input type="email" name="email" id="email">
+                        </label>
+                        <label for="dataNasc">Data de Nascimento
+                            <input type="date" name="dataNasc" id="dataNasc">
+                        </label>
+                        <label for="sexo">Sexo
+                            <select name="sexo" id="sexo">
+                                <option value="m">Masculino</option>
+                                <option value="f">Feminino</option>
+                                <option value="o">Outro</option>
+                            </select>
+                        </label>
+                        <hr>
+                        <h4><strong>Dados de Login</strong></h4>
+                        <label for="username">Nome de Usuário
+                            <input type="text" name="login" id="username" required>
+                        </label>
+                        <label for="senha">Senha
+                            <input type="password" name="pass" id="senha" required>
+                        </label>
+                        <label for="confirmSenha">Confirme a Senha
+                            <input type="password" name="confirmSenhaUser" id="confirmSenhaUser" required>
+                        </label>
+                        <div class="btn">
+                            <input type="submit" class="secondary button large" value="Cadastrar">
+                        </div>
+                        <button class="close-button" data-close aria-label="Close reveal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                    </form>
+                </div>
+            </div>
+
+            {{/if}}
+
+        </div>
+    </div>
+</footer>

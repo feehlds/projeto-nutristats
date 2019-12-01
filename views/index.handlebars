@@ -1,39 +1,41 @@
-
-<div id="pesquisa" align="center">
-<img src="https://i.imgur.com/MTA5XT4.png" alt="imagem-logo" id="logo">
+<div class="container-fluid">
+    <div id="pesquisa" align="center">
+        <img src="https://i.imgur.com/MTA5XT4.png" alt="imagem-logo" id="logo">
         <form action="/nutrientes" method="get">
-                <input type="search" name="barraPesq" placeholder="Ex. feijão..." class="animated-search-form" id="barraPesquisa">
-                <button class="hollow button success animated-button" type="submit" id="bt-buscar">Buscar</button>
+            <input type="search" name="barraPesq" placeholder="Ex. feijão..." class="animated-search-form"
+                id="barraPesquisa">
+            <button class="hollow button success animated-button" type="submit" id="bt-buscar">Buscar</button>
         </form>
-</div>
-
-<table class="responsive-card-table unstriped" id="tb-pesquisa">
-</table>
-
-<div align="center" >
-
-  {{#each nutrientes}}
-
-<div id="resultCards">
-    <div class="card text-center>
-        <div class="card-header">
-            <b>{{Descricao}}</b>
-        </div>
-        <div class="card-body">
-            <div class="ui-g-12">
-                <div class="ui-g-4"><b>KCAL: </b>{{ kcal }}</div>
-                <div class="ui-g-4"><b>KJ: </b>{{ kj }}</div>
-                <div class="ui-g-4"><b>Umidade: </b>{{ Umidade }}%</div>
-                <div class="ui-g-4"><b>Proteína: </b>{{ Proteina }}(g)</div>
-                <div class="ui-g-4"><b>Colesterol:
-                    </b>{{ Colesterol}} > 0 ? {{Colesterol}} + '(mg)' : {{Colesterol }}</div>
-                <div class="ui-g-4"><b>Fibra: </b>{{ FibraAlimentar }}(g)</div>
-                <div class="ui-g-4"><b>Lipídeos: </b>{{ Lipideos }}(g)</div>
-                <div class="ui-g-4"><b>Carboidrato: </b>{{ carboidrato }}(g)</div>
-                <div class="ui-g-4"><b>Sódio: </b>{{ Sodio }}(mg)</div>
-            </div>
-            <a class="hollow button success" style="width: 75%;" (click)="openAlimentoDialog(alimento)">Info</a>
-        </div>
     </div>
-    {{/each}}
+
+    <table class="responsive-card-table unstriped" id="tb-pesquisa">
+    </table>
+
+    <div align="center">
+
+        {{#each nutrientes}}
+
+        <div id="resultCards">
+            <div class="card text-center>
+        <div class=" card-header">
+                <b>{{Descricao}}</b>
+            </div>
+            <div class="card-body">
+                <div class="ui-g-12">
+                    <div class="ui-g-4"><b>KCAL: </b>{{ kcal }}</div>
+                    <div class="ui-g-4"><b>KJ: </b>{{ kj }}</div>
+                    <div class="ui-g-4"><b>Umidade: </b>{{ Umidade }}%</div>
+                    <div class="ui-g-4"><b>Proteína: </b>{{ Proteina }}(g)</div>
+                    <div class="ui-g-4"><b>Colesterol:
+                        </b>{{ Colesterol}} > 0 ? {{Colesterol}} + '(mg)' : {{Colesterol }}</div>
+                    <div class="ui-g-4"><b>Fibra: </b>{{ FibraAlimentar }}(g)</div>
+                    <div class="ui-g-4"><b>Lipídeos: </b>{{ Lipideos }}(g)</div>
+                    <div class="ui-g-4"><b>Carboidrato: </b>{{ carboidrato }}(g)</div>
+                    <div class="ui-g-4"><b>Sódio: </b>{{ Sodio }}(mg)</div>
+                </div>
+                <a class="hollow button success" style="width: 75%;" (click)="openAlimentoDialog(alimento)">Info</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </div>

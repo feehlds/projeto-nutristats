@@ -28,9 +28,9 @@ mongoose.connect(db.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     poolSize: 100
-}).then(()=>{
+}).then(() => {
     console.log("Conectado com o mongo")
-}).catch((err)=>{
+}).catch((err) => {
     console.log("Erro ao se conectar: " + err)
 })
 
@@ -38,7 +38,7 @@ mongoose.connect(db.mongoURI, {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 //Handlebars
-app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');
 
 //Sessão
@@ -63,8 +63,12 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, 'public')));
 
 //requests e responses
-app.get('/', (req, res)=> {
-    res.render("index");
+app.get('/', (req, res) => {
+    if (res.locals.user) {
+        res.render("index", {user: res.locals.user});
+    }
+    else
+        res.render("index")
 });
 
 app.get('/pesqAlimentos', (req, res) => {

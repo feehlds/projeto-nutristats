@@ -1,6 +1,7 @@
-<footer>
+<footer class="footer">
     {{#if user}}
-    <a data-open="logout">Logout</a>
+    <a class="clear button" href="/usuarios/logout" type="submit">Logout</a>
+{{!--    <a data-open="logout">Logout</a>
 
     <a data-open="perfil">Perfil</a>
 
@@ -96,7 +97,7 @@
             <button class="close-button" data-close aria-label="Close reveal" type="button">
                 <span aria-hidden="true">&times;</span>
         </form>
-    </div>
+    </div> --}}
     {{else}}
     <button data-open="login" class="clear button">Login</button>
 

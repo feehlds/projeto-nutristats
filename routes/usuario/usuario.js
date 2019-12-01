@@ -54,13 +54,10 @@ router.post("/registro", (req, res) => {
 
 });
 
-router.get("/atualizar", (req, res) => {
-    res.render("usuarios/atualizar")
-})
 router.post("/atualizar", (req, res) => {
     //verifica se o usuário ja esta cadastrado no sitema
     let nomeUsuario = req.body.nomeUsuario;
-    let id = req.user.id;
+    let id = req.body._id;
 
     Usuario.findOne({ nomeUsuario: nomeUsuario }).then((usuario) => {
         if (!usuario || usuario.id === id) {
@@ -68,10 +65,9 @@ router.post("/atualizar", (req, res) => {
             usuario.email = req.body.email;
             usuario.nomeUsuario = req.body.nomeUsuario;
             usuario.senha = usuario.senha;
-            usuario.perfil = {
-                "DataNascimento": req.body.dataNasc,
-            }
-            req.user.save().then(() => {
+            usuario.perfil = req.body.perfil;
+
+            usuario.save().then(() => {
                 req.flash("success_msg", "Usuario criado com sucesso!")
                 res.redirect("/");
 

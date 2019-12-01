@@ -1,3 +1,6 @@
+//Salvar user
+//var user;
+
 //Chamada Foundation (Funcionamento do Modal - Foundation Reveal)
 $(document).foundation();
 
@@ -18,15 +21,15 @@ $(function () {
     e.preventDefault();
     var data = $(this).serialize();
     $.post('/usuarios/login', data, function (message) {
-      console.log(message)
       if (message.message) {
         showAlert(message.message)
-      } else if (message) {
+      } else if (message) {        
         location.reload();
       }
     });
   });
 });
+
 
 //Alert de erro
 function showAlert(message) {
@@ -47,8 +50,6 @@ var senha = document.getElementById("senha");
 var confirmSenha = document.getElementById("confirmSenhaUser");
 
 function validarSenhas() {
-  // console.log("Senha: " + senha.value);
-  // console.log("Senha Confirm: " + confirmSenha.value);
   if (senha.value != confirmSenha.value) {
     confirmSenha.setCustomValidity("Senhas Diferentes!");
     confirmSenha.style.borderColor = "#f00";

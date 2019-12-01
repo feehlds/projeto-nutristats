@@ -17,17 +17,30 @@ $(function () {
   $('#postLogin').on('submit', function (e) {
     e.preventDefault();
     var data = $(this).serialize();
-    console.log(data)
     $.post('/usuarios/login', data, function (message) {
       console.log(message)
       if (message.message) {
-        alert(message.message);
+        showAlert(message.message)
       } else if (message) {
         location.reload();
       }
     });
   });
 });
+
+//Alert de erro
+function showAlert(message) {
+  let display = document.getElementById("alertMessage").style.display;
+  if (display == "none") {
+    document.getElementById("alertMessage").style.display = 'block';
+    document.getElementById("errorMessage").innerHTML = message
+  }
+  else if (display == 'block' && message){
+    document.getElementById("errorMessage").innerHTML = message
+  }
+  else
+    document.getElementById("alertMessage").style.display = 'none'
+}
 
 //Validação de Senhas antes de levar para o servidor
 var senha = document.getElementById("senha");

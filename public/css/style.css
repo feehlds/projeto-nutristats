@@ -218,8 +218,9 @@ footer a {
         .button.clear.disabled, .button.clear.disabled:hover, .button.clear.disabled:focus, .button.clear[disabled], .button.clear[disabled]:hover, .button.clear[disabled]:focus {
           background-color: transparent; }
         .button.clear:hover, .button.clear:focus {
+          background-color: #3adb76;
           border-color: #3adb76;
-          color: #3adb76; }
+          color: white; }
           .button.clear:hover.disabled, .button.clear:hover[disabled], .button.clear:focus.disabled, .button.clear:focus[disabled] {
             border: 1px solid #1779ba;
             color: #1779ba; }

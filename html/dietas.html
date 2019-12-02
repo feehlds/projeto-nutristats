@@ -1,0 +1,47 @@
+<!-- Página Inicial de Dietas -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NutriStats - Dietas</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.css" />
+    <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+    <header>
+        <ul class="menu align-center">
+            <li><a>Home</a></li>
+            <li><a>Dietas</a></li>
+            <li><a>Bem Vindo</a></li>
+        </ul>
+    </header>
+    <main>
+        <div class="grid-x">
+            <div class="cell large-6">
+                <h1><strong>Minhas Dietas</strong></h1>
+            </div>
+            <div class="cell large-6" id="btnCriarDieta">
+                <button class="hollow button success"><a href="criarDieta.html">Nova Dieta</a></button>
+            </div>
+        </div>
+        <div class="listDietas" align="center">
+            <!-- Montar uma rota para pesquisar dieta -->
+            <form action="/procurar" method="get">
+                <input type="search" name="barraPesq" placeholder="Pesquisar Dieta" class="animated-search-form" id="barraPesquisa">
+                <!-- <button class="hollow button success animated-button" type="submit" id="bt-buscar">Buscar</button> -->
+            </form>
+        </div>
+        <div id="dietas"></div>
+    </main>
+    <footer>
+        <div class="row">
+            <div class="columns">
+                <a>Logout</a>                
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

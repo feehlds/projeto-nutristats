@@ -51,7 +51,8 @@
         "passport-local": "^1.0.0",
         "pg": "^7.12.1",
         "pg-hstore": "^2.3.3",
-        "puppeteer": "^2.0.0"
+        "puppeteer": "^2.0.0",
+        "sortablejs": "^1.10.1"
     },
     "devDependencies": {
         "cucumber": "^5.1.0",

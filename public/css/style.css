@@ -239,3 +239,12 @@ footer a {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+#btnCriarDieta button {
+  margin-top: 15px;
+  margin-left: 450px;
+}
+
+#btnCriarDieta a {
+  color: green;
+}

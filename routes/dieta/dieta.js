@@ -6,7 +6,7 @@ const Dieta = mongoose.model("dietas");
 
 
 //cadastro de dieta
-router.post('/registro', (req, res) => {
+router.post('/registrar', (req, res) => {
     const dietaNova = new Dieta({
         descricao: req.body.descricao,
         cafeManha: req.body.cafeManha,

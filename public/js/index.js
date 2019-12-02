@@ -1,3 +1,6 @@
+//Importação do SortableJS
+import Sortable from 'sortablejs';
+
 //Chamada Foundation (Funcionamento do Modal - Foundation Reveal)
 $(document).foundation();
 
@@ -58,3 +61,22 @@ function validarSenhas() {
   }
 }
 confirmSenha.onkeyup = validarSenhas;
+
+// Sortable.js - Configuração da lista
+var listaEsquerda = document.getElementById('listaEsquerda');
+var listaDireita = document.getElementById('listaDireita');
+
+new Sortable(listaEsquerda, {
+  group: {
+      name: 'shared',
+      pull: 'clone',
+      put: false // Do not allow items to be put into this list
+  },
+  animation: 150,
+  sort: false // To disable sorting: set sort to false
+});
+
+new Sortable(listaDireita, {
+  group: 'shared',
+  animation: 150
+});

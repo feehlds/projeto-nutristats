@@ -1,0 +1,18 @@
+<div>
+    <div class="grid-x">
+        <div class="cell large-6">
+            <h1><strong>Minhas Dietas</strong></h1>
+        </div>
+        <div class="cell large-6" id="btnCriarDieta">
+            <button class="hollow button success"><a href="criarDieta.html">Nova Dieta</a></button>
+        </div>
+    </div>
+    <div class="listDietas" align="center">
+        <!-- Montar uma rota para pesquisar dieta -->
+        <form action="/procurar" method="get">
+            <input type="search" name="barraPesq" placeholder="Pesquisar Dieta" class="animated-search-form" id="barraPesquisa">
+            <!-- <button class="hollow button success animated-button" type="submit" id="bt-buscar">Buscar</button> -->
+        </form>
+    </div>
+    <div id="dietas"></div>
+</div>

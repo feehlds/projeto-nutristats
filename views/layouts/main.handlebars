@@ -11,15 +11,13 @@
     <title>NutriStats</title>
 </head>
 
-<body class="container">
-    <div class="container-fluid">
-        {{#if user}}
-        {{> _usuario}}
-        {{else}}
-        {{{body}}}
+<body class="container-fluid">
+    {{#if user}}
+        {{>_userNav}}
+    {{else}}
         {{>_navbar}}
-        {{/if}}
-    </div>
+    {{/if}}
+        {{{body}}}
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/js/foundation.js"></script>

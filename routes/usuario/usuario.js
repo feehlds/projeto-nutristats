@@ -87,20 +87,23 @@ router.post("/atualizar", (req, res) => {
 });
 
 router.post("/login", (req, res, next) => {
-    passport.authenticate("local", {successRedirect: '/'}, function (err, user, info) {
+    passport.authenticate("local", function (err, user, info) {
         if (err) { return next(err); }
 
-        if (!user) { return res.send(info); }
+        if (!user) { return res.status(200).send(info); }
 
         req.logIn(user, function (err) {
-            res.status(200).redirect('/');        
+            res.status(200).json({status: "Success", redirect: '/usuarios/' + user.nomeUsuario});        
         });
     })(req, res, next);
 
 });
 
-router.get("/logout", (req, res) => {
-    req.logOut();
-    res.redirect("/");
+router.get('/:nomeUsuario', (req, res, next) =>{
+    if(req.user && req.user.nomeUsuario == req.params.nomeUsuario)
+        res.render("usuario")
+    else
+        res.redirect('/')
 })
+
 module.exports = router

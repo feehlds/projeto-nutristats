@@ -15,21 +15,42 @@ $('.card-profile-stats-more-link').click(function (e) {
   $(this).next('.card-profile-stats-more-content').slideToggle();
 });
 
+function requestLogin(reqBody) {
+  $.ajax({
+    type: "POST",
+    url: '/usuarios/login',
+    data: reqBody,
+    dataType: "json",
+    success: function (data, textStatus) {
+      if (data.redirect) {
+        // data.redirect contains the string URL to redirect to
+        window.location.href = data.redirect;
+      } else if(data.message) {
+        console.log('bateu aqui')
+        // data.form contains the HTML for the replacement form
+        showAlert(data.message)
+      }
+    }
+  });
+}
+
 //JQuery and Ajax event listener
 $(function () {
   $('#postLogin').on('submit', function (e) {
     e.preventDefault();
-    var data = $(this).serialize();
-    $.post('/usuarios/login', data, function (message) {
-      if (message.message) {
-        showAlert(message.message)
-      } else if (message) {        
-        location.reload();
-      }
-    });
+    var data = $(this).serialize()
+    requestLogin(data);
   });
 });
 
+//Checar colesterol
+function showColesterol(col) {
+  console.log(col)
+  if (col >= 0)
+    document.getElementById('colesterol').innerHTML = col + '(mg)';
+  else
+    document.getElementById('colesterol').innerHTML = col;
+}
 
 //Alert de erro
 function showAlert(message) {
@@ -38,7 +59,7 @@ function showAlert(message) {
     document.getElementById("alertMessage").style.display = 'block';
     document.getElementById("errorMessage").innerHTML = message
   }
-  else if (display == 'block' && message){
+  else if (display == 'block' && message) {
     document.getElementById("errorMessage").innerHTML = message
   }
   else

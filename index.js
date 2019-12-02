@@ -78,6 +78,10 @@ app.get('/pesqAlimentos', (req, res) => {
 app.use("/usuarios", usuarios);
 app.use("/dietas", dietas);
 app.use("/nutrientes", nutrientes);
+app.get("/logout", (req, res) => {
+    req.logOut();
+    res.redirect("/");
+})
 // O app Listen sempre deve ser a ultima linha do código
 app.listen(PORT, function () {
     console.log('Server running on port ' + PORT);

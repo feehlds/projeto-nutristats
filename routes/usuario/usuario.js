@@ -90,7 +90,29 @@ router.post("/atualizar", (req,res) => {
     })
 });
 
+router.post("/atualizarSenha"),(req,res)=>{
+    Usuario.findOne({_id: req.body.id}).then((usuario)=>{  
+        usuario.senha = req.body.senha;
+        bcrypt.genSalt(10, (erro, salt) => {
 
+            bcrypt.hash(usuario.senha, salt, (erro, hash) =>{
+                if(erro){
+                    req.flash("error_msg", "Houve um erro durante a alteração da senha");
+                    res.redirect("/");
+                }
+                usuario.senha = hash;
+                usuario.save().then(()=>{
+                    req.flash("success_msg", "Senha alterada");
+                    res.redirect("/");
+                }).catch((err) => {
+                    req.flash("error_msg", "Houve um erro durante a alteração da senha, tente novamente! " );
+                    res.redirect("/");
+                });
+
+            });
+        });
+    });
+}
 
 router.get("/login", (req,res) => {
     res.render("usuarios/login");
@@ -106,6 +128,7 @@ router.post("/login",(req,res,next)=>{
 });
 
 router.get("/logout", (req,res) => {
+    console.log("enfsiaosfjos")
     req.logOut();
     res.redirect("/");
 })

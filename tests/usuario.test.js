@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 require("../src/models/entidades/usuario");
 
-const controler = require('../src/models/entidades/usuarioControler');
+const controler = require('../src/models/controler/usuarioControler');
 test('Criar um usuario', () => {
     var usuarioInserir = {
         "nome": "andre",

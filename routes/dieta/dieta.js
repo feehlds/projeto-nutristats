@@ -27,7 +27,7 @@ router.post('/registro', (req, res) => {
 // lista de dietas relacioanada ao usuário logado
 router.get('/lista',(req,res)=>{
     Dieta.find({Usuario:req.body.id}).then((dietas)=>{
-        res.status(201).json(dietas);
+        res.render("dietas/index", {dietas: dietas})
     }).catch((error)=>{
         res.sendStatus(404);
     });

@@ -22,6 +22,8 @@ const PORT = process.env.PORT || 3030
 var path = require('path');
 //Atribuindo a app as informações da aplicação
 const app = express();
+//HTTPS
+app.use(sslRedirect(['development', 'production']));
 //Mongoose
 mongoose.Promise = global.Promise;
 mongoose.connect(db.mongoURI, {
@@ -64,8 +66,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //requests e responses
 app.get('/', (req, res) => {
-    if (res.locals.user) {
-        res.render("index", {user: res.locals.user});
+    if (req.user) {
+        res.status(307).redirect('/usuarios/' + req.user.nomeUsuario);
     }
     else
         res.render("index")

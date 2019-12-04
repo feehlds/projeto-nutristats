@@ -24,7 +24,8 @@ router.post("/registro", (req, res) => {
                     "nomeUsuario": req.body.login,
                     "senha": req.body.pass,
                     "perfil": {
-                        "DataNascimento": req.body.dataNasc,
+                        "sexo": req.body.sexo,
+                        "DataNasc": req.body.dataNasc,
                     }
                 });
                 bcrypt.hash(usuarioNovo.senha, salt, (erro, hash) => {
@@ -90,10 +91,10 @@ router.post("/login", (req, res, next) => {
     passport.authenticate("local", function (err, user, info) {
         if (err) { return next(err); }
 
-        if (!user) { return res.status(200).send(info); }
+        if (!user) { return res.status(401).send(info); }
 
         req.logIn(user, function (err) {
-            res.status(200).json({status: "Success", redirect: '/usuarios/' + user.nomeUsuario});        
+            res.status(307).redirect('/usuarios/' + req.user.nomeUsuario);        
         });
     })(req, res, next);
 

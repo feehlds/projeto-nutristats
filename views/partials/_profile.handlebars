@@ -36,13 +36,13 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="inputUsername">Username</label>
-                                            <input type="text" class="form-control" id="inputUsername" value="{{user.nomeUsuario}}"
-                                                placeholder="Username">
+                                            <input type="text" class="form-control" id="inputUsername"
+                                                value="{{user.nomeUsuario}}" placeholder="Username">
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail">Email</label>
-                                            <input type="email" class="form-control" id="inputEmail"
-                                                placeholder="Email" value="{{user.email}}">
+                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email"
+                                                value="{{user.email}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -67,38 +67,46 @@
                             <form id="savePerfil" onsubmit="saveId('{{user._id}}')">
                                 <div class="form-group">
                                     <label for="inputName">Nome completo</label>
-                                    <input type="text" class="form-control" id="inputName" placeholder="Nome" value="{{user.nome}}">
+                                    <input type="text" class="form-control" id="inputName" placeholder="Nome"
+                                        value="{{user.nome}}">
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="dataNasc">Data de nascimento</label>
-                                        <input type="date" class="form-control" id="inputDataNasc" value="{{user.perfil.dataNasc}}"
-                                            placeholder="1234 Main St">
+                                        <input type="date" class="form-control" id="inputDataNasc"
+                                            value="{{user.perfil.dataNasc}}" placeholder="1234 Main St">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputSexo">Sexo</label>
                                         <select id="inputSexo" class="form-control">
-                                            <option value="{{user.perfil.sexo}}"></option>
                                             <option value="f">Feminino</option>
                                             <option value="m">Masculino</option>
                                             <option value="o">Outro</option>
+                                            <option value="{{user.perfil.sexo}}" hidden id="sexoUser"></option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="inputPeso">Peso(kg)</label>
-                                        <input type="number" class="form-control" id="inputPeso" step="0.10" value="{{user.perfil.peso}}">
+                                        <input type="number" class="form-control" id="inputPeso" step="0.10"
+                                            value="{{user.perfil.peso}}">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="inputAltura">Altura(m)</label>
-                                        <input type="number" class="form-control" id="inputAltura" step="0.10"  value="{{user.perfil.altura}}">
+                                        <input type="number" class="form-control" id="inputAltura" step="0.10"
+                                            value="{{user.perfil.altura}}">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="inputState">Alimentação</label>
+                                        <label for="inputState" id="lb">Alimentação</label>
                                         <select id="inputAlimentacao" class="form-control">
-                                            <option selected="">Selecione</option>
-                                            <option></option>
+                                            <option value="">Selecione</option>
+                                            </option>
+                                            <option value="Vegano">Vegano</option>
+                                            <option value="Vegetariano estrito">Vegetariano estrito</option>
+                                            <option value="Vegetariano">Vegetariano</option>
+                                            <option value="Carnista">Carnista</option>
+                                            <option value="{{user.perfil.alimentacao}}" id="userAlimentacao" hidden>
                                         </select>
                                     </div>
                                 </div>

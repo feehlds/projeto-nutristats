@@ -36,7 +36,6 @@ $(function () {
     $('#infoConta').on('submit', function (e) {
         e.preventDefault();
         var data = returnUser();
-        console.log(data)
         $.post('/usuarios/atualizar', data);
     });
 });
@@ -45,7 +44,6 @@ $(function () {
     $('#savePerfil').on('submit', function (e) {
         e.preventDefault();
         var data = returnUser();
-        console.log(data)
         $.post('/usuarios/atualizar', data);
     });
 });
@@ -68,6 +66,8 @@ document.getElementById("inputName").addEventListener("change", function () {
 //Event listener para alterar sexo
 document.getElementById("inputSexo").addEventListener("change", function () {
     sexo = this.value
+    document.getElementById("inputSexo").value = sexo;
+
 });
 
 //Event listener para alterar altura
@@ -94,7 +94,7 @@ document.getElementById("inputDataNasc").addEventListener("change", function () 
 
 
 //Preencher tela de usuario
-function preencherInfo(user) {
+function preencherInfo(update) {
     //Data Binding
     nomeUsuario = document.getElementById("inputUsername").value;
     email = document.getElementById("inputEmail").value;
@@ -102,13 +102,25 @@ function preencherInfo(user) {
     //Perfil
     altura = document.getElementById("inputAltura").value;
     peso = document.getElementById("inputPeso").value;
-    sexo = document.getElementById("inputSexo").value;
-    alimentacao = document.getElementById("inputAlimentacao").value;
+    
+    if(update)
+        sexo = document.getElementById("inputSexo").value
+    else{
+        sexo = document.getElementById("sexoUser").value;
+        document.getElementById("inputSexo").value = sexo;
+    }
+    
+    if(alimentacao = document.getElementById("inputAlimentacao").value){
+        alimentacao = document.getElementById("inputAlimentacao").value;
+    }   else{
+        alimentacao = document.getElementById("userAlimentacao").value;
+        document.getElementById("inputAlimentacao").value = alimentacao
+    }
     dataNasc = document.getElementById("inputDataNasc").value;
 }
 
 function returnUser() {
-    preencherInfo()
+    preencherInfo(true)
     let user = {}
     user._id = userId;
     user.nome = nome;

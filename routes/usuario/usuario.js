@@ -25,7 +25,7 @@ router.post("/registro", (req, res) => {
                     "senha": req.body.pass,
                     "perfil": {
                         "sexo": req.body.sexo,
-                        "DataNasc": req.body.dataNasc,
+                        "dataNasc": req.body.dataNasc,
                     }
                 });
                 bcrypt.hash(usuarioNovo.senha, salt, (erro, hash) => {

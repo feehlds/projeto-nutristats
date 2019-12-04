@@ -98,3 +98,6 @@ body {
 nav {
     background-color: #239956 !important;
 }
+select {
+    margin-top: 1.1rem !important;
+}

@@ -21,15 +21,16 @@ function requestLogin(reqBody) {
     url: '/usuarios/login',
     data: reqBody,
     dataType: "json",
-    success: function (data, textStatus) {
-      if (data.redirect) {
-        // data.redirect contains the string URL to redirect to
-        window.location.href = data.redirect;
-      } else if(data.message) {
-        console.log('bateu aqui')
+    success: function (data, textStatus, xhr) {
+      location.reload()
+    },
+    complete: function (xhr, textStatus) {
+      if (xhr.responseText && xhr.status == 401) {
+        let res = JSON.parse(xhr.responseText)
         // data.form contains the HTML for the replacement form
-        showAlert(data.message)
-      }
+        showAlert(res.message)
+      } else  
+        location.reload()
     }
   });
 }

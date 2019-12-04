@@ -13,18 +13,23 @@ var dataNasc;
 var imc;
 var tbm;
 
-// $.ajax({
-//     'url': '/usuarios/login',
-//     'method': 'POST',
-//     'dataType': 'json',
-//     'contentType': 'application/json',
-//     'data': {
-//         "refId": 585,
-//         "phone": "0674444444"
-//     },
-//     'success': getHandlingStatus
+//Mudar conteúdo da página
 
-// });
+function changeContent(id) {
+    if(document.getElementById("nutrientes").style.display == "block"){
+        document.getElementById("nutrientes").style.display = 'none';
+        document.getElementById(id).style.display = 'block'
+    }
+    else if(document.getElementById("profileTab").style.display == "block"){
+        document.getElementById("profileTab").style.display = 'none';
+        document.getElementById(id).style.display = 'block'
+    }
+    else if(document.getElementById("dietas").style.display == "block"){
+        document.getElementById("dietas").style.display = 'none';
+        document.getElementById(id).style.display = 'block'
+    }
+  
+}
 
 //Event listener para fazer o post
 $(function () {

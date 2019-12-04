@@ -101,7 +101,7 @@ router.post("/login", (req, res, next) => {
 
 router.get('/:nomeUsuario', (req, res, next) =>{
     if(req.user && req.user.nomeUsuario == req.params.nomeUsuario)
-        res.render("usuario")
+        res.render("usuario", {layout: 'user'})
     else
         res.redirect('/')
 })

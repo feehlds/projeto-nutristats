@@ -5,6 +5,7 @@ const passport = require("passport");
 const mongoose = require('mongoose');
 require("../../src/models/entidades/usuario");
 const Usuario = mongoose.model("usuarios");
+
 //REGISTRAR
 
 router.get("/registro", (req, res) => {
@@ -150,7 +151,7 @@ router.post("/login", (req, res, next) => {
 
 });
 
-router.get('/:nomeUsuario', (req, res, next) => {
+router.get('/:nomeUsuario/', (req, res, next) => {
     if (req.user && req.user.nomeUsuario == req.params.nomeUsuario)
         res.render("usuario", { layout: 'user' })
     else

@@ -1,0 +1,58 @@
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/jquery.transfer.css" />
+<link rel="stylesheet" type="text/css" href="/css/icon_font.css" />
+<script type="text/javascript" src="/js/jquery.transfer.js?v=0.0.2"></script>
+<div id="dietas" class="row">
+    <div class="col-4"></div>
+    <div class="card border-success mb-3 col-4">
+        <div class="card-header">Header</div>
+        <div class="card-body text-success">
+            <h5 class="card-title">Success Panel title</h5>
+            <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the panel's
+                content.</p>
+        </div>
+    </div>
+    <div class="col-2">
+        <button class="hollow button success" style="width: 100%;">Editar</button>
+        <button class="hollow button danger" style="width: 100%;">Deletar</button>
+    </div>
+</div>
+
+<div id="transfer1" class="transfer-demo"></div>
+<div id="transfer2" class="transfer-demo"></div>
+<script type="text/javascript">
+var dataArray1
+ function getAlimentos() {
+        console.log('beteu')
+        $.ajax({
+            type: "GET",
+            url: '/alimentos',
+            success: function (data, textStatus, xhr) {
+                dataArray1 = data
+            }
+        }).done(data => {
+            console.log('data', data)
+        });
+    }
+    console.log(dataArray1)
+    var settings1 = {
+        "dataArray": dataArray1,
+        "itemName": "Descricao",
+        "valueName": "_id",
+        "callable": function (items) {
+            console.dir(items)
+        }
+    };
+    var settings2 = {
+        "dataArray": dataArray1,
+        "itemName": "city",
+        "valueName": "value",
+        "callable": function (items) {
+            console.dir(items)
+        }
+    };
+    $("#transfer1").transfer(settings1);
+    $("#transfer2").transfer(settings2);
+    var items = transfer.getSelectedItems()
+    console.log("Manuadsfasdfasdfafdlly get selected items: %o", items);
+</script>

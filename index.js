@@ -9,6 +9,8 @@ const bodyParser = require('body-parser');
 const passport = require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
+require('./src/models/entidades/nutriente')
+const Nutriente = mongoose.model("nutrientes");
 require("./config/autenticacao")(passport);
 
 //Routes
@@ -75,6 +77,14 @@ app.get('/', (req, res) => {
 
 app.get('/pesqAlimentos', (req, res) => {
 
+});
+app.get('/alimentos', (req, res) => {
+    Nutriente.find().then((nutrientes) => {
+        res.send(nutrientes)
+    }).catch((err) => {
+        req.flash("error_msg", "houve um erro ao listar os nutrientes");
+        res.redirect("/");
+    });
 });
 
 app.use("/usuarios", usuarios);

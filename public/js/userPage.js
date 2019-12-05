@@ -30,6 +30,7 @@ function changeContent(id) {
     else if (document.getElementById("dietas").style.display == "block") {
         document.getElementById("dietas").style.display = 'none';
         document.getElementById(id).style.display = 'block'
+        dietasController.getDietas(userId);
     }
 
 }

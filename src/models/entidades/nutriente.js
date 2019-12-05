@@ -53,7 +53,7 @@ const Nutriente = Schema({
     Sodio:{
        type: String
     },
-    potassio:{
+    Potassio:{
        type: String
     },
     Cobre:{

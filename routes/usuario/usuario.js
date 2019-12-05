@@ -25,7 +25,7 @@ router.post("/registro", (req, res) => {
                     "senha": req.body.pass,
                     "perfil": {
                         "sexo": req.body.sexo,
-                        "DataNasc": req.body.dataNasc,
+                        "dataNasc": req.body.dataNasc,
                     }
                 });
                 bcrypt.hash(usuarioNovo.senha, salt, (erro, hash) => {
@@ -38,7 +38,7 @@ router.post("/registro", (req, res) => {
                     usuarioNovo.save().then(() => {
                         req.flash("success_msg", "Usuario criado com sucesso!");
                         res.redirect(307, "/usuarios/login");
-                        
+
                     }).catch((err) => {
                         req.flash("error_msg", "Houve um erro ao criar o usuário, tente novamente! ");
                         res.redirect("/");
@@ -62,29 +62,79 @@ router.post("/atualizar", (req, res) => {
 
     Usuario.findOne({ nomeUsuario: nomeUsuario }).then((usuario) => {
         if (!usuario || usuario.id === id) {
-            usuario.nome = req.body.nome;
-            usuario.email = req.body.email;
-            usuario.nomeUsuario = req.body.nomeUsuario;
-            usuario.senha = usuario.senha;
-            usuario.perfil = req.body.perfil;
+            if (!usuario) {
+                Usuario.findOne({ _id: id }).then((usuario) => {
+                    usuario.nome = req.body.nome;
+                    usuario.email = req.body.email;
+                    usuario.nomeUsuario = req.body.nomeUsuario;
+                    usuario.perfil = req.body.perfil
 
-            usuario.save().then(() => {
-                req.flash("success_msg", "Usuario criado com sucesso!")
-                res.redirect("/");
+                    usuario.save().then(() => {
+                        req.flash("success_msg", "Usuario atualizado com sucesso!")
+                        res.status(200).json({ message: 'Atualizado!' });
 
-            }).catch((err) => {
-                req.flash("error_msg", "Houve um erro interno");
-                res.redirect("/");
-            });
+                    }).catch((err) => {
+                        req.flash("error_msg", "Houve um erro interno");
+                        console.log(err)
+                        res.status(500).json({ message: 'Houve um erro interno!' });
+                    });
+                })
+            } else {
+                usuario.nome = req.body.nome;
+                usuario.email = req.body.email;
+                usuario.nomeUsuario = req.body.nomeUsuario;
+                usuario.perfil = req.body.perfil;
+
+                usuario.save().then(() => {
+                    req.flash("success_msg", "Usuario atualizado com sucesso!")
+                    res.status(200).json({ message: 'Atualizado!' });
+
+                }).catch((err) => {
+                    req.flash("error_msg", "Houve um erro interno");
+                    console.log(err)
+                    res.status(500).json({ message: 'Houve um erro interno!' });
+                });
+            }
         } else {
             req.flash("error_msg", "Já existe uma conta com este nome de Usuário em nosso sistema");
-            res.redirect("/");
+            res.status(400).json({ message: 'Nome de usuário já existe' });
         }
 
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro interno ao editar o usuário");
-        res.redirect("/");
+        res.status(500).json({ message: 'Houve um erro interno ao atualizar!' });
+        console.log(err)
     })
+});
+
+router.post("/atualizarSenha", (req, res) => {
+    Usuario.findOne({ _id: req.body.id }).then((usuario) => {
+        bcrypt.compare(req.body.senhaAtual, usuario.senha, (erro, batem) => {
+            if (batem && req.body.novaSenha) {
+                usuario.senha = req.body.novaSenha;
+                bcrypt.genSalt(10, (erro, salt) => {
+                    bcrypt.hash(usuario.senha, salt, (erro, hash) => {
+                        if (erro) {
+                            req.flash("error_msg", "Houve um erro durante a alteração da senha");
+                            console.log(req.error_msg)
+                            res.status(400).json(req.error_msg);
+                        }
+                        usuario.senha = hash;
+                        usuario.save().then(() => {
+                            req.flash("success_msg", "Senha alterada");
+                            res.status(200).json({ message: 'Senha atulizada' });
+                        }).catch((err) => {
+                            req.flash("error_msg", "Houve um erro durante a alteração da senha, tente novamente! ");
+                            res.redirect("/");
+                        });
+                    });
+                });
+            } else {
+                res.status(400).json({ message: 'Senha atual inválida!' })
+            }
+        });
+
+    });
 });
 
 router.post("/login", (req, res, next) => {
@@ -94,15 +144,15 @@ router.post("/login", (req, res, next) => {
         if (!user) { return res.status(401).send(info); }
 
         req.logIn(user, function (err) {
-            res.status(307).redirect('/usuarios/' + req.user.nomeUsuario);        
+            res.status(307).redirect('/usuarios/' + req.user.nomeUsuario);
         });
     })(req, res, next);
 
 });
 
-router.get('/:nomeUsuario', (req, res, next) =>{
-    if(req.user && req.user.nomeUsuario == req.params.nomeUsuario)
-        res.render("usuario", {layout: 'user'})
+router.get('/:nomeUsuario', (req, res, next) => {
+    if (req.user && req.user.nomeUsuario == req.params.nomeUsuario)
+        res.render("usuario", { layout: 'user' })
     else
         res.redirect('/')
 })

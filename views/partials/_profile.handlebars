@@ -52,10 +52,20 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <button type="submit" class="hollow success button">Salvar alterações</button>
                             </form>
-
+                            <div class="alert alert-success" role="alert" id="alertSucesso" style="display: none;">
+                                <strong>Sucesso: </strong> <span id="successMessage"></span>
+                                <button type="button" class="close" onclick="showAlertSuccess(null, 'alertSucesso', 'successMessage')" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="alert alert-danger" role="alert" id="alertErro" style="display: none;">
+                                <strong>Erro: </strong> <span id="errorMessage"></span>
+                                <button type="button" class="close" onclick="showAlertError(null, 'alertErro', 'errorMessage')" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -112,7 +122,6 @@
                                 </div>
                                 <button type="submit" class="hollow success button">Salvar alterações</button>
                             </form>
-
                         </div>
                     </div>
 
@@ -122,9 +131,9 @@
                         <div class="card-body">
                             <h5 class="card-title">Senha</h5>
 
-                            <form onsubmit="saveId('{{user._id}}')">
+                            <form onsubmit="saveId('{{user._id}}')" id="atualizarSenha">
                                 <div class="form-group">
-                                    <label for="inputPasswordCurrent">Senha atual</label>
+                                    <label for="inputSenhaAtual">Senha atual</label>
                                     <input type="password" class="form-control" id="inputSenhaAtual">
                                     <small><a href="#">Esqueceu a senha?</a></small>
                                 </div>
@@ -138,7 +147,18 @@
                                 </div>
                                 <button type="submit" class="hollow success button">Salvar alterações</button>
                             </form>
-
+                            <div class="alert alert-success" role="alert" id="alertSucessoSenha" style="display: none;">
+                                <strong>Sucesso: </strong> <span id="successMessageSenha"></span>
+                                <button type="button" class="close" onclick="showAlertSuccess(null, 'alertSucessoSenha', 'successMessageSenha')" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="alert alert-danger" role="alert" id="alertErroSenha" style="display: none;">
+                                <strong>Erro: </strong> <span id="errorMessageSenha"></span>
+                                <button type="button" class="close" onclick="showAlertError(null, 'alertErroSenha', 'errorMessageSenha')" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,7 @@ router.get('', (req, res) => {
         if (req.user)
             res.render("usuario", {layout: 'user', nutrientes: nutrientes})
         else
-            res.render("index", { nutrientes: nutrientes });
+            res.render("index", { nutrientes: nutrientes, isIndex: "true" });
     }).catch((err) => {
         req.flash("error_msg", "houve um erro ao listar os nutrientes");
         res.redirect("/");

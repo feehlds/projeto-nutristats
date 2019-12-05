@@ -6,7 +6,7 @@ const scope = require('./support/scope');
 const World = function(){
     scope.driver = puppeteer;
     scope.context = {};
-    scope.host = "https://nutri-stats.herokuapp.com";
+    scope.host = "http://localhost:3030";
 
     scope.map_of_pages = {
         'nutrientes': scope.host + '/nutrientes?barraPesq=arroz',

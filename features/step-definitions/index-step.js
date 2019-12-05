@@ -2,7 +2,7 @@ const {Given, When, Then} = require('cucumber');
 const expect = require('expect-puppeteer');
 
 var {setDefaultTimeout} = require('cucumber');
-setDefaultTimeout(50 * 1000);
+setDefaultTimeout(60 * 1000);
 
 const scope = require('../support/scope');
 const { visitHome } = require('../support/actions');

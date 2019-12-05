@@ -13,33 +13,56 @@ var dataNasc;
 var imc;
 var tbm;
 
+//Variaveis att senha
+var senhaAtual
+
 //Mudar conteúdo da página
 
 function changeContent(id) {
-    if(document.getElementById("nutrientes").style.display == "block"){
+    if (document.getElementById("nutrientes").style.display == "block") {
         document.getElementById("nutrientes").style.display = 'none';
         document.getElementById(id).style.display = 'block'
     }
-    else if(document.getElementById("profileTab").style.display == "block"){
+    else if (document.getElementById("profileTab").style.display == "block") {
         document.getElementById("profileTab").style.display = 'none';
         document.getElementById(id).style.display = 'block'
     }
-    else if(document.getElementById("dietas").style.display == "block"){
+    else if (document.getElementById("dietas").style.display == "block") {
         document.getElementById("dietas").style.display = 'none';
         document.getElementById(id).style.display = 'block'
     }
-  
+
 }
 
-//Event listener para fazer o post
+//Event listener para fazer o post atualizar acc
+function atualizarConta(reqBody) {
+    $.ajax({
+        type: "POST",
+        url: '/usuarios/atualizar',
+        data: reqBody,
+        dataType: "json",
+        success: function (data, textStatus, xhr) {
+            showAlertSuccess(data.message, 'alertSucesso', 'successMessage')
+        },
+        complete: function (xhr, textStatus) {
+            if (xhr.responseText && xhr.status !== 200) {
+                console.log(xhr.statusCode)
+                response = JSON.parse(xhr.responseText)
+                showAlertError(response.message, 'alertErro', 'errorMessage')
+            }
+        }
+    });
+}
 $(function () {
     $('#infoConta').on('submit', function (e) {
         e.preventDefault();
         var data = returnUser();
-        $.post('/usuarios/atualizar', data);
+        atualizarConta(data);
     });
 });
 
+
+//Atulizar perfil
 $(function () {
     $('#savePerfil').on('submit', function (e) {
         e.preventDefault();
@@ -47,6 +70,67 @@ $(function () {
         $.post('/usuarios/atualizar', data);
     });
 });
+
+//Atualizar senha
+function atualizarSenha(reqBody) {
+    $.ajax({
+        type: "POST",
+        url: '/usuarios/atualizarSenha',
+        data: reqBody,
+        dataType: "json",
+        success: function (data, textStatus, xhr) {
+            showAlertSuccess(data.message, 'alertSucessoSenha', 'successMessageSenha')
+        },
+        complete: function (xhr, textStatus) {
+            if (xhr.responseText && xhr.status !== 200) {
+                let res = JSON.parse(xhr.responseText)
+                // data.form contains the HTML for the replacement form
+                showAlertError(res.message, 'alertErroSenha', 'errorMessageSenha')
+            }
+        }
+    });
+}
+
+$(function () {
+    $('#atualizarSenha').on('submit', function (e) {
+        e.preventDefault();
+        var data = {
+            "id": userId,
+            "senhaAtual": senhaAtual,
+            "novaSenha": document.getElementById("inputNovaSenhaConfirm").value
+        };
+        atualizarSenha(data);
+    });
+});
+
+//Alerts de atualização de usuario
+//Alert de sucesso
+function showAlertSuccess(message, id, idm) {
+    let display = document.getElementById(id).style.display;
+    if (display == "none") {
+        document.getElementById(id).style.display = 'block';
+        document.getElementById(idm).innerHTML = message
+    }
+    else if (display == 'block' && message) {
+        document.getElementById(idm).innerHTML = message
+    }
+    else
+        document.getElementById(id).style.display = 'none'
+}
+//Alert de error
+function showAlertError(message, id, idm) {
+    let display = document.getElementById(id).style.display;
+    if (display == "none") {
+        document.getElementById(id).style.display = 'block';
+        document.getElementById(idm).innerHTML = message
+    }
+    else if (display == 'block' && message) {
+        document.getElementById(idm).innerHTML = message
+    }
+    else
+        document.getElementById(id).style.display = 'none'
+}
+
 
 //Event listener para alterar username
 document.getElementById("inputUsername").addEventListener("change", function () {
@@ -92,6 +176,10 @@ document.getElementById("inputDataNasc").addEventListener("change", function () 
     alimentacao = this.value
 });
 
+//Event listener para alterar senha
+document.getElementById("inputSenhaAtual").addEventListener("change", function () {
+    senhaAtual = this.value;
+});
 
 //Preencher tela de usuario
 function preencherInfo(update) {
@@ -102,17 +190,17 @@ function preencherInfo(update) {
     //Perfil
     altura = document.getElementById("inputAltura").value;
     peso = document.getElementById("inputPeso").value;
-    
-    if(update)
+
+    if (update)
         sexo = document.getElementById("inputSexo").value
-    else{
+    else {
         sexo = document.getElementById("sexoUser").value;
         document.getElementById("inputSexo").value = sexo;
     }
-    
-    if(alimentacao = document.getElementById("inputAlimentacao").value){
+
+    if (alimentacao = document.getElementById("inputAlimentacao").value) {
         alimentacao = document.getElementById("inputAlimentacao").value;
-    }   else{
+    } else {
         alimentacao = document.getElementById("userAlimentacao").value;
         document.getElementById("inputAlimentacao").value = alimentacao
     }
@@ -135,6 +223,20 @@ function returnUser() {
     user.perfil = perfil
     return user;
 }
+//Validação de Senhas antes de levar para o servidor
+var senha = document.getElementById("inputNovaSenha");
+var confirmSenha = document.getElementById("inputNovaSenhaConfirm");
+
+function validarSenhas() {
+    if (senha.value != confirmSenha.value) {
+        confirmSenha.setCustomValidity("Senhas Diferentes!");
+        confirmSenha.style.borderColor = "#f00";
+    } else {
+        confirmSenha.setCustomValidity("");
+        confirmSenha.style.borderColor = "#ccc";
+    }
+}
+confirmSenha.onkeyup = validarSenhas;
 
 function saveId(id) {
     userId = id;

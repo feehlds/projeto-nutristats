@@ -7,6 +7,7 @@
             <button class="hollow button success animated-button" type="submit" id="bt-buscar">Buscar</button>
         </form>
     </div>
+    {{#if isIndex}}
     {{#each nutrientes}}
     <div align="center">
         <div id="resultCards">
@@ -34,6 +35,120 @@
             </div>
         </div>
     </div>
-    
+
+    <div class="reveal" id="{{id}}" data-reveal>
+        <div style="text-align: center;"><b>
+                <h3>{{Descricao}}</h3>
+            </b></div>
+        <div class="grid-x">
+            <div class="cell small-4"><b>KCAL: </b>{{ kcal }}</div>
+            <div class="cell small-4"><b>KJ: </b>{{ kj }}</div>
+            <div class="cell small-4"><b>Umidade: </b>{{ Umidade }}%</div>
+            <div class="cell small-4"><b>Proteína: </b>{{ Proteina }}(g)</div>
+            <div class="cell small-4"><b>Colesterol:
+                </b>
+                {{Colesterol}}(mg)
+            </div>
+            <div class="cell small-4"><b>Fibra: </b>{{ FibraAlimentar }}(g)</div>
+            <div class="cell small-4"><b>Lipídeos: </b>{{ Lipideos }}(g)</div>
+            <div class="cell small-4"><b>Carboidrato: </b>{{ carboidrato }}(g)</div>
+            <div class="cell small-4"><b>Sódio: </b>{{ Sodio }}(mg)</div>
+            <div class="cell small-4"><b>Cinzas: </b>{{ Cinzas }}</div>
+            <div class="cell small-4"><b>Cálcio: </b>{{ Calcio }}</div>
+            <div class="cell small-4"><b>Magnésio: </b>{{ Magnesio }}%</div>
+            <div class="cell small-4"><b>Manganes: </b>{{ Manganes }}(g)</div>
+            <div class="cell small-4"><b>Fosforo: </b>{{ Fosforo }}(g)</div>
+            <div class="cell small-4"><b>Ferro: </b>{{ Ferro }}(g)</div>
+            <div class="cell small-4"><b>Potássio: </b>{{ Potassio }}(g)</div>
+            <div class="cell small-4"><b>Cobre: </b>{{ Cobre }}(mg)</div>
+            <div class="cell small-4"><b>Zinco: </b>{{ Zinco }}</div>
+            <div class="cell small-4"><b>Vitamina A: </b>{{ Retinol }}</div>
+            <div class="cell small-4"><b>RE: </b>{{ RE }}%</div>
+            <div class="cell small-4"><b>RAE: </b>{{ RAE }}(g)</div>
+            <div class="cell small-4"><b>Tiamina: </b>{{ Tiamina }}(g)</div>
+            <div class="cell small-4"><b>Riboflavina: </b>{{ Riboflavina }}(g)</div>
+            <div class="cell small-4"><b>Piridoxina: </b>{{ Piridoxina }}(g)</div>
+            <div class="cell small-4"><b>Niacina: </b>{{ Niacina }}(mg)</div>
+            <button class="close-button" data-close aria-label="Close reveal" type="button">
+                <span aria-hidden="true">&times;</span>
+        </div>
+    </div>
     {{/each}}
+    {{else}}
+    {{#each nutrientes}}
+    <div align="center">
+        <div id="resultCards">
+            <div class="card text-center">
+                <div class="card-header">
+                    <b>{{Descricao}}</b>
+                </div>
+                <div class="card-body">
+                    <div class="ui-g-12">
+                        <div class="ui-g-4"><b>KCAL: </b>{{ kcal }}</div>
+                        <div class="ui-g-4"><b>KJ: </b>{{ kj }}</div>
+                        <div class="ui-g-4"><b>Umidade: </b>{{ Umidade }}%</div>
+                        <div class="ui-g-4"><b>Proteína: </b>{{ Proteina }}(g)</div>
+                        <div class="ui-g-4"><b>Colesterol:
+                            </b>
+                            {{Colesterol}}(mg)
+                        </div>
+                        <div class="ui-g-4"><b>Fibra: </b>{{ FibraAlimentar }}(g)</div>
+                        <div class="ui-g-4"><b>Lipídeos: </b>{{ Lipideos }}(g)</div>
+                        <div class="ui-g-4"><b>Carboidrato: </b>{{ carboidrato }}(g)</div>
+                        <div class="ui-g-4"><b>Sódio: </b>{{ Sodio }}(mg)</div>
+                    </div>
+                    <a class="hollow button success" style="width: 75%;" data-toggle="modal"
+                        data-target="#{{id}}">Info</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{Descricao}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-4"><b>KCAL: </b>{{ kcal }}</div>
+                        <div class="col-4"><b>KJ: </b>{{ kj }}</div>
+                        <div class="col-4"><b>Umidade: </b>{{ Umidade }}%</div>
+                        <div class="col-4"><b>Proteína: </b>{{ Proteina }}(g)</div>
+                        <div class="col-4"><b>Colesterol:
+                            </b>
+                            {{Colesterol}}(mg)
+                        </div>
+                        <div class="col-4"><b>Fibra: </b>{{ FibraAlimentar }}(g)</div>
+                        <div class="col-4"><b>Lipídeos: </b>{{ Lipideos }}(g)</div>
+                        <div class="col-4"><b>Carboidrato: </b>{{ carboidrato }}(g)</div>
+                        <div class="col-4"><b>Sódio: </b>{{ Sodio }}(mg)</div>
+                        <div class="col-4"><b>Cinzas: </b>{{ Cinzas }}</div>
+                        <div class="col-4"><b>Cálcio: </b>{{ Calcio }}</div>
+                        <div class="col-4"><b>Magnésio: </b>{{ Magnesio }}%</div>
+                        <div class="col-4"><b>Manganes: </b>{{ Manganes }}(g)</div>
+                        <div class="col-4"><b>Fosforo: </b>{{ Fosforo }}(g)</div>
+                        <div class="col-4"><b>Ferro: </b>{{ Ferro }}(g)</div>
+                        <div class="col-4"><b>Potássio: </b>{{ Potassio }}(g)</div>
+                        <div class="col-4"><b>Cobre: </b>{{ Cobre }}(mg)</div>
+                        <div class="col-4"><b>Zinco: </b>{{ Zinco }}</div>
+                        <div class="col-4"><b>Vitamina A: </b>{{ Retinol }}</div>
+                        <div class="col-4"><b>RE: </b>{{ RE }}%</div>
+                        <div class="col-4"><b>RAE: </b>{{ RAE }}(g)</div>
+                        <div class="col-4"><b>Tiamina: </b>{{ Tiamina }}(g)</div>
+                        <div class="col-4"><b>Riboflavina: </b>{{ Riboflavina }}(g)</div>
+                        <div class="col-4"><b>Piridoxina: </b>{{ Piridoxina }}(g)</div>
+                        <div class="col-4"><b>Niacina: </b>{{ Niacina }}(mg)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    {{/if}}
 </div>

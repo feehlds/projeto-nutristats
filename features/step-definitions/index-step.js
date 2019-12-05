@@ -16,8 +16,8 @@ Given('Que eu acessar o site de nutristats', visitHome);
 
   });
 
-  When('Eu clicar em {string}', function (txtBotao) {
-    return expect(scope.context.currentPage).toClick('button', {text: txtBotao});
+  When('Eu clicar em {string}', async  function (txtBotao) {
+    await expect(scope.context.currentPage).toClick('button', {text: txtBotao});
    
   });
   Then("Devo ser redirecionado para a página {string}", async(page_name) => {
@@ -34,7 +34,16 @@ Given('Que eu acessar o site de nutristats', visitHome);
     var encontrado = result.toLowerCase();
     assert.equal(true,encontrado.indexOf(buscado) != -1);
   });
-  When('Eu consultar as informções do nutriente clicando em {string}', function (txtBotao) {
-    return expect(scope.context.currentPage).toClick('a', {text: txtBotao});
+  When('Eu consultar as informções do nutriente clicando em {string}', async (txtBotao)=> {
+    await expect(scope.context.currentPage).toClick('a', {text: txtBotao});
    
+  });
+
+
+  Then('Deve ser apresentado a  descrição {string} do nutriente', async (alimento)=> {
+    await expect(scope.context.currentPage).toFill('h3', alimento);
+    var result = await scope.context.currentPage.$eval('h3', element => element.innerText);
+    var buscado = alimento.toLowerCase();
+    var encontrado = result.toLowerCase();
+    assert.equal(true,encontrado.indexOf(buscado) != -1);
   });

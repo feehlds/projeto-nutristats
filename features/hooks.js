@@ -10,11 +10,13 @@ After(async () => {
     if(scope.browser && scope.context.currentPage){
        await scope.context.currentPage.close();
        scope.context.currentPage = null;
-
+       
     }
 });
 
 AfterAll(async () => {
+
     app.server.close();
+
    
 });

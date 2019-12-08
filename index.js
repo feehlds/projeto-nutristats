@@ -85,6 +85,9 @@ app.get("/logout", (req, res) => {
     res.redirect("/");
 })
 // O app Listen sempre deve ser a ultima linha do código
-app.listen(PORT, function () {
+var server =  app.listen(PORT, function () {
     console.log('Server running on port ' + PORT);
 });
+
+
+module.exports = { server }

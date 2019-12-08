@@ -31,14 +31,11 @@
         "node": "^12.x"
     },
     "dependencies": {
-        "@angular/cli": "^8.3.19",
-        "@angular/compiler-cli": "^8.2.14",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
         "compile-sass": "^1.0.1",
         "connect-flash": "^0.1.1",
         "cors": "^2.8.5",
-        "expect-puppeteer": "^4.3.0",
         "express": "^4.17.1",
         "express-handlebars": "^3.1.0",
         "express-session": "^1.17.0",
@@ -46,15 +43,16 @@
         "heroku-ssl-redirect": "0.0.4",
         "mongodb": "^3.3.3",
         "mongoose": "^5.7.11",
-        "nodemon": "^1.19.4",
         "passport": "^0.4.0",
         "passport-local": "^1.0.0",
         "pg": "^7.12.1",
-        "pg-hstore": "^2.3.3",
-        "puppeteer": "^2.0.0"
+        "pg-hstore": "^2.3.3"
     },
     "devDependencies": {
         "cucumber": "^5.1.0",
-        "jest": "^24.x"
+        "jest": "^24.x",
+        "expect-puppeteer": "^4.3.0",
+        "puppeteer": "^2.0.0",
+        "nodemon": "^1.19.4"
     }
 }
